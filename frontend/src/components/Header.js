@@ -5,6 +5,7 @@ const HeaderTitle = styled.marquee`
   color: ${p => p.theme.color.pink};
   font-size: 1.5rem;
   text-transform: uppercase;
+  font-family: ${p => p.theme.font.heading};
 `;
 
 function Header() {
