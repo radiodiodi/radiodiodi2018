@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import ImageGallery from '../../common/ImageGallery';
 
 function Frontpage() {
-  return <h1>Tämä on Radiodiodi</h1>;
+  return (
+    <Fragment>
+      <h1>Tämä on Radiodiodi</h1>
+      <ImageGallery />
+    </Fragment>
+  );
 }
 
 export default Frontpage;
