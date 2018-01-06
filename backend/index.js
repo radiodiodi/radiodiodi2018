@@ -1,10 +1,18 @@
 require('dotenv').config()
 
+const _ = require('lodash');
+
 const Koa = require('koa');
 const Router = require('koa-router');
+const monk = require('monk');
 
 const app = new Koa();
 const router = new Router();
+
+const mongo_stats = `${process.env.MONGODB_HOST}/${process.env.MONGODB_STATS_DB}`;
+console.log(`Mongo stats DB: ${mongo_stats}`);
+const statsDB = monk(mongo_stats);
+const listeners = statsDB.get('listeners');
 
 // x-response-time
 app.use(async (ctx, next) => {
@@ -34,7 +42,40 @@ router.get('/', (ctx, next) => {
   ctx.body = 'Radiodiodi JSON API';
 });
 
+router.get('/stats', async ctx => {
+  const options = {
+    'sort': [['time','desc']] 
+  };
+
+  try {
+    const results = listeners.find();
+
+    const arr = [];
+    const mountpoints = _.groupBy(results, (r) => r.name);
+
+    Object.keys(mountpoints).forEach((m) => {
+      const obj = {
+          'x': mountpoints[m].map((r) => r.time),
+          'y': mountpoints[m].map((r) => r.listeners),
+          'type': 'scatter',
+          'line': {'shape': 'spline'},
+          'name': m
+      };
+      arr.push(obj);
+    });
+
+    ctx.body = JSON.stringify({
+      listeners: arr,
+    });
+  } catch (err) {
+    ctx.body = err;
+    ctx.status = 500;
+    return;
+  }
+});
+
 app
+
   .use(router.routes())
   .use(router.allowedMethods())
-  .listen(8080);
+  .listen(process.env.PORT, process.env.HOST);
