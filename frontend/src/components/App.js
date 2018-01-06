@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import Header from './Header';
 import Footer from './Footer';
+import Routes from './routes/Routes';
 import theme from '../theme';
 
 class App extends React.Component {
@@ -10,6 +11,7 @@ class App extends React.Component {
       <ThemeProvider theme={theme}>
         <div>
           <Header />
+          <Routes />
           <Footer />
         </div>
       </ThemeProvider>
