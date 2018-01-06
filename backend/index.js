@@ -1,10 +1,10 @@
 require('dotenv').config()
 
 const Koa = require('koa');
-var Router = require('koa-router');
+const Router = require('koa-router');
 
 const app = new Koa();
-var router = new Router();
+const router = new Router();
 
 // x-response-time
 app.use(async (ctx, next) => {
@@ -22,12 +22,16 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
-router.get('/', (ctx, next) => {
+router.get('/season', ctx => {
   ctx.body = JSON.stringify({
-    kakka: 'pissa',
+    start: process.env.START_DATE,
+    end: process.env.END_DATE,
   });
-
   ctx.type = 'application/json';
+})
+
+router.get('/', (ctx, next) => {
+  ctx.body = 'Radiodiodi JSON API';
 });
 
 app
