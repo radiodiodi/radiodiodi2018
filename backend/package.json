@@ -4,5 +4,14 @@
   "main": "index.js",
   "repository": "https://github.com/radiodiodi/radiodiodi2018",
   "author": "Radiodiodi",
-  "license": "Apache"
+  "license": "Apache",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "koa": "^2.4.1",
+    "koa-router": "^7.3.0",
+    "nodemon": "^1.14.8"
+  }
 }
