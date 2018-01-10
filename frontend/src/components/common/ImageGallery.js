@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Gallery = styled.section`
   color: white;
-  background-color: ${p => p.theme.color.blue};
   padding: 1rem 0;
 `;
 
