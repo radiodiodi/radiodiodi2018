@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import ImageGallery from '../../common/ImageGallery';
 import Player from '../../common/Player';
-import mascot from '../../../svg/mascot.svg';
 
 const Container = styled.div`
   display: flex;
@@ -14,6 +13,9 @@ const Container = styled.div`
 
 const Paragraph = styled.div`
   max-width: 60%;
+  @media screen and (max-width: 800px) {
+    max-width: 100%;
+  }
 `;
 
 const PlayerWrapper = styled.div`
