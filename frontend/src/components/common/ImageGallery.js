@@ -49,7 +49,9 @@ function Person({ name, role, img }) {
 function ImageGallery() {
   return (
     <Gallery>
-      <GalleryInner>{abaj.map(jab => <Person {...jab} />)}</GalleryInner>
+      <GalleryInner>{abaj.map((jab, index) =>
+        <Person key={index} {...jab} />)}
+      </GalleryInner>
     </Gallery>
   );
 }

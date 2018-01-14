@@ -44,7 +44,7 @@ const Caption = styled.div`
   width: 100%;
 `;
 
-const Text = styled.text`
+const Text = styled.i`
   color: ${p => p.theme.color.pink};
 `;
 
@@ -53,8 +53,8 @@ function InstagramGallery(props) {
   const error = props.error;
 
   const images = !error 
-    ? objs.map(obj =>
-      <Card href={ obj.link }>
+    ? objs.map((obj, index) =>
+      <Card key={index} href={ obj.link }>
         <Image src={ obj.img } />
         <Caption>
           <Text>{ obj.text }</Text>
