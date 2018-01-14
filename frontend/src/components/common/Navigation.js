@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { Component } from 'react';
 import { Link as ReactLink } from 'react-router-dom'
+import trans from '../Locale';
 
 const Rectangle = styled.div`
   background-color: rgba(255, 255, 255, 0.05);
@@ -20,13 +21,38 @@ const Link = styled(ReactLink)`
   }
 `;
 
-function Navigation() {
-  return (
-    <Rectangle>
-      <Link to="/">Etusivu</Link>
-      <Link to="/sponsors">Yrityksille</Link>
-    </Rectangle>
-  );  
+const Language = styled.a`
+  float: right;
+  color: ${p => p.theme.color.white};
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+class Navigation extends Component {
+  constructor() {
+    super();
+    this.state = {};
+    this.changeLanguage = this.changeLanguage.bind(this);
+  }
+
+  changeLanguage() {
+    const lang = trans.getLanguage();
+    trans.setLanguage(lang === 'fi' ? 'en' : 'fi');
+    this.setState({});
+  }
+  
+  render() {
+    return (
+      <Rectangle>
+        <Link to="/">{trans.frontpage}</Link>
+        <Link to="/sponsors">{trans.forbusinesses}</Link>
+        <Language onClick={this.changeLanguage}>{trans.changelang}</Language>
+      </Rectangle>
+    );  
+  }
 }
 
 export default Navigation;
