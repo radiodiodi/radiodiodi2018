@@ -30,14 +30,14 @@ const Logo = styled.img`
   }
 `;
 
-function Header() {
+function Header(props) {
   return (
     <Fragment>
       <HeaderContainer>
         <Logo src={ mascot } />
         <Logo src={ logo } />
       </HeaderContainer>
-      <Navigation />
+      <Navigation changeLanguage={props.changeLanguage} />
     </Fragment>
   );
 }

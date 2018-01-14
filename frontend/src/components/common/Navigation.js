@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { Component } from 'react';
+import React from 'react';
 import { Link as ReactLink } from 'react-router-dom'
 import trans from '../Locale';
 
@@ -31,28 +31,14 @@ const Language = styled.a`
   }
 `;
 
-class Navigation extends Component {
-  constructor() {
-    super();
-    this.state = {};
-    this.changeLanguage = this.changeLanguage.bind(this);
-  }
-
-  changeLanguage() {
-    const lang = trans.getLanguage();
-    trans.setLanguage(lang === 'fi' ? 'en' : 'fi');
-    this.setState({});
-  }
-  
-  render() {
-    return (
-      <Rectangle>
-        <Link to="/">{trans.frontpage}</Link>
-        <Link to="/sponsors">{trans.forbusinesses}</Link>
-        <Language onClick={this.changeLanguage}>{trans.changelang}</Language>
-      </Rectangle>
-    );  
-  }
+function Navigation(props) {
+  return (
+    <Rectangle>
+      <Link to="/">{trans.frontpage}</Link>
+      <Link to="/sponsors">{trans.forbusinesses}</Link>
+      <Language onClick={props.changeLanguage}>{trans.changelang}</Language>
+    </Rectangle>
+  );
 }
 
 export default Navigation;

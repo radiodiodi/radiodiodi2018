@@ -1,6 +1,7 @@
 import LocalizedStrings from 'react-localization';
+import Cookies from 'universal-cookie';
 
-const strings = new LocalizedStrings({
+const trans = new LocalizedStrings({
   fi: {
     frontpage: 'Etusivu',
     changelang: 'In English',
@@ -13,4 +14,8 @@ const strings = new LocalizedStrings({
   },
 });
 
-export default strings;
+const cookies = new Cookies();
+const lang = cookies.get('lang');
+trans.setLanguage(lang || 'fi');
+
+export default trans;
