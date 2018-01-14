@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import logo from '../../svg/logo_white.svg';
 import mascot from '../../svg/mascot.svg';
+import Navigation from './Navigation';
 
 const HeaderContainer = styled.header`
   padding: 3rem 0 1rem;
@@ -31,10 +32,13 @@ const Logo = styled.img`
 
 function Header() {
   return (
-    <HeaderContainer>
-      <Logo src={ mascot } />
-      <Logo src={ logo } />
-    </HeaderContainer>
+    <Fragment>
+      <HeaderContainer>
+        <Logo src={ mascot } />
+        <Logo src={ logo } />
+      </HeaderContainer>
+      <Navigation />
+    </Fragment>
   );
 }
 

@@ -6,7 +6,8 @@ const theme = {
     blue: '#182657',
     dark: '#121F40',
     yellow: '#D59B2D',
-    brown: '#8D541E'
+    brown: '#8D541E',
+    white: '#CCCCCC',
   },
   font: {
     heading: "'Capsuula', Helvetica, sans-serif",
@@ -22,8 +23,9 @@ injectGlobal`
         src: url(/font/Capsuula-webfont.woff) format('woff');
     }
     body {
-        font-family: Helvetica, sans-serif;
-        max-width: 800px;
+        font-family: ${theme.font.content};
+        letter-spacing: 0.5px;
+        max-width: 1000px;
         margin: 0 auto 0;
         padding: 1rem;
     }

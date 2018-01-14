@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Header from '../common/Header';
+import Footer from '../common/Footer';
 import Frontpage from '../pages/frontpage/Frontpage';
 
 function Routes() {
   return (
     <Router>
-      <Switch>
-        <Route exact path="/" render={Frontpage} />
-        <Route component={() => <h1>404</h1>} />
-      </Switch>
+      <Fragment>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Frontpage} />
+          <Route component={() => <h1>404</h1>} />
+        </Switch>
+        <Footer />
+      </Fragment>
     </Router>
   );
 }
