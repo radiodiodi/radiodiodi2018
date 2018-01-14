@@ -8,6 +8,7 @@ const theme = {
     yellow: '#D59B2D',
     brown: '#8D541E',
     white: '#CCCCCC',
+    contrast: 'rgba(255, 255, 255, 0.05)',
   },
   font: {
     heading: "'Capsuula', Helvetica, sans-serif",
@@ -27,7 +28,7 @@ injectGlobal`
         letter-spacing: 0.5px;
         max-width: 1000px;
         margin: 0 auto 0;
-        padding: 1rem;
+        padding: 1rem 1rem 0 1rem;
     }
     html {
         box-sizing: border-box;
@@ -39,6 +40,9 @@ injectGlobal`
     *:before,
     *:after {
         box-sizing: inherit;
+    }
+    h2 {
+        text-align: center;
     }
 `;
 

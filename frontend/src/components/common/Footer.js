@@ -1,12 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const FooterContainer = styled.footer`text-align: center;`;
+const FooterContainer = styled.footer`
+  text-align: center;
+  background-color: ${p => p.theme.color.contrast};
+  padding: 1rem 2rem 1rem;
+  height: 3rem;
+
+  border-top: solid;
+  border-width: 4px;
+  border-color: ${p => p.theme.color.pink};
+`;
 
 function Footer() {
   return (
     <FooterContainer>
-      <hr />&copy; Radiodiodi 2018
+      &copy; Radiodiodi 2018
     </FooterContainer>
   );
 }

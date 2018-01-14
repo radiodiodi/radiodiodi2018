@@ -21,6 +21,10 @@ const HeaderContainer = styled.header`
   }
 `;
 
+const FrontpageLink = styled.a`
+
+`;
+
 const Logo = styled.img`
   max-height: 3rem;
   width: auto;
@@ -34,8 +38,12 @@ function Header(props) {
   return (
     <Fragment>
       <HeaderContainer>
-        <Logo src={ mascot } />
-        <Logo src={ logo } />
+        <FrontpageLink href="/">
+          <Logo src={ mascot } />
+        </FrontpageLink>
+        <FrontpageLink href="/">
+          <Logo src={ logo } />
+        </FrontpageLink>
       </HeaderContainer>
       <Navigation changeLanguage={props.changeLanguage} />
     </Fragment>

@@ -6,11 +6,15 @@ const trans = new LocalizedStrings({
     frontpage: 'Etusivu',
     changelang: 'In English',
     forbusinesses: 'Yrityksille',
+    instagramfeed: '#Instagram-feed',
+    failedtoloadimages: 'Instagram-kuvien lataus epäonnistui!',
   },
   en: {
     frontpage: 'Front page',
     changelang: 'Suomeksi',
     forbusinesses: 'For businesses',
+    instagramfeed: '#Instagram Feed',
+    failedtoloadimages: 'Failed to load Instagram images!',
   },
 });
 

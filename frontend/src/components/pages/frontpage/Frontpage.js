@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
+
 import ImageGallery from '../../common/ImageGallery';
 import Player from '../../common/Player';
+import Instagram from '../../common/Instagram';
 
 const Container = styled.div`
   display: flex;
@@ -50,6 +52,7 @@ function Frontpage() {
         </PlayerWrapper>
       </Container>
       <ImageGallery />
+      <Instagram />
     </Fragment>
   );
 }

@@ -4,7 +4,7 @@ import { Link as ReactLink } from 'react-router-dom'
 import trans from '../Locale';
 
 const Rectangle = styled.div`
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: ${p => p.theme.color.contrast};
   margin-bottom: 2rem;
   padding: 1rem 2rem 1rem;
   height: 3rem;
