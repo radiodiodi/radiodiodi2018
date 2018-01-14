@@ -35,6 +35,7 @@ const Language = styled.a`
   ${ p => LinkMixin(p) }
   @media screen and (min-width: 800px) {
     margin-left: auto;
+    margin-right: 0;
   }
 
   color: ${p => p.theme.color.white};
@@ -50,10 +51,11 @@ const BurgerButton = styled.div`
 `;
 
 const Menu = styled.div`
-  display: ${p => p.expanded ? 'flex' : 'none'};
+  display: flex;
 
   flex-direction: row;
   @media screen and (max-width: 800px) {
+    display: ${p => p.expanded ? 'flex' : 'none'};
     flex-direction: column;
     align-items: center;
   }
