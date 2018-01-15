@@ -15,7 +15,7 @@ const HeaderContainer = styled.header`
   border-width: 4px;
   border-color: ${p => p.theme.color.pink};
 
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 600px) {
     flex-direction: column;
     padding: 1rem 0 1rem;
   }
@@ -27,7 +27,7 @@ const Logo = styled.img`
   max-height: 3rem;
   width: auto;
 
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 600px) {
     margin: 1rem 0 0;
   }
 `;
@@ -42,12 +42,12 @@ const SocialMediaLink = styled.a`
 `;
 
 const SocialMediaContainer = styled.span`
-  @media screen and (max-width: 520px) {
+  @media screen and (max-width: 600px) {
     order: 99;
     margin-top: 1rem;
   }
 
-  @media screen and (min-width: 520px) {
+  @media screen and (min-width: 600px) {
     margin-left: auto;
     margin-right: 2rem;
   }
@@ -66,6 +66,9 @@ function Header(props) {
           </SocialMediaLink>
           <SocialMediaLink href="https://www.facebook.com/radiodiodi">
             <SocialMediaButton className="fab fa-facebook" />
+          </SocialMediaLink>
+          <SocialMediaLink href="https://t.me/radiodiodioffseason">
+            <SocialMediaButton className="fab fa-telegram" />
           </SocialMediaLink>
         </SocialMediaContainer>
         <FrontpageLink href="/">
