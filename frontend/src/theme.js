@@ -29,6 +29,7 @@ injectGlobal`
         max-width: 1000px;
         margin: 0 auto 0;
         padding: 1rem 1rem 0 1rem;
+        line-height: 1.3rem;
     }
     html {
         box-sizing: border-box;

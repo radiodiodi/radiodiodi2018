@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import play from '../../svg/play.svg';
+import trans from '../Locale';
 
 const Container = styled.div`
   background-color: ${p => p.theme.color.pink};
@@ -14,8 +15,9 @@ const Container = styled.div`
 `;
 
 const PlayButton = styled.img`
-  width: 4rem;
+  width: 3rem;
   padding: 0.5rem 0 0.5rem;
+  cursor: pointer;
 `;
 
 const Line = styled.p`
@@ -26,10 +28,9 @@ class Player extends React.Component {
   render() {
     return (
       <Container>
-        <Line>Äänessä Mouhomaanantai</Line>
-        <Line>Puhutaan tekstieditoreista</Line>
+        <Line>{ trans.broadcastended }</Line>
         <PlayButton src={ play } />
-        <Line>Nyt soi: DJ Tan Juomi – Psykoosi Louhoksella</Line>
+        <Line>{ trans.tunein }</Line>
       </Container>
     );
   }
