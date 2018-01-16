@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import FadeImage from './FadeImage';
 
 const Gallery = styled.section`
   color: white;
@@ -14,7 +15,7 @@ const GalleryInner = styled.div`
   margin: 0 auto;
 `;
 
-const Img = styled.img`
+const Img = styled(FadeImage)`
   border-radius: 50%;
 `;
 

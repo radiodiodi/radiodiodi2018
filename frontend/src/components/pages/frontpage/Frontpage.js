@@ -5,6 +5,7 @@ import ImageGallery from '../../common/ImageGallery';
 import Player from '../../common/Player';
 import Instagram from '../../common/Instagram';
 import trans from '../../Locale';
+import SponsorReel from '../../common/SponsorReel';
 
 const Container = styled.div`
   display: flex;
@@ -22,9 +23,17 @@ const Paragraph = styled.div`
 `;
 
 const PlayerWrapper = styled.div`
+  @media screen and (min-width: 800px) {
+    margin: 1rem;
+  }
+
   @media screen and (max-width: 800px) {
     order: -1;
   }
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 function Frontpage() {
@@ -39,6 +48,7 @@ function Frontpage() {
         </Paragraph>
         <PlayerWrapper>
           <Player />
+          <SponsorReel interval={ 3000 } />
         </PlayerWrapper>
       </Container>
       <ImageGallery />

@@ -8,7 +8,6 @@ const Container = styled.div`
   padding: 1rem;
   color: ${p => p.theme.color.dark};
 
-  margin: 1rem;
   @media screen and (max-width: 800px) {
     margin: 1rem 0 1rem;
   }

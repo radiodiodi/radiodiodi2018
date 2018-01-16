@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import trans from '../Locale';
+import FadeImage from './FadeImage';
 
 const Container = styled.div`
   display: flex;
@@ -32,7 +33,7 @@ const Card = styled.a`
   }
 `;
 
-const Image = styled.img`
+const Image = styled(FadeImage)`
   max-width: 100%;
   margin-bottom: 1rem;
 `;
