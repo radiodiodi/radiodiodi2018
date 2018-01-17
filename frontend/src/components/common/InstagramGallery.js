@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import styled from 'styled-components';
 import trans from '../Locale';
 import FadeImage from './FadeImage';
@@ -49,6 +49,20 @@ const Text = styled.i`
   color: ${p => p.theme.color.pink};
 `;
 
+class ImageContainer extends PureComponent {
+  shouldComponentUpdate(nextProps) {
+    return this.props.images.length !== nextProps.images.length;
+  }
+
+  render() {
+    return (
+      <Container>
+        { this.props.images }
+      </Container>
+    );
+  }
+}
+
 function InstagramGallery(props) {
   const objs = props.images;
   const error = props.error;
@@ -70,9 +84,7 @@ function InstagramGallery(props) {
   return (
     <Fragment>
       <h2>{ trans.instagramfeed }</h2>
-      <Container>
-        { images }
-      </Container>
+      <ImageContainer images={ images } />
     </Fragment>
   );
 }

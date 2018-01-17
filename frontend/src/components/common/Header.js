@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import styled from 'styled-components';
 import logo from '../../svg/logo_white.svg';
 import mascot from '../../svg/mascot.svg';
@@ -53,9 +53,9 @@ const SocialMediaContainer = styled.span`
   }
 `;
 
-function Header(props) {
-  return (
-    <Fragment>
+class Banner extends PureComponent {
+  render() {
+    return (
       <HeaderContainer>
         <FrontpageLink href="/">
           <Logo src={ mascot } />
@@ -75,6 +75,14 @@ function Header(props) {
           <Logo src={ logo } />
         </FrontpageLink>
       </HeaderContainer>
+    );
+  }
+}
+
+function Header(props) {
+  return (
+    <Fragment>
+      <Banner />
       <Navigation changeLanguage={props.changeLanguage} />
     </Fragment>
   );
