@@ -6,6 +6,8 @@ import sponsor2 from './../../images/sponsor2.png';
 
 const ReelImage = styled(FadeImage)`
   margin-top: 1rem;
+  align-self: center;
+  max-width: 100%;
 `;
 
 class SponsorReel extends Component {
