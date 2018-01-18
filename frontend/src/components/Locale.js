@@ -16,6 +16,7 @@ const trans = new LocalizedStrings({
     kahden lähetysviikon aikana yli 100 vapaaehtoista. Radiota kuuntelee lähetyksen aikana koko pääkaupunkiseutu 
     ja lasketulla kuuluvuusalueella asuu noin 400 000 ihmistä!`,
     whatisheading: 'Mikä Radiodiodi?',
+    instagramimage: 'Instagram-kuva',
   },
   en: {
     frontpage: 'Front page',
@@ -30,6 +31,7 @@ const trans = new LocalizedStrings({
     Hundreds of volunteers take part in the project every year, mainly doing groundwork or hosting shows. The whole metropolitan
     area can listen to the broadcast; the signal covers more than 400 000 people!`,
     whatisheading: 'What is Radiodiodi?',
+    instagramimage: 'Instagram image',
   },
 });
 

@@ -70,7 +70,7 @@ function InstagramGallery(props) {
   const images = !error 
     ? objs.map((obj, index) =>
       <Card key={index} href={ obj.link }>
-        <Image src={ obj.img } />
+        <Image alt={ trans.instagramimage } src={ obj.img } />
         <Caption>
           <Text>{ obj.text }</Text>
         </Caption>

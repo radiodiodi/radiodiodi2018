@@ -15,8 +15,10 @@ const Container = styled.div`
   }
 `;
 
-const Paragraph = styled.div`
+const Paragraph = styled.p`
   max-width: 50%;
+  margin: 0;
+  color: ${p => p.theme.color.white};
   @media screen and (max-width: 800px) {
     max-width: 100%;
   }
@@ -24,7 +26,7 @@ const Paragraph = styled.div`
 
 const PlayerWrapper = styled.div`
   @media screen and (min-width: 800px) {
-    margin: 1rem;
+    margin: 0 0 1rem 1rem;
   }
 
   @media screen and (max-width: 800px) {
@@ -39,12 +41,10 @@ const PlayerWrapper = styled.div`
 function Frontpage() {
   return (
     <Fragment>
+      <h3>{ trans.whatisheading }</h3>
       <Container>
         <Paragraph>
-          <h3>{ trans.whatisheading }</h3>
-          <p>
           { trans.whatis }
-          </p>
         </Paragraph>
         <PlayerWrapper>
           <Player />

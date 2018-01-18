@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import FadeImage from './FadeImage';
 import mikko from '../../images/mikko.jpg';
-import mikko2 from '../../images/mikko2.jpg';
+import jan from '../../images/jan.jpg';
+import veikka from '../../images/veikka.jpg';
+import juuso from '../../images/juuso.jpg';
+import marika from '../../images/marika.jpg';
+import aajii from '../../images/aajii.jpg';
+import eero from '../../images/eero.jpg';
+
 
 const Gallery = styled.section`
   color: white;
@@ -40,20 +46,20 @@ const Guy = styled.div`
 `;
 
 const abaj = [
-  { name: 'Juuso', role: 'Päätoimittaja', img: mikko },
-  { name: 'Jan', role: 'IT-päällikkö', img: mikko },
-  { name: 'Aajii', role: 'Toimituspäällikkö', img: mikko2 },
-  { name: 'Veikka', role: 'Studiopäällikkö', img: mikko2 },
-  { name: 'Make', role: 'Somevastaava', img: mikko },
-  { name: 'Eero', role: 'Lähetysketjupäällikkö', img: mikko2 },
+  { name: 'Juuso', role: 'Päätoimittaja', img: juuso },
+  { name: 'Jan', role: 'IT-päällikkö', img: jan },
+  { name: 'Aajii', role: 'Toimituspäällikkö', img: aajii },
+  { name: 'Veikka', role: 'Studiopäällikkö', img: veikka },
+  { name: 'Make', role: 'Somevastaava', img: marika },
+  { name: 'Eero', role: 'Lähetysketjupäällikkö', img: eero },
   { name: 'Mikko', role: 'Rahan mestari', img: mikko },
 ];
 
 function Person({ name, role, img }) {
   return (
     <Guy>
-      <Img src={img} />
-      <h3>{name}</h3>
+      <Img alt={ name } src={img} />
+      <h4>{name}</h4>
       <span>{role}</span>
     </Guy>
   );

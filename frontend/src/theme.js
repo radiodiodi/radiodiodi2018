@@ -7,7 +7,7 @@ const theme = {
     dark: '#121F40',
     yellow: '#D59B2D',
     brown: '#8D541E',
-    white: '#CCCCCC',
+    white: '#EEE',
     contrast: 'rgba(255, 255, 255, 0.05)',
   },
   font: {
@@ -44,6 +44,12 @@ injectGlobal`
     }
     h2 {
         text-align: center;
+    }
+    h3 {
+        font-size: 2rem;
+        line-height: 2em;
+        color: ${theme.color.pink};
+        margin: 1em 0 0;
     }
 `;
 
