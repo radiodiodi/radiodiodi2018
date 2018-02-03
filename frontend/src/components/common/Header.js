@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import logo from '../../svg/logo_white.svg';
 import mascot from '../../svg/mascot.svg';
 import Navigation from './Navigation';
+import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
   padding: 3rem 0 1rem;
@@ -57,9 +58,9 @@ class Banner extends PureComponent {
   render() {
     return (
       <HeaderContainer>
-        <FrontpageLink href="/">
-          <Logo src={ mascot } />
-        </FrontpageLink>
+        <Link to="/">
+          <Logo src={mascot} />
+        </Link>
         <SocialMediaContainer>
           <SocialMediaLink float href="https://instagram.com/radiodiodi">
             <SocialMediaButton className="fab fa-instagram" />
