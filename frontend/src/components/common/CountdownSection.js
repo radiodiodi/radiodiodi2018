@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
 import Countdown from './Countdown';
-import trans from '../Locale';
 
 const SectionContainer = styled.div`
   text-align: center;
@@ -18,13 +19,20 @@ const CD = styled(Countdown)`
   font-family: monospace;
 `;
 
-function CountdownSection() {
-  return (
-    <SectionContainer>
-      <h2>{trans.timetoregistration}</h2>
-      <CD countTo={'Mon Mar 05 2018 09:00:00 GMT+0200 (EET)'} interval={1000} />
-    </SectionContainer>
-  );
+class CountdownSection extends Component {
+  static contextTypes = {
+    trans: PropTypes.any,
+  }
+
+  render() {
+    const { trans } = this.context;
+    return (
+      <SectionContainer>
+        <h2>{ trans.timetoregistration }</h2>
+        <CD countTo={'Mon Mar 05 2018 09:00:00 GMT+0200 (EET)'} interval={1000} />
+      </SectionContainer>
+    );
+  }
 }
 
 export default CountdownSection;

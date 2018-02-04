@@ -43,7 +43,7 @@ class Instagram extends Component {
 
   render() {
     return !this.state.error
-      ? <InstagramGallery images={this.state.images} />
+      ? <InstagramGallery objs={ this.state.images } />
       : <InstagramGallery error />;
   }
 }

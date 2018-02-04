@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
 import play from '../../svg/play.svg';
-import trans from '../Locale';
 
 const Container = styled.div`
   background-color: ${p => p.theme.color.pink};
@@ -23,8 +24,14 @@ const Line = styled.p`
   margin: 0;
 `;
 
-class Player extends React.Component {
+class Player extends Component {
+  static contextTypes = {
+    trans: PropTypes.any,
+  }
+
   render() {
+    const { trans } = this.context;
+
     return (
       <Container>
         <Line>{ trans.broadcastended }</Line>

@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 import ImageGallery from '../../common/ImageGallery';
 import Player from '../../common/Player';
 import Instagram from '../../common/Instagram';
-import trans from '../../Locale';
 import SponsorReel from '../../common/SponsorReel';
 import CountdownSection from '../../common/CountdownSection';
 
@@ -39,22 +39,33 @@ const PlayerWrapper = styled.div`
   flex-direction: column;
 `;
 
-function Frontpage() {
-  return (
-    <Fragment>
-      <h3>{trans.whatisheading}</h3>
-      <Container>
-        <Paragraph>{trans.whatis}</Paragraph>
-        <PlayerWrapper>
-          <Player />
-          <SponsorReel interval={3000} />
-        </PlayerWrapper>
-      </Container>
-      <CountdownSection />
-      <ImageGallery />
-      <Instagram />
-    </Fragment>
-  );
+class Frontpage extends Component {
+  static contextTypes = {
+    trans: PropTypes.any,
+  }
+
+  render() {
+    const sponsorInterval = 3000;  // milliseconds
+    const { trans } = this.context;
+
+    return (
+      <Fragment>
+        <h3>{ trans.whatisheading }</h3>
+        <Container>
+          <Paragraph>
+            { trans.whatis }
+          </Paragraph>
+          <PlayerWrapper>
+            <Player />
+            <SponsorReel interval={ sponsorInterval } />
+          </PlayerWrapper>
+        </Container>
+        <CountdownSection />
+        <ImageGallery />
+        <Instagram />
+      </Fragment>
+    );
+  }
 }
 
 export default Frontpage;

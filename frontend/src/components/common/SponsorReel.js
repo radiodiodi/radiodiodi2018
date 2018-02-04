@@ -19,14 +19,22 @@ class SponsorReel extends Component {
       images: [
         sponsor1,
         sponsor2,
-      ]
+      ],
     };
 
     this.updateCurrent = this.updateCurrent.bind(this);
   }
 
   componentDidMount() {
-    window.setInterval(this.updateCurrent, this.props.interval);
+    const intervalHandle = window.setInterval(this.updateCurrent, this.props.interval);
+    this.setState({
+      intervalHandle,
+    });
+  }
+
+  componentWillUnmount() {
+    const { intervalHandle } = this.state;
+    window.clearInterval(intervalHandle);
   }
 
   async updateCurrent() {

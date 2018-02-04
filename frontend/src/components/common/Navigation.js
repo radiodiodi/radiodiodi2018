@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React, { Component } from 'react';
 import { Link as ReactLink } from 'react-router-dom'
-import trans from '../Locale';
+import PropTypes from 'prop-types';
 
 const LinkMixin = (p) => `
   text-decoration: none;
@@ -62,6 +62,14 @@ const Menu = styled.div`
 `;
 
 class Navigation extends Component {
+  static contextTypes = {
+    trans: PropTypes.any,
+  }
+
+  static propTypes = {
+    changeLanguage: PropTypes.func,
+  }
+
   constructor() {
     super();
     this.state = {
@@ -78,16 +86,18 @@ class Navigation extends Component {
 
   render() {
     const { expanded } = this.state;
+    const { changeLanguage } = this.props;
+    const { trans } = this.context;
 
     return (
       <Rectangle>
         <BurgerButton onClick={ this.toggle }>
           <i className="fa fa-bars" />
         </BurgerButton>
-        <Menu expanded={expanded}>
-          <Link to="/">{trans.frontpage}</Link>
-          <Link to="/sponsors">{trans.forbusinesses}</Link>
-          <Language onClick={this.props.changeLanguage}>{trans.changelang}</Language>
+        <Menu expanded={ expanded }>
+          <Link to="/">{ trans.frontpage }</Link>
+          <Link to="/sponsors">{ trans.forbusinesses }</Link>
+          <Language onClick={ changeLanguage }>{ trans.changelang }</Language>
         </Menu>
       </Rectangle>
     );

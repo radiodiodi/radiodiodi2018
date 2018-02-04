@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import trans from '../../Locale';
+import PropTypes from 'prop-types';
 
 const Quote = styled.p`
     text-align: center;
@@ -13,14 +13,20 @@ const Source = styled.p`
 `;
 
 class Sponsors extends Component {
-    render() {
-        return (
-            <Fragment>
-                <Quote>{ trans.ancientromansquote }</Quote>
-                <Source>— Radiodiodi</Source>
-            </Fragment>
-        );
-    }
+  static contextTypes = {
+    trans: PropTypes.any,
+  }
+
+  render() {
+    const { trans } = this.context;
+
+    return (
+      <Fragment>
+        <Quote>{ trans.ancientromansquote }</Quote>
+        <Source>— Radiodiodi</Source>
+      </Fragment>
+    );
+  }
 }
 
 export default Sponsors;

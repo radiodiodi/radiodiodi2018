@@ -1,10 +1,11 @@
 import React, { Fragment, Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import Frontpage from '../pages/frontpage/Frontpage';
 import Sponsors from '../pages/sponsors/Sponsors';
-import trans from '../Locale';
 import Cookie from 'universal-cookie';
 
 class Routes extends Component {
@@ -15,7 +16,12 @@ class Routes extends Component {
     this.cookie = new Cookie();
   }
 
+  static contextTypes = {
+    trans: PropTypes.any,
+  }
+
   changeLanguage() {
+    const { trans } = this.context;
     const prevLang = trans.getLanguage();
     const lang = prevLang === 'fi' ? 'en' : 'fi'
     trans.setLanguage(lang);
