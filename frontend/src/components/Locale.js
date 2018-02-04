@@ -6,6 +6,7 @@ const trans = new LocalizedStrings({
     frontpage: 'Etusivu',
     changelang: 'In English',
     forbusinesses: 'Yrityksille',
+    timetoregistration: 'Aikaa ohjelmantekijöiden ilmoittautumiseen',
     instagramfeed: '#Instagram-feed',
     failedtoloadimages: 'Instagram-kuvien lataus epäonnistui!',
     broadcastended: 'Lähetys jatkuu taas ennen Wappua!',
@@ -17,19 +18,21 @@ const trans = new LocalizedStrings({
     ja lasketulla kuuluvuusalueella asuu noin 400 000 ihmistä!`,
     whatisheading: 'Mikä Radiodiodi?',
     instagramimage: 'Instagram-kuva',
-    ancientromansquote: '“Jo muinaset roomalaiset tiesivät, että vain idiootit ja lahtelaiset pyyhkivät perseensä seisten“',
+    ancientromansquote:
+      '“Jo muinaset roomalaiset tiesivät, että vain idiootit ja lahtelaiset pyyhkivät perseensä seisten“',
     editorinchief: 'Päätoimittaja',
     itdirector: 'IT-päällikko',
     executivedirector: 'Toimituspäällikkö',
     headofstudio: 'Studiopäällikkö',
     socialmediamanager: 'Some-vastaava',
     broadcastengineer: 'Lähetysketjupäällikkö',
-    corporaterelationsmanager: 'Yrityssuhdevastaava',
+    corporaterelationsmanager: 'Yrityssuhdevastaava'
   },
   en: {
     frontpage: 'Front page',
     changelang: 'Suomeksi',
     forbusinesses: 'For businesses',
+    timetoregistration: 'Time to radio show registration',
     instagramfeed: '#Instagram Feed',
     failedtoloadimages: 'Failed to load Instagram images!',
     broadcastended: 'The broadcast will start again before Wappu!',
@@ -40,15 +43,15 @@ const trans = new LocalizedStrings({
     area can listen to the broadcast; the signal covers more than 400 000 people!`,
     whatisheading: 'What is Radiodiodi?',
     instagramimage: 'Instagram image',
-    ancientromansquote: 'funny quote',    
+    ancientromansquote: 'funny quote',
     editorinchief: 'Editor in Chief',
     itdirector: 'IT Director',
     executivedirector: 'Executive Director',
     headofstudio: 'Head of Studio',
     socialmediamanager: 'Social Media Manager',
     broadcastengineer: 'Broadcast Engineer',
-    corporaterelationsmanager: 'Corporate Relations Manager',
-  },
+    corporaterelationsmanager: 'Corporate Relations Manager'
+  }
 });
 
 const cookies = new Cookies();

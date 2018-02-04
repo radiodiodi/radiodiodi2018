@@ -6,6 +6,7 @@ import Player from '../../common/Player';
 import Instagram from '../../common/Instagram';
 import trans from '../../Locale';
 import SponsorReel from '../../common/SponsorReel';
+import CountdownSection from '../../common/CountdownSection';
 
 const Container = styled.div`
   display: flex;
@@ -41,16 +42,15 @@ const PlayerWrapper = styled.div`
 function Frontpage() {
   return (
     <Fragment>
-      <h3>{ trans.whatisheading }</h3>
+      <h3>{trans.whatisheading}</h3>
       <Container>
-        <Paragraph>
-          { trans.whatis }
-        </Paragraph>
+        <Paragraph>{trans.whatis}</Paragraph>
         <PlayerWrapper>
           <Player />
-          <SponsorReel interval={ 3000 } />
+          <SponsorReel interval={3000} />
         </PlayerWrapper>
       </Container>
+      <CountdownSection />
       <ImageGallery />
       <Instagram />
     </Fragment>
