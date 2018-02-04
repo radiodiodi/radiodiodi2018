@@ -22,8 +22,6 @@ const HeaderContainer = styled.header`
   }
 `;
 
-const FrontpageLink = styled.a``;
-
 const Logo = styled.img`
   max-height: 3rem;
   width: auto;
@@ -72,9 +70,9 @@ class Banner extends PureComponent {
             <SocialMediaButton className="fab fa-telegram" />
           </SocialMediaLink>
         </SocialMediaContainer>
-        <FrontpageLink href="/">
-          <Logo src={ logo } />
-        </FrontpageLink>
+        <Link to="/">
+          <Logo src={logo} />
+        </Link>
       </HeaderContainer>
     );
   }
