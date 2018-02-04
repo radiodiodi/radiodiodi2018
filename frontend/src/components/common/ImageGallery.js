@@ -29,6 +29,7 @@ const Img = styled(FadeImage)`
   border-width: 4px;
   border-color: ${p => p.theme.color.contrast};
   max-width: 100%;
+  ${p => p.css};
 `;
 
 const Guy = styled.div`
@@ -46,21 +47,26 @@ const Guy = styled.div`
 `;
 
 const abaj = [
-  { name: 'Juuso', role: 'editorinchief', img: juuso },
+  {
+    name: 'Juuso',
+    role: 'editorinchief',
+    img: juuso,
+    css: 'transform: rotate(-5deg)'
+  },
   { name: 'Jan', role: 'itdirector', img: jan },
   { name: 'Aajii', role: 'executivedirector', img: aajii },
   { name: 'Veikka', role: 'headofstudio', img: veikka },
   { name: 'Make', role: 'socialmediamanager', img: marika },
   { name: 'Eero', role: 'broadcastengineer', img: eero },
-  { name: 'Mikko', role: 'corporaterelationsmanager', img: mikko },
+  { name: 'Mikko', role: 'corporaterelationsmanager', img: mikko }
 ];
 
-function Person({ name, role, img }) {
+function Person({ name, role, img, css }) {
   return (
     <Guy>
-      <Img alt={ name } src={img} />
+      <Img alt={name} src={img} css={css} />
       <h4>{name}</h4>
-      <span>{ trans[role] }</span>
+      <span>{trans[role]}</span>
     </Guy>
   );
 }
@@ -68,8 +74,8 @@ function Person({ name, role, img }) {
 function ImageGallery() {
   return (
     <Gallery>
-      <GalleryInner>{abaj.map((jab, index) =>
-        <Person key={index} {...jab} />)}
+      <GalleryInner>
+        {abaj.map((jab, index) => <Person key={index} {...jab} />)}
       </GalleryInner>
     </Gallery>
   );
