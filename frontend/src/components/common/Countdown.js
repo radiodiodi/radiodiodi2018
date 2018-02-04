@@ -45,7 +45,6 @@ class CountdownTimer extends React.PureComponent {
       clearTimeout(this.state.timeoutId);
     }
 
-    console.log(currentTime);
     this.setState(() => ({
       timeoutId: countdownComplete ? null : setTimeout(this.tick, timeout),
       prevTime: currentTime,
