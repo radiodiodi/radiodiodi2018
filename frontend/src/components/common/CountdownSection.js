@@ -12,6 +12,10 @@ const SectionContainer = styled.div`
   border-bottom: solid;
   border-width: 2px;
   border-color: ${p => p.theme.color.pink};
+
+  @media screen and (max-width: 800px) {
+    margin-top: 2rem;
+  }
 `;
 
 const CD = styled(Countdown)`
