@@ -8,7 +8,7 @@ import juuso from '../../images/juuso.jpg';
 import marika from '../../images/marika.jpg';
 import aajii from '../../images/aajii.jpg';
 import eero from '../../images/eero.jpg';
-
+import trans from '../Locale';
 
 const Gallery = styled.section`
   color: white;
@@ -46,13 +46,13 @@ const Guy = styled.div`
 `;
 
 const abaj = [
-  { name: 'Juuso', role: 'Päätoimittaja', img: juuso },
-  { name: 'Jan', role: 'IT-päällikkö', img: jan },
-  { name: 'Aajii', role: 'Toimituspäällikkö', img: aajii },
-  { name: 'Veikka', role: 'Studiopäällikkö', img: veikka },
-  { name: 'Make', role: 'Somevastaava', img: marika },
-  { name: 'Eero', role: 'Lähetysketjupäällikkö', img: eero },
-  { name: 'Mikko', role: 'Rahan mestari', img: mikko },
+  { name: 'Juuso', role: 'editorinchief', img: juuso },
+  { name: 'Jan', role: 'itdirector', img: jan },
+  { name: 'Aajii', role: 'executivedirector', img: aajii },
+  { name: 'Veikka', role: 'headofstudio', img: veikka },
+  { name: 'Make', role: 'socialmediamanager', img: marika },
+  { name: 'Eero', role: 'broadcastengineer', img: eero },
+  { name: 'Mikko', role: 'corporaterelationsmanager', img: mikko },
 ];
 
 function Person({ name, role, img }) {
@@ -60,7 +60,7 @@ function Person({ name, role, img }) {
     <Guy>
       <Img alt={ name } src={img} />
       <h4>{name}</h4>
-      <span>{role}</span>
+      <span>{ trans[role] }</span>
     </Guy>
   );
 }
