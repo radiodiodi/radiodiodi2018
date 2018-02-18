@@ -36,7 +36,7 @@ const PlayerWrapper = styled.div`
   }
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
 `;
 
@@ -64,7 +64,7 @@ class Frontpage extends Component {
           </Paragraph>
           <PlayerWrapper>
             <Player />
-            <SponsorReel interval={ sponsorInterval } />
+            { /* disabled */ false && <SponsorReel interval={ sponsorInterval } /> }
           </PlayerWrapper>
         </Container>
         <ImageGallery />
