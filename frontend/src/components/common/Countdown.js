@@ -59,13 +59,15 @@ class CountdownTimer extends React.PureComponent {
 
     let seconds = parseInt(totalSeconds % 60, 10),
       minutes = parseInt(totalSeconds / 60, 10) % 60,
-      hours = parseInt(totalSeconds / 3600, 10);
+      hours = parseInt(totalSeconds / 3600, 10) % 24,
+      days = parseInt(totalSeconds / 86400, 10);
 
     seconds = seconds < 10 ? '0' + seconds : seconds;
     minutes = minutes < 10 ? '0' + minutes : minutes;
     hours = hours < 10 ? '0' + hours : hours;
+    days = days < 10 ? '0' + days : days;
 
-    return `${hours}:${minutes}:${seconds}`;
+    return `${days}:${hours}:${minutes}:${seconds}`;
   }
 
   render() {
