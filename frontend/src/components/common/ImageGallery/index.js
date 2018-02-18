@@ -24,13 +24,13 @@ const GalleryInner = styled.div`
 `;
 
 const people = [
-  { name: 'Juuso',  role: 'editorinchief',              img: juuso,     css: 'transform: rotate(-5deg)' },
-  { name: 'Jan',    role: 'itdirector',                 img: jan },
-  { name: 'Aajii',  role: 'executivedirector',          img: aajii },
-  { name: 'Veikka', role: 'headofstudio',               img: veikka },
-  { name: 'Make',   role: 'socialmediamanager',         img: marika },
-  { name: 'Eero',   role: 'broadcastengineer',          img: eero },
-  { name: 'Mikko',  role: 'corporaterelationsmanager',  img: mikko },
+  { name: 'Juuso',      role: 'editorinchief',              img: juuso,     css: 'transform: rotate(-5deg)' },
+  { name: 'Jan',        role: 'itdirector',                 img: jan },
+  { name: 'Antti-Juho', role: 'executivedirector',          img: aajii },
+  { name: 'Veikka',     role: 'headofstudio',               img: veikka },
+  { name: 'Marika',     role: 'socialmediamanager',         img: marika },
+  { name: 'Eero',       role: 'broadcastengineer',          img: eero },
+  { name: 'Mikko',      role: 'corporaterelationsmanager',  img: mikko },
 ];
 
 class ImageGallery extends Component {
