@@ -44,7 +44,7 @@ injectGlobal`
     }
     h2 {
         text-align: center;
-        line-height: 1.2em;
+        line-height: 1.5em;
     }
     h3 {
         font-size: 2rem;
