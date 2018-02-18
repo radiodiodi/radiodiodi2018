@@ -1,13 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import FadeImage from './FadeImage';
 import futurice from './../../images/futurice.svg';
 
 const ReelImage = styled(FadeImage)`
-  margin: 1.5rem 0 2rem;
+  margin: 0 0 2rem;
   align-self: center;
   max-width: 70%;
   text-align: justify;
+`;
+
+const Title = styled.small`
+  text-align: center;
+  color: ${p => p.theme.color.white};
+  margin: 0.5rem;
 `;
 
 class SponsorReel extends Component {
@@ -22,6 +29,10 @@ class SponsorReel extends Component {
     };
 
     this.updateCurrent = this.updateCurrent.bind(this);
+  }
+
+  static contextTypes = {
+    trans: PropTypes.any,
   }
 
   componentDidMount() {
@@ -46,10 +57,14 @@ class SponsorReel extends Component {
 
   render() {
     const { images, current } = this.state;
+    const { trans } = this.context;
     const image = images[current];
-    return <ReelImage 
-      src={ image }
-    />;
+    return <Fragment>
+      <Title>{ trans.incollaboration }</Title>
+      <ReelImage
+        src={ image }
+      />
+    </Fragment>;
   }
 }
 

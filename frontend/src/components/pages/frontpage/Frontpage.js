@@ -16,7 +16,7 @@ const Container = styled.div`
   }
 `;
 
-const Paragraph = styled.p`
+const Paragraph = styled.div`
   max-width: 50%;
   margin: 0;
   color: ${p => p.theme.color.white};
@@ -28,6 +28,7 @@ const Paragraph = styled.p`
 const PlayerWrapper = styled.div`
   @media screen and (min-width: 800px) {
     margin: 0 0 1rem 1rem;
+    margin-top: 4rem;
   }
 
   @media screen and (max-width: 800px) {
@@ -37,6 +38,11 @@ const PlayerWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+`;
+
+const Title = styled.h3`
+  margin: 0;
+  height: 4rem;
 `;
 
 class Frontpage extends Component {
@@ -51,9 +57,9 @@ class Frontpage extends Component {
     return (
       <Fragment>
         <CountdownSection />
-        <h3>{ trans.whatisheading }</h3>
         <Container>
           <Paragraph>
+            <Title>{ trans.whatisheading }</Title>
             { trans.whatis }
           </Paragraph>
           <PlayerWrapper>

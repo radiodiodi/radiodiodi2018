@@ -27,7 +27,8 @@ const trans = new LocalizedStrings({
     headofstudio: 'Studiopäällikkö',
     socialmediamanager: 'Some-vastaava',
     broadcastengineer: 'Lähetysketjupäällikkö',
-    corporaterelationsmanager: 'Yrityssuhdevastaava'
+    corporaterelationsmanager: 'Yrityssuhdevastaava',
+    incollaboration: 'Yhteistyössä',
   },
   en: {
     frontpage: 'Front page',
@@ -52,7 +53,8 @@ const trans = new LocalizedStrings({
     headofstudio: 'Head of Studio',
     socialmediamanager: 'Social Media Manager',
     broadcastengineer: 'Broadcast Engineer',
-    corporaterelationsmanager: 'Corporate Relations Manager'
+    corporaterelationsmanager: 'Corporate Relations Manager',
+    incollaboration: 'In collaboration with',
   }
 });
 
