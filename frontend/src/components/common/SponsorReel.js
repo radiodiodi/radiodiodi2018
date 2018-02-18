@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import FadeImage from './FadeImage';
-import sponsor1 from './../../images/sponsor1.png';
-import sponsor2 from './../../images/sponsor2.png';
+import futurice from './../../images/futurice.svg';
 
 const ReelImage = styled(FadeImage)`
-  margin-top: 1rem;
+  margin: 1.5rem 0 1rem;
   align-self: center;
-  max-width: 100%;
+  max-width: 70%;
+  text-align: justify;
 `;
 
 class SponsorReel extends Component {
@@ -17,8 +17,7 @@ class SponsorReel extends Component {
       current: 0,
       counter: 0,
       images: [
-        sponsor1,
-        sponsor2,
+        futurice,
       ],
     };
 
