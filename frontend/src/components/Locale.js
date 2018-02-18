@@ -19,7 +19,7 @@ const trans = new LocalizedStrings({
     whatisheading: 'Mikä Radiodiodi?',
     instagramimage: 'Instagram-kuva',
     ancientromansquote:
-      '“Jo muinaset roomalaiset tiesivät, että vain idiootit ja lahtelaiset pyyhkivät perseensä seisten“',
+      '“Tää quote jätetään pois“',
     editorinchief: 'Päätoimittaja',
     itdirector: 'IT-päällikko',
     executivedirector: 'Toimituspäällikkö',
