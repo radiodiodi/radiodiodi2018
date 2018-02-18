@@ -5,15 +5,17 @@ import PropTypes from 'prop-types';
 import FadeImage from '../FadeImage';
 
 const Guy = styled.div`
-  padding: 0.5rem;
+  padding: 1rem 3rem 1rem;
   width: calc(100% - 2rem);
 
   @media screen and (min-width: 500px) {
     width: calc((100% - 4rem) / 2);
+    padding: 1rem;
   }
 
-  @media screen and (min-width: 800px) {
+  @media screen and (min-width: 700px) {
     width: calc((100% - 6rem) / 3);
+    padding: 0.5rem;
   }
 
   text-align: center;
