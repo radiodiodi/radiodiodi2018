@@ -4,7 +4,7 @@ import FadeImage from './FadeImage';
 import futurice from './../../images/futurice.svg';
 
 const ReelImage = styled(FadeImage)`
-  margin: 1.5rem 0 1rem;
+  margin: 1.5rem 0 2rem;
   align-self: center;
   max-width: 70%;
   text-align: justify;
