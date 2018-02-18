@@ -10,7 +10,7 @@ const trans = new LocalizedStrings({
     instagramfeed: '#Instagram-feed',
     failedtoloadimages: 'Instagram-kuvien lataus epäonnistui!',
     broadcastended: 'Lähetys jatkuu taas ennen Wappua!',
-    tunein: 'Käännä radiosi taajuudelle XXX,X MHz 18.4.2018!',
+    tunein: 'Käännä radiosi taajuudelle 105,8 MHz 18.4.2018!',
     whatis: `Radiodiodi on Otaniemestä ponnistava joka vuosi täysin opiskelijavetoisesti toteutettu kaupallinen wappuradio. 
     Radio toteutetaan vuonna 2018 jo seitsemättä kertaa ja lähetys on käynnissä täydet kaksi viikkoa ennen wappuaattoa.
     Projektiin osallistuu joka vuosi satoja vapaaehtoisia taustatyön muodossa ja ohjelmaakin tulee vuosittain tekemään 
@@ -36,7 +36,7 @@ const trans = new LocalizedStrings({
     instagramfeed: '#Instagram Feed',
     failedtoloadimages: 'Failed to load Instagram images!',
     broadcastended: 'The broadcast will start again before Wappu!',
-    tunein: 'Tune in to frequency XXX.X MHz on the 18th of April 2018!',
+    tunein: 'Tune in to frequency 105.8 MHz on the 18th of April 2018!',
     whatis: `Radiodiodi is a commercial student-driven Wappu-season radio station based in Otaniemi. The station is being
     set up for the seventh time in 2018 and the broadcast will be live for a full two weeks right before the Wappu eve.
     Hundreds of volunteers take part in the project every year, mainly doing groundwork or hosting shows. The whole metropolitan
