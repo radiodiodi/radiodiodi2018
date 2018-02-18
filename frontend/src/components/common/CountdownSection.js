@@ -6,7 +6,7 @@ import Countdown from './Countdown';
 
 const SectionContainer = styled.div`
   text-align: center;
-  padding: 1rem 2rem 2rem;
+  padding: 0 2rem 2rem;
   margin-bottom: 2rem;
   border-bottom: solid;
   border-width: 2px;
