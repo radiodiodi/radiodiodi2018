@@ -6,9 +6,8 @@ import Countdown from './Countdown';
 
 const SectionContainer = styled.div`
   text-align: center;
-  padding: 2rem;
+  padding: 1rem 2rem 2rem;
   margin-bottom: 2rem;
-  border-top: solid;
   border-bottom: solid;
   border-width: 2px;
   border-color: ${p => p.theme.color.pink};
@@ -25,6 +24,10 @@ const MonospaceSpan = styled.span`
   font-weight: bold;
 `;
 
+const Date = styled.span`
+  color: ${p => p.theme.color.white};
+`;
+
 class CountdownSection extends Component {
   static contextTypes = {
     trans: PropTypes.any,
@@ -38,9 +41,10 @@ class CountdownSection extends Component {
 
   render() {
     const { trans } = this.context;
+    const date = <Date>{ trans.registrationdate }</Date>
     return (
       <SectionContainer>
-        <h2>{trans.timetoregistration}</h2>
+        <h2>{trans.timetoregistration} {date}</h2>
         <Countdown
           countTo={'Mon Mar 05 2018 09:00:00 GMT+0200 (EET)'}
           interval={1000}

@@ -50,6 +50,7 @@ class Frontpage extends Component {
 
     return (
       <Fragment>
+        <CountdownSection />
         <h3>{ trans.whatisheading }</h3>
         <Container>
           <Paragraph>
@@ -60,7 +61,6 @@ class Frontpage extends Component {
             <SponsorReel interval={ sponsorInterval } />
           </PlayerWrapper>
         </Container>
-        <CountdownSection />
         <ImageGallery />
         <Instagram />
       </Fragment>
