@@ -22,6 +22,7 @@ const MonospaceSpan = styled.span`
   display: inline-block;
   font-size: 1.5rem;
   font-weight: bold;
+  color: #fff;
 `;
 
 const Date = styled.span`
