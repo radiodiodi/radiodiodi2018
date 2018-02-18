@@ -18,22 +18,34 @@ const SectionContainer = styled.div`
   }
 `;
 
-const CD = styled(Countdown)`
+const MonospaceSpan = styled.span`
+  width: 15px;
+  display: inline-block;
   font-size: 1.5rem;
-  font-family: monospace;
+  font-weight: bold;
 `;
 
 class CountdownSection extends Component {
   static contextTypes = {
     trans: PropTypes.any,
+  };
+
+  toMonospace(text) {
+    return text
+      .split('')
+      .map((letter, i) => <MonospaceSpan key={i}>{letter}</MonospaceSpan>);
   }
 
   render() {
     const { trans } = this.context;
     return (
       <SectionContainer>
-        <h2>{ trans.timetoregistration }</h2>
-        <CD countTo={'Mon Mar 05 2018 09:00:00 GMT+0200 (EET)'} interval={1000} />
+        <h2>{trans.timetoregistration}</h2>
+        <Countdown
+          countTo={'Mon Mar 05 2018 09:00:00 GMT+0200 (EET)'}
+          interval={1000}
+          contentTransformFn={this.toMonospace}
+        />
       </SectionContainer>
     );
   }

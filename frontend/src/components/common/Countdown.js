@@ -74,7 +74,10 @@ class CountdownTimer extends React.PureComponent {
     const { timeRemaining } = this.state;
     return (
       <div className={this.props.className}>
-        {this.getFormattedTime(timeRemaining)}
+        {this.props.contentTransformFn
+          ? this.props.contentTransformFn(this.getFormattedTime(timeRemaining))
+          : this.getFormattedTime(timeRemaining)
+        }
       </div>
     );
   }
