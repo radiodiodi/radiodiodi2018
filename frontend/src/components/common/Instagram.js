@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import fetch from 'node-fetch';
+import 'whatwg-fetch';
 import InstagramGallery from './InstagramGallery';
 
 class Instagram extends Component {
