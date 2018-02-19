@@ -20,7 +20,7 @@ const trans = new LocalizedStrings({
     whatisheading: 'Mikä Radiodiodi?',
     instagramimage: 'Instagram-kuva',
     ancientromansquote:
-      '“Tää quote jätetään pois“',
+      '“Suosittelen kokemuksena“',
     editorinchief: 'Päätoimittaja',
     itdirector: 'IT-päällikko',
     executivedirector: 'Toimituspäällikkö',
@@ -33,7 +33,7 @@ const trans = new LocalizedStrings({
   en: {
     frontpage: 'Front page',
     changelang: 'Suomeksi',
-    forbusinesses: 'For businesses',
+    forbusinesses: ' ',
     timetoregistration: 'Show registration begins on',
     registrationdate: 'the 5th of March at 9 a.m.!',
     instagramfeed: '#Instagram Feed',
@@ -46,7 +46,7 @@ const trans = new LocalizedStrings({
     area can listen to the broadcast; the signal covers more than 400 000 people!`,
     whatisheading: 'What is Radiodiodi?',
     instagramimage: 'Instagram image',
-    ancientromansquote: 'funny quote',
+    ancientromansquote: '“Important quote here“',
     editorinchief: 'Editor in Chief',
     itdirector: 'IT Director',
     executivedirector: 'Executive Director',

@@ -128,7 +128,6 @@ class Sponsors extends Component {
         <Paragraph><i>Yleisömme odottaa erilaista sisältöä – emme edes pyri olemaan perinteinen radiokanava!</i></Paragraph>
 
         <Title>Mitä meillä on tarjolla yrityksille?</Title>
-        <Paragraph>Yleistä tekstiä… Tarjoamme kahta eri yhteistyöpakettia: laajaa pääyhteistyökumppanuutta ja edullisempaa mainosspottien ympärille rakentuvaa pakettia</Paragraph>
 
         <ColumnContainer>
           <Column>
