@@ -67,6 +67,10 @@ const AudioPlayer = styled.span`
   flex-direction: column;
   margin: 0 0.5rem 1rem;
 
+  @supports (-moz-appearance: none) {
+    width: 30%;  /* fixes firefox width bug */
+  }
+
   @media screen and (max-width: 700px) {
     width: 80%;
     flex-direction: row;
