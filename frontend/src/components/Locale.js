@@ -19,8 +19,7 @@ const trans = new LocalizedStrings({
     ja lasketulla kuuluvuusalueella asuu noin 400 000 ihmistä!`,
     whatisheading: 'Mikä Radiodiodi?',
     instagramimage: 'Instagram-kuva',
-    ancientromansquote:
-      '“Suosittelen kokemuksena“',
+    ancientromansquote: '“Suosittelen kokemuksena“',
     editorinchief: 'Päätoimittaja',
     itdirector: 'IT-päällikko',
     executivedirector: 'Toimituspäällikkö',
@@ -29,6 +28,11 @@ const trans = new LocalizedStrings({
     broadcastengineer: 'Lähetysketjupäällikkö',
     corporaterelationsmanager: 'Yrityssuhdevastaava',
     incollaboration: 'Yhteistyössä',
+    radioprogramheading: 'Ohjelmantekijäksi?',
+    radioprogramparagraph1:
+      'Radiodiodi tarvitsee sinua! Oletko aina haaveillut oman radio-ohjelman tekemisestä? Ai et vai? Ei se haittaa!',
+    radioprogramparagraph2:
+      'Radiodiodin ohjelma on aina ollut yhteisönsä tekemää ja näköistä. Lähetyskautemme aikana radiossa kuullaan satoja eri ääniä, joista yksi voit olla sinä. Ohjelmantekijäilmoittautuminen aukeaa 5.3. Lisätietoja ohjelman tekemisestä saa päätoimittajalta.'
   },
   en: {
     frontpage: 'Front page',
@@ -55,6 +59,11 @@ const trans = new LocalizedStrings({
     broadcastengineer: 'Broadcast Engineer',
     corporaterelationsmanager: 'Corporate Relations Manager',
     incollaboration: 'In collaboration with',
+    radioprogramheading: 'Ready to become a radio host?',
+    radioprogramparagraph1:
+      'Radiodiodi needs you! Have you always wanted to host your own radio show? No? Not a problem!',
+    radioprogramparagraph2:
+      'Radiodiodi looks and sounds like its community. During the broadcast period there are over a hundred different voices heard – and you can be one of them. The registration begins on March 5th. Contact the editor-in-chief for more info.'
   }
 });
 

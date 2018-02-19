@@ -25,6 +25,12 @@ const Paragraph = styled.div`
   }
 `;
 
+const Paragraph2 = Paragraph.extend`
+  margin-bottom: 10px;
+  max-width: initial;
+  max-width: 800px;
+`;
+
 const PlayerWrapper = styled.div`
   @media screen and (min-width: 800px) {
     margin: 0 0 1rem 1rem;
@@ -45,13 +51,26 @@ const Title = styled.h3`
   height: 4rem;
 `;
 
+const ContentRow = styled.div`
+  padding: 2rem 0;
+  margin: 2rem 0;
+  border-bottom: solid;
+  border-top: solid;
+  border-width: 2px;
+  border-color: ${p => p.theme.color.pink};
+
+  @media screen and (max-width: 800px) {
+    margin-top: 2rem;
+  }
+`;
+
 class Frontpage extends Component {
   static contextTypes = {
-    trans: PropTypes.any,
-  }
+    trans: PropTypes.any
+  };
 
   render() {
-    const sponsorInterval = 3000;  // milliseconds
+    const sponsorInterval = 3000; // milliseconds
     const { trans } = this.context;
 
     return (
@@ -59,14 +78,19 @@ class Frontpage extends Component {
         <CountdownSection />
         <Container>
           <Paragraph>
-            <Title>{ trans.whatisheading }</Title>
-            { trans.whatis }
+            <Title>{trans.whatisheading}</Title>
+            {trans.whatis}
           </Paragraph>
           <PlayerWrapper>
             <Player />
-            { /* disabled */ false && <SponsorReel interval={ sponsorInterval } /> }
+            {/* disabled */ false && <SponsorReel interval={sponsorInterval} />}
           </PlayerWrapper>
         </Container>
+        <ContentRow>
+          <Title>{trans.radioprogramheading}</Title>
+          <Paragraph2>{trans.radioprogramparagraph1}</Paragraph2>
+          <Paragraph2>{trans.radioprogramparagraph2}</Paragraph2>
+        </ContentRow>
         <ImageGallery />
         <Instagram />
       </Fragment>
