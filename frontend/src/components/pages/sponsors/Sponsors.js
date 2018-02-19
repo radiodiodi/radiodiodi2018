@@ -2,6 +2,10 @@ import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
+import vincit from '../../../audio/vincit.wav';
+import srv from '../../../audio/srv.wav';
+import gofore from '../../../audio/gofore.wav';
+
 const Quote = styled.p`
     text-align: center;
     font-style: italic;
@@ -21,7 +25,78 @@ const Image = styled.img`
 `;
 
 const Paragraph = styled.p`
-  text-align: justify;
+  color: ${p => p.theme.color.white};
+  text-align: ${p => p.centered ? 'center' : 'left'};
+`;
+
+const List = styled.ul`
+  color: ${p => p.theme.color.white};
+`;
+
+const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+  }
+  justify-content: space-between;
+`;
+
+const Column = styled.span`
+  padding: 1rem 0.5rem 1rem;
+`;
+
+const Link = styled.a`
+  color: ${p => p.theme.color.white};
+`;
+
+const Title = styled.h2`
+  text-align: left;
+`;
+
+const AudioPlayerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+`;
+
+const AudioPlayer = styled.span`
+  display: flex;
+  flex-direction: column;
+  margin: 0 0.5rem 1rem;
+
+  @media screen and (max-width: 700px) {
+    width: 80%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const AudioPlayerLabel = styled.label`
+  margin-bottom: 0.5rem;
+
+  @media screen and (max-width: 700px) {
+    margin-bottom: 0;
+    align-self: center;
+  }
+
+  @media screen and (max-width: 500px) {
+    margin-bottom: 0.5rem;
+  }
+`;
+
+const ContrastBox = styled.div`
+  background-color: ${p => p.theme.color.contrast};
+  padding: 0.5rem;
+  margin: 2rem 0 1rem;
 `;
 
 class Sponsors extends Component {
@@ -37,20 +112,83 @@ class Sponsors extends Component {
         <Quote>{ trans.ancientromansquote }</Quote>
         <Source>— Radiodiodi</Source>
 
-        <Image float="left" src="https://placehold.it/200x200" />
-        <Paragraph>
-        Ullamco commodo dolor consectetur irure reprehenderit anim irure aliqua. Esse eu irure ipsum dolor irure laborum quis amet id sit laborum elit velit amet. Deserunt consequat in anim laboris fugiat. Esse est laboris Lorem in ullamco elit aute labore laboris. Lorem sit culpa reprehenderit nulla non est sunt occaecat adipisicing irure do.
-        </Paragraph>
+        <Title>Wappuradio</Title>
+        <Paragraph>Radiodiodi on Otaniemestä ponnistava wappuradio. Toimintamme pääpiste on kahden viikon pituinen radio-ohjelma huhtikuun puoliltavälin aina wappuaattoon asti. Lähetyksemme tuotetaan Otaniemessä, Alvarin aukiolla sijaitsevasta väliaikaisesta konttistudiosta.</Paragraph>
+        <Paragraph>Radio-ohjelma tekevät vapaaehtoiset Aallon opiskelijat ja ohjelma onkin yleensä sen mukaista. Toimituksella ei ole ohjelman sisällöstä etukäteen tietoa - me luomme puitteet toiminnalle mutta ohjelmaa on täysin muiden käsissä.</Paragraph>
+        <Paragraph>Teemme tätä yhteisön vuoksi; haluamme luoda kaikille riemukkaan wapputunnelman!</Paragraph>
 
-        <Image float="right" src="https://placehold.it/200x200" />
+        <Title>Yleisömme</Title>
+        <Paragraph>Pääkohderyhmämme on Aalto-yliopiston nykyiset ja jo valmistuneet opiskelijat. Kauttamme tavoittaa parhaiten niin nuoret kuluttajat kuin rekryttävätkin. Tätä yleisöä et saa yhtenäisenä kuuntelijakuntana mistään muualta.</Paragraph>
+        <Paragraph>Kuulumme kuitenkin koko pääkaupunkiseudulle FM taajuuksilla ja koko kuuluvuusalueellamme asuukin yhteensä yli miljoona ihmistä. Vaikka ohjelmaa tehdäänkin opiskelijat mielessä, on kuuntelijakuntamme tätä laajempaa.</Paragraph>
+        <Paragraph>Kuuntelijoidemme lisäksi tavoitamme kaikki Radiodiodiin ohjemaa tekevät Aallon opiskelijat suoraan lähetyskontilla sekä erinäisissä koulutuksissa.</Paragraph>
+        <Paragraph><i>Yleisömme odottaa erilaista sisältöä – emme edes pyri olemaan perinteinen radiokanava!</i></Paragraph>
 
-        <Paragraph>
-        Lorem labore labore quis est ullamco dolor. Ad minim ex sit proident reprehenderit id proident deserunt. Mollit enim aliquip in incididunt consequat adipisicing laboris nisi sint eu. Eiusmod commodo fugiat proident elit sint ut. Exercitation non dolore consectetur laboris. Ipsum et excepteur occaecat fugiat Lorem ullamco occaecat do.
-        </Paragraph>
+        <Title>Mitä meillä on tarjolla yrityksille?</Title>
+        <Paragraph>Yleistä tekstiä… Tarjoamme kahta eri yhteistyöpakettia: laajaa pääyhteistyökumppanuutta ja edullisempaa mainosspottien ympärille rakentuvaa pakettia</Paragraph>
 
-        <Paragraph>
-        Tempor laboris quis velit ad qui nulla duis ipsum incididunt officia incididunt. Non elit minim do laborum fugiat ullamco ad aliqua dolore. Velit dolore cupidatat exercitation deserunt commodo excepteur est fugiat mollit. Culpa eiusmod pariatur amet est culpa deserunt dolor. Sint eu laborum excepteur eu occaecat. Ea ullamco mollit mollit nulla anim nostrud excepteur ad cupidatat laborum nulla commodo aliquip voluptate. Consequat Lorem nostrud ipsum amet est deserunt esse consequat sunt aliqua do.
-        </Paragraph>
+        <ColumnContainer>
+          <Column>
+          <h4>Lyhyitä mainosspotteja ja yhteisohjelmia</h4>
+          <List>
+            <li>Tarjoamme n. puolen minuutin pituisia radiomainoksia</li>
+            <li>Tuotamme mainosspotit huomioiden sekä teidän toiveenne, että yleisömme odotukset</li>
+            <li>Yhteisohjelma on 1 - 2 tunnin täysin vapaamuotoinen ohjelma, jonka tuottamisessa voimme avustaa</li>
+          </List>
+          </Column>
+          <Column>
+          <h4>Näkyvyyttä ja tapahtumia</h4>
+          <List>
+            <li>Logo verkossa ja julisteissamme</li>
+            <li>Räätälöityjä somepostauksia</li>
+            <li>Näkyvyyttä keskellä Otaniemen wappua lähetyskonteillamme</li>
+            <li>Myös ohjelmantekijöiden erinäisiin tapahtumiin on mahdollista päästä mukaan </li>
+          </List>
+          </Column>
+        </ColumnContainer>
+
+        <Title>Aiempien vuosien mainoksia</Title>
+
+        <AudioPlayerContainer>
+          <AudioPlayer>
+            <AudioPlayerLabel>Vincit</AudioPlayerLabel>
+            <audio controls>
+              <source src={ vincit } type="audio/wav" />
+            </audio>
+          </AudioPlayer>
+
+          <AudioPlayer>
+            <AudioPlayerLabel>SRV</AudioPlayerLabel>
+            <audio controls>
+              <source src={ srv } type="audio/wav" />
+            </audio>
+          </AudioPlayer>
+        
+          <AudioPlayer>
+            <AudioPlayerLabel>Gofore</AudioPlayerLabel>
+            <audio controls>
+              <source src={ gofore } type="audio/wav" />
+            </audio>
+          </AudioPlayer>
+        </AudioPlayerContainer>
+
+        <ContrastBox>
+          <Paragraph centered>
+          Haluatteko olla osa Otaniemen wappua?
+          </Paragraph>
+
+          <Paragraph centered>
+          Kerromme mielellämme lisää.
+          </Paragraph>
+
+          <Paragraph centered>
+          <Link href="mailto:yrityssuhteet@radiodiodi.fi">yrityssuhteet@radiodiodi.fi</Link>
+          </Paragraph>
+
+          <Paragraph centered>
+            +358 45 639 0790
+          </Paragraph>
+        </ContrastBox>
+
       </Fragment>
     );
   }
