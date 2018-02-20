@@ -6,7 +6,7 @@ import FadeImage from '../FadeImage';
 import ImageContainer from './ImageContainer';
 
 const Card = styled.a`
-  align-self: center;
+  align-self: flex-start;
   text-decoration: none;
   margin: 0.5rem;
 
@@ -33,13 +33,11 @@ const Image = styled(FadeImage)`
 
 const Caption = styled.div`
   text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   width: 100%;
+  color: ${p => p.theme.color.white};
 `;
 
-const Text = styled.i`
-  color: ${p => p.theme.color.pink};
+const Text = styled.span`
 `;
 
 class InstagramGallery extends PureComponent {
