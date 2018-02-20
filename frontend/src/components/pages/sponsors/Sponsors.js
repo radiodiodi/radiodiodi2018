@@ -16,14 +16,6 @@ const Source = styled.p`
     margin-right: 5rem;
 `;
 
-const Image = styled.img`
-  float: ${p => p.float};
-  margin-top: 0;
-  margin-bottom: 1rem;
-  margin-left: ${p => p.float === 'right' ? '1rem' : '0'};
-  margin-right: ${p => p.float === 'left' ? '1rem' : '0'};
-`;
-
 const Paragraph = styled.p`
   color: ${p => p.theme.color.white};
   text-align: ${p => p.centered ? 'center' : 'left'};
