@@ -94,7 +94,15 @@ class Shoutbox extends Component {
     const text = this.prompt.value,
           username = this.username.value;
 
-    this.prompt.value = '';
+    if (!username || username.length === 0) {
+      alert('A username is required!');
+      return;
+    }
+
+    if (!text || text.length === 0) {
+      alert('A message is required!');
+      return;
+    }
 
     console.log(`Send message: ${text}, username: ${username}`);
     this.connection.send(JSON.stringify({
@@ -103,6 +111,7 @@ class Shoutbox extends Component {
     }));
 
     this.cookie.set('username', username);
+    this.prompt.value = '';
   }
 
   renderRows = rows => {
