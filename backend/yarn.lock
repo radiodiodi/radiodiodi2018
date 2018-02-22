@@ -347,6 +347,16 @@ crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
 
+css-duration@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/css-duration/-/css-duration-0.2.0.tgz#3864259f69239fb02ba728c34aa809be6294a717"
+  dependencies:
+    css-strip-units "^1.0.0"
+
+css-strip-units@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/css-strip-units/-/css-strip-units-1.0.0.tgz#1b8319039e4b4e664676c383dc89cc0af8c87a11"
+
 dashdash@^1.12.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/dashdash/-/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
@@ -1899,6 +1909,12 @@ write-file-atomic@^2.0.0:
     graceful-fs "^4.1.11"
     imurmurhash "^0.1.4"
     signal-exit "^3.0.2"
+
+ws-rate-limit@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/ws-rate-limit/-/ws-rate-limit-0.0.0.tgz#1376205b01d6e84f9fd679d5295ef9728df41971"
+  dependencies:
+    css-duration "^0.2.0"
 
 ws@^4.1.0:
   version "4.1.0"

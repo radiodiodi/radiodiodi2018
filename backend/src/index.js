@@ -96,8 +96,11 @@ app
 
 utils.info(`Listening for Websockets on ${process.env.HOST} on port ${process.env.WS_PORT}.`);
 
-const wss = new WebSocket.Server({ port: process.env.WS_PORT });
-wss.on('connection', async ws => {
+const wss = new WebSocket.Server({ port: process.env.WS_PORT, host });
+const rateLimit = require('ws-rate-limit')('3s', 1);
+wss.on('connection', async (ws, req) => {
+  rateLimit(ws);
+
   ws.on('message', data => {
     const { name, text } = JSON.parse(data);
     utils.info(`Websocket: Received: "${text}" from "${name}"`);
@@ -127,4 +130,5 @@ wss.on('connection', async ws => {
   }));
 
   ws.on('error', error => utils.error(`Websocket error. ${error}`));
+  ws.on('limited', data => utils.warning(`User from ip "${req.connection.remoteAddress}" has been throttled.`));
 });
