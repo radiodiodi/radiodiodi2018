@@ -9,8 +9,10 @@ const monk = require('monk');
 const app = new Koa();
 const router = new Router();
 
+const utils = require('./utils');
+
 const mongo_stats = `${process.env.MONGODB_HOST}/${process.env.MONGODB_STATS_DB}`;
-console.log(`Mongo stats DB: ${mongo_stats}`);
+utils.info(`Mongo stats DB: ${mongo_stats}`);
 const statsDB = monk(mongo_stats);
 const listeners = statsDB.get('listeners');
 
@@ -27,7 +29,7 @@ app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+  utils.info(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
 router.get('/season', ctx => {
@@ -74,8 +76,13 @@ router.get('/stats', async ctx => {
   }
 });
 
-app
+router.get('/inspirational-quote', async ctx => {
+  ctx.body = `Kukkakaalia - kakkakuulia: hauska munansaannos`;
+});
 
+utils.info(`Listening on ${process.env.HOST} on port ${process.env.PORT}.`);
+
+app
   .use(router.routes())
   .use(router.allowedMethods())
   .listen(process.env.PORT, process.env.HOST);
