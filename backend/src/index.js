@@ -6,6 +6,8 @@ const Koa = require('koa');
 const Router = require('koa-router');
 const monk = require('monk');
 
+const WebSocket = require('ws');
+
 const app = new Koa();
 const router = new Router();
 
@@ -15,6 +17,11 @@ const mongo_stats = `${process.env.MONGODB_HOST}/${process.env.MONGODB_STATS_DB}
 utils.info(`Mongo stats DB: ${mongo_stats}`);
 const statsDB = monk(mongo_stats);
 const listeners = statsDB.get('listeners');
+
+const mongo_shoutbox = `${process.env.MONGODB_HOST}/${process.env.MONGODB_SHOUTBOX_DB}`;
+utils.info(`Mongo shoutbox DB: ${mongo_shoutbox}`);
+const shoutboxDB = monk(mongo_shoutbox);
+const messages = shoutboxDB.get('messages');
 
 // x-response-time
 app.use(async (ctx, next) => {
@@ -80,9 +87,44 @@ router.get('/inspirational-quote', async ctx => {
   ctx.body = `Kukkakaalia - kakkakuulia: hauska munansaannos`;
 });
 
-utils.info(`Listening on ${process.env.HOST} on port ${process.env.PORT}.`);
+utils.info(`Listening for HTTP on ${process.env.HOST} on port ${process.env.PORT}.`);
 
 app
   .use(router.routes())
   .use(router.allowedMethods())
   .listen(process.env.PORT, process.env.HOST);
+
+utils.info(`Listening for Websockets on ${process.env.HOST} on port ${process.env.WS_PORT}.`);
+
+const wss = new WebSocket.Server({ port: process.env.WS_PORT });
+wss.on('connection', async ws => {
+  ws.on('message', data => {
+    const { name, text } = JSON.parse(data);
+    utils.info(`Websocket: Received: "${text}" from "${name}"`);
+
+    const message = {
+      timestamp: new Date(Date.now()),
+      name,
+      text,
+    }
+    messages.insert(message);
+
+    wss.clients.forEach(function each(client) {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(JSON.stringify({
+          message,
+        }));
+      }
+    });
+  });
+
+  const initial = await messages.find({}, {
+    limit: 100, sort: { timestamp: 1 },
+  });
+
+  ws.send(JSON.stringify({
+    initial,
+  }));
+
+  ws.on('error', error => utils.error(`Websocket error. ${error}`));
+});

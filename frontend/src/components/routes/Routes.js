@@ -6,6 +6,7 @@ import Header from '../common/Header';
 import Footer from '../common/Footer';
 import Frontpage from '../pages/frontpage/Frontpage';
 import Sponsors from '../pages/sponsors/Sponsors';
+import Shoutbox from '../pages/shoutbox/Shoutbox';
 import Cookie from 'universal-cookie';
 
 class Routes extends Component {
@@ -37,6 +38,7 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/" component={Frontpage} />
             <Route path="/sponsors" component={Sponsors} />
+            <Route path="/shoutbox" component={Shoutbox} />
             <Route component={() => <h1>404</h1>} />
           </Switch>
           <Footer />
