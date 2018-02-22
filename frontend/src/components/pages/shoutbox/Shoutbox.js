@@ -116,7 +116,7 @@ class Shoutbox extends Component {
   componentDidMount() {
     this.connection = new WebSocket(WS_URL);
     this.connection.onmessage = evt => this.handleData(evt.data);
-    this.connection.onerror = evt => console.log(`Websocket error: ${evt}`);
+    this.connection.onerror = evt => console.log(`Websocket error. Data: ${evt.data}`);
 
     const username = this.cookie.get('username') || '';
     this.username.value = username;
