@@ -1,15 +1,30 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Radiodiodi.fi",
+  "name": "Radiodiodi.fi",
   "icons": [
     {
-      "src": "favicon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "favicon/favicon16.png",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon/favicon32.png",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon/favicon64.png",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon/favicon128.png",
+      "sizes": "128x128",
       "type": "image/x-icon"
     }
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#121F40",
-  "background_color": "#121F40"
+  "theme_color": "#dc9b0a",
+  "background_color": "#121f40"
 }
