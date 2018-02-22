@@ -94,6 +94,8 @@ class Shoutbox extends Component {
     const text = this.prompt.value,
           username = this.username.value;
 
+    this.prompt.value = '';
+
     console.log(`Send message: ${text}, username: ${username}`);
     this.connection.send(JSON.stringify({
       name: username,
