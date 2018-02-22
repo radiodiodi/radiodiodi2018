@@ -116,7 +116,7 @@ class Shoutbox extends Component {
     this.connection.onmessage = evt => this.handleData(evt.data);
     this.connection.onerror = evt => console.log(`Websocket error: ${evt}`);
 
-    const username = this.cookie.get('username');
+    const username = this.cookie.get('username') || '';
     this.username.value = username;
   }
 
@@ -125,7 +125,7 @@ class Shoutbox extends Component {
     this.chatLog.scrollTop = this.chatLog.scrollHeight;
   }
 
-  promptKeyPress = event => {
+  onPromptKeyPress = event => {
     const ENTER_KEY = 13;
 
     if ([event.keyCode, event.which].includes(ENTER_KEY)) {
@@ -147,7 +147,7 @@ class Shoutbox extends Component {
             innerRef={ input => { this.username = input } } />
           <Prompt 
             placeholder="Message..." 
-            onKeyPress={this.promptKeyPress} 
+            onKeyPress={this.onPromptKeyPress} 
             innerRef={ input => { this.prompt = input } } />
           <SendButton 
             onClick={this.sendMessage}>Send</SendButton>
