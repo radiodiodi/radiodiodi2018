@@ -85,6 +85,12 @@ class Shoutbox extends Component {
       this.setState({
         log,
       });
+    } else if (data.erase) {
+      const id = data.erase;
+      const filtered = this.state.log.filter(m => m._id !== id);
+      this.setState({
+        log: filtered,
+      });
     } else {
       console.log('Invalid websocket data:');
       console.log(data);

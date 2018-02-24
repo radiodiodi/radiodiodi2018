@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 const Router = require('koa-router');
 const models = require('./models');
 const utils = require('./utils');
+const websockets = require('./websockets');
 const router = new Router();
 
 const admin = new Router();
@@ -33,7 +34,6 @@ const checkAuthorization = async (ctx, next) => {
     return;
   }
 
-  utils.info('Auth succeeded.');
   await next();
 }
 
@@ -52,6 +52,7 @@ admin.delete('/messages/remove/:id', async ctx => {
   try {
     const id = ctx.params.id;
     models.messages.remove({ _id: id });
+    websockets.eraseMessage(id);
     ctx.status = 200;
   } catch (err) {
     utils.error(err);

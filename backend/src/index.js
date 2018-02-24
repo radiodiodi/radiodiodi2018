@@ -4,14 +4,12 @@ const _ = require('lodash');
 
 const Koa = require('koa');
 const cors = require('@koa/cors');
-
-const WebSocket = require('ws');
-
 const app = new Koa();
 
 const utils = require('./utils');
 const router = require('./router');
 const models = require('./models');
+const websockets = require('./websockets');
 
 const FRONTEND_URL = process.env.FRONTEND_URL;
 
@@ -35,6 +33,8 @@ app.use(async (ctx, next) => {
   }
 });
 
+websockets.start();
+
 utils.info(`Listening for HTTP on ${process.env.HOST} on port ${process.env.PORT}.`);
 
 app
@@ -44,76 +44,3 @@ app
   .use(router.routes())
   .use(router.allowedMethods())
   .listen(process.env.PORT, process.env.HOST);
-
-utils.info(`Listening for Websockets on ${process.env.HOST} on port ${process.env.WS_PORT}.`);
-
-const wss = new WebSocket.Server({ port: process.env.WS_PORT });
-const rateLimit = require('ws-rate-limit')('3s', 1);
-wss.on('connection', async (ws, req) => {
-  rateLimit(ws);
-
-  ws.on('message', async data => {
-    const { name, text } = JSON.parse(data);
-    utils.info(`Websocket: Received: "${text}" from "${name}"`);
-
-    const message = {
-      timestamp: new Date(Date.now()),
-      name,
-      text,
-      ip: req.connection.remoteAddress,
-    };
-
-    const banned = await models.bans.findOne({ ip: message.ip });
-    console.log(banned)
-    if (banned) {
-      ws.send(JSON.stringify({
-        message: {
-          name: 'SERVER',
-          text: 'You are banned.',
-          timestamp: new Date(Date.now()),
-          error: true,
-        },
-      }));
-      return;
-    }
-
-    models.messages.insert(message);
-
-    wss.clients.forEach(function each(client) {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(JSON.stringify({
-          message: {
-            name: message.name,
-            text: message.text,
-            timestamp: message.timestamp,
-          },
-        }));
-      }
-    });
-  });
-
-  const initial = await models.messages.find({}, {
-    limit: 100, sort: { timestamp: 1 },
-  });
-
-  ws.send(JSON.stringify({
-    initial: initial.map(message => ({
-      name: message.name,
-      text: message.text,
-      timestamp: message.timestamp,
-    })),
-  }));
-
-  ws.on('error', error => utils.error(`Websocket error. ${error}`));
-  ws.on('limited', data => {
-    utils.warning(`User from ip "${req.connection.remoteAddress}" has been throttled.`);
-    ws.send(JSON.stringify({
-      message: {
-        name: 'SERVER',
-        text: 'Calm down, you are sending too many messages.',
-        timestamp: new Date(Date.now()),
-        error: true,
-      },
-    }));
-  });
-});
