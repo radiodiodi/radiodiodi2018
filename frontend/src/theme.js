@@ -5,10 +5,13 @@ const theme = {
     pink: '#ef67b3',
     blue: '#182657',
     dark: '#121F40',
+
     yellow: '#D59B2D',
     brown: '#8D541E',
     white: '#EEE',
     contrast: 'rgba(255, 255, 255, 0.05)',
+    shimmer: 'rgba(213, 155, 45, 0.3)',
+
   },
   font: {
     heading: "'Capsuula', Helvetica, sans-serif",

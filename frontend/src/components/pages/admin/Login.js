@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import GoogleLogin from 'react-google-login';
 import { checkJWTAuth } from '../../../utils';
+import Cookie from 'universal-cookie';
+const cookie = new Cookie();
 
 const CLIENT_ID = process.env.REACT_APP_OAUTH_CLIENT_ID;
 
@@ -47,9 +49,10 @@ class LoginPage extends Component {
       return;
     }
 
-    const { code } = resp;
-    const ok = await checkJWTAuth(code);
+    const id_token = resp.Zi.id_token;
+    const ok = await checkJWTAuth(id_token);
     if (ok) {
+      cookie.set('jwt', id_token);
       this.goToAdmin();
     } else {
       console.log('Backend auth verification failed.');
@@ -71,7 +74,7 @@ class LoginPage extends Component {
           onSuccess={this.responseGoogle}
           onFailure={this.responseGoogle}
           hostedDomain="radiodiodi.fi"
-          responseType="code"
+          responseType="jwt"
           signedIn
         />
         { error && <Error>Error: { error }</Error> }

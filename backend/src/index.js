@@ -3,25 +3,17 @@ require('dotenv').config()
 const _ = require('lodash');
 
 const Koa = require('koa');
-const Router = require('koa-router');
-const monk = require('monk');
+const cors = require('@koa/cors');
 
 const WebSocket = require('ws');
 
 const app = new Koa();
-const router = new Router();
 
 const utils = require('./utils');
+const router = require('./router');
+const models = require('./models');
 
-const mongo_stats = `${process.env.MONGODB_HOST}/${process.env.MONGODB_STATS_DB}`;
-utils.info(`Mongo stats DB: ${mongo_stats}`);
-const statsDB = monk(mongo_stats);
-const listeners = statsDB.get('listeners');
-
-const mongo_shoutbox = `${process.env.MONGODB_HOST}/${process.env.MONGODB_SHOUTBOX_DB}`;
-utils.info(`Mongo shoutbox DB: ${mongo_shoutbox}`);
-const shoutboxDB = monk(mongo_shoutbox);
-const messages = shoutboxDB.get('messages');
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 // x-response-time
 app.use(async (ctx, next) => {
@@ -36,60 +28,19 @@ app.use(async (ctx, next) => {
   const start = Date.now();
   await next();
   const ms = Date.now() - start;
-  utils.info(`${ctx.method} ${ctx.url} - ${ms}ms`);
-});
-
-router.get('/season', ctx => {
-  ctx.body = JSON.stringify({
-    start: process.env.START_DATE,
-    end: process.env.END_DATE,
-  });
-  ctx.type = 'application/json';
-})
-
-router.get('/', (ctx, next) => {
-  ctx.body = 'Radiodiodi JSON API';
-});
-
-router.get('/stats', async ctx => {
-  const options = {
-    'sort': [['time','desc']] 
-  };
-
-  try {
-    const results = listeners.find();
-
-    const arr = [];
-    const mountpoints = _.groupBy(results, (r) => r.name);
-
-    Object.keys(mountpoints).forEach((m) => {
-      const obj = {
-          'x': mountpoints[m].map((r) => r.time),
-          'y': mountpoints[m].map((r) => r.listeners),
-          'type': 'scatter',
-          'line': {'shape': 'spline'},
-          'name': m
-      };
-      arr.push(obj);
-    });
-
-    ctx.body = JSON.stringify({
-      listeners: arr,
-    });
-  } catch (err) {
-    ctx.body = err;
-    ctx.status = 500;
-    return;
+  if (ctx.status < 400) {
+    utils.info(`${ctx.status} ${ctx.method} ${ctx.url} - ${ms}ms`);
+  } else {
+    utils.error(`${ctx.status} ${ctx.method} ${ctx.url} - ${ms}ms`);
   }
-});
-
-router.get('/inspirational-quote', async ctx => {
-  ctx.body = `Kukkakaalia - kakkakuulia: hauska munansaannos`;
 });
 
 utils.info(`Listening for HTTP on ${process.env.HOST} on port ${process.env.PORT}.`);
 
 app
+  .use(cors({
+    origin: FRONTEND_URL,
+  }))
   .use(router.routes())
   .use(router.allowedMethods())
   .listen(process.env.PORT, process.env.HOST);
@@ -110,7 +61,7 @@ wss.on('connection', async (ws, req) => {
       name,
       text,
     }
-    messages.insert(message);
+    models.messages.insert(message);
 
     wss.clients.forEach(function each(client) {
       if (client.readyState === WebSocket.OPEN) {
@@ -121,7 +72,7 @@ wss.on('connection', async (ws, req) => {
     });
   });
 
-  const initial = await messages.find({}, {
+  const initial = await models.messages.find({}, {
     limit: 100, sort: { timestamp: 1 },
   });
 
