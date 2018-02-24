@@ -10,8 +10,10 @@ const mongo_shoutbox = `${process.env.MONGODB_HOST}/${process.env.MONGODB_SHOUTB
 utils.info(`Mongo shoutbox DB: ${mongo_shoutbox}`);
 const shoutboxDB = monk(mongo_shoutbox);
 const messages = shoutboxDB.get('messages');
+const bans = shoutboxDB.get('bans');
 
 module.exports = {
   listeners,
   messages,
+  bans,
 };

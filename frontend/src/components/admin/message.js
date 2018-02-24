@@ -18,7 +18,7 @@ class Message extends Component {
   }
 
   render() {
-    const { data, onSelect, selected } = this.props;
+    const { data, selected } = this.props;
     return (
       <Container selected={selected} onClick={this.select} >
         <span>{ data.name }: </span>

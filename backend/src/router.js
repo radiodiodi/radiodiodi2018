@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const Router = require('koa-router');
 const models = require('./models');
-
+const utils = require('./utils');
 const router = new Router();
 
 const admin = new Router();
@@ -45,6 +45,37 @@ admin.get('/messages', async ctx => {
     messages,
   });
   ctx.type = 'application/json';
+});
+
+admin.delete('/messages/remove/:id', checkAuthorization, async ctx => {
+  try {
+    const id = ctx.params.id;
+    models.messages.remove({ _id: id });
+    ctx.status = 200;
+  } catch (err) {
+    utils.error(err);
+    ctx.throw(500, err);
+  }
+});
+
+admin.delete('/users/ban/:id', checkAuthorization, async ctx => {
+  try {
+    const id = ctx.params.id;
+    const message = await models.messages.findOne({ _id: id });
+    console.log(id)
+    console.log(message)
+    models.bans.insert({
+      ip: message.ip,
+      name: message.name,
+      timeOfBan: new Date(Date.now()),
+      timeOfMessage: message.timestamp,
+      text: message.text,
+    });
+    ctx.status = 200;
+  } catch (err) {
+    utils.error(err);
+    ctx.throw(500, err);
+  }
 });
 
 router.use('/admin', checkAuthorization, admin.routes(), admin.allowedMethods());

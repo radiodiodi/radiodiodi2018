@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Message from '../../admin/message';
 import Panel from '../../admin/panel';
-import { fetchMessages, AuthError } from '../../../utils';
+import { fetchMessages } from '../../../utils';
 
 const Container = styled.div`
   display: flex;
@@ -45,9 +45,7 @@ class AdminPage extends Component {
       });
     } catch (err) {
       console.log(err);
-      debugger;
       if (err.unauthorized) {
-        debugger;
         history.push('/login');
       }
     }
@@ -74,6 +72,7 @@ class AdminPage extends Component {
 
   render() {
     const { messages, selected, loading } = this.state;
+    const { history } = this.props;
     const messageRows = messages.map((m, index) => 
       <Message selected={this.isSelected(m, selected)} onSelect={this.onSelect} key={index} data={m} 
     />);
@@ -87,7 +86,7 @@ class AdminPage extends Component {
           </Log>
         </Column>
         <Column>
-          <Panel data={selected} />
+          <Panel refresh={this.getMessages} history={history} data={selected} />
         </Column>
       </Container>
     ) : (

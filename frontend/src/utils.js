@@ -12,17 +12,21 @@ class AuthError extends Error {
   }
 }
 
-const composeRequest = (endpoint, id_token) => {
+const composeRequest = (endpoint, id_token, method = 'GET') => {
   const token = id_token || cookie.get('jwt');
 
   const headers = new Headers();
   headers.append('Authorization', token);
   const req = new Request(endpoint, {
     headers,
-    method: 'GET',
+    method,
   });
 
   return req;
+}
+
+const isJSON = resp => {
+  return resp && resp.headers && resp.headers.get('Content-Type').includes('application/json');
 }
 
 const checkJWTAuth = async token => {
@@ -46,10 +50,21 @@ const fetchMessages = async () => {
 
   try {
     const resp = await fetch(req);
-    const data = await resp.json();
 
-    if (data.error) {
-      throw new Error(data.error);
+    if (resp.status === 401) {
+      throw new AuthError();
+    } 
+    
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
     }
 
     console.log('Backend messages response:');
@@ -57,12 +72,75 @@ const fetchMessages = async () => {
 
     return data.messages;
   } catch (err) {
-    throw new AuthError();
+    console.log(err);
+    throw err;
   }
 };
+
+const removeMessage = async id => {
+  const req = composeRequest(`${BACKEND_URL}/admin/messages/remove/${id}`, null, 'DELETE');
+
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 401) {
+      throw new AuthError();
+    } 
+    
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    console.log('Backend messages response:');
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
+const banUserForMessage = async id => {
+  const req = composeRequest(`${BACKEND_URL}/admin/users/ban/${id}`, null, 'DELETE');
+
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 401) {
+      throw new AuthError();
+    } 
+    
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    console.log('Backend messages response:');
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
 
 export {
   checkJWTAuth,
   fetchMessages,
+  removeMessage,
+  banUserForMessage,
   AuthError,
 }
