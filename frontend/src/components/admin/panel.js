@@ -34,6 +34,10 @@ class Panel extends Component {
           <div>Message</div>
           <div>{ data.text }</div>
         </Row>
+        <Row>
+          <div>IP Address</div>
+          <div>{ data.ip }</div>
+        </Row>
       </Container>
     ) : null;
   }

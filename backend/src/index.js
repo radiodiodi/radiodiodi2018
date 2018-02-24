@@ -60,13 +60,19 @@ wss.on('connection', async (ws, req) => {
       timestamp: new Date(Date.now()),
       name,
       text,
-    }
+      ip: req.connection.remoteAddress,
+    };
+
     models.messages.insert(message);
 
     wss.clients.forEach(function each(client) {
       if (client.readyState === WebSocket.OPEN) {
         client.send(JSON.stringify({
-          message,
+          message: {
+            name: message.name,
+            text: message.text,
+            timestamp: message.timestamp,
+          },
         }));
       }
     });
@@ -77,7 +83,11 @@ wss.on('connection', async (ws, req) => {
   });
 
   ws.send(JSON.stringify({
-    initial,
+    initial: initial.map(message => ({
+      name: message.name,
+      text: message.text,
+      timestamp: message.timestamp,
+    })),
   }));
 
   ws.on('error', error => utils.error(`Websocket error. ${error}`));
