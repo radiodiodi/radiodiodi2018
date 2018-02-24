@@ -10,10 +10,33 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 0.5rem;
 `;
 
+const Button = styled.button`
+  background-color: ${p => p.theme.color.pink};
+  padding: 1rem;
+  margin: 0 0.5rem;
+  border: 0px;
+  font-size: 1rem;
+  font-family: 'Comfortaa';
+  cursor: pointer;
+`;
+
+const Actions = styled.div`
+  flex: 1;
+`;
+
 class Panel extends Component {
+  ban = () => {
+
+  }
+
+  remove = () => {
+
+  }
+
   render() {
     const { data } = this.props;
     return data ? (
@@ -37,6 +60,11 @@ class Panel extends Component {
         <Row>
           <div>IP Address</div>
           <div>{ data.ip }</div>
+        </Row>
+        <Row>
+          <Actions>Actions</Actions>
+          <Button onClick={this.remove()}>Remove</Button>
+          <Button onClick={this.ban()}>Ban by IP</Button>
         </Row>
       </Container>
     ) : null;
