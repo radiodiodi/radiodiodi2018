@@ -23,15 +23,6 @@ const Row = styled.div`
   padding: 0.5rem;
 `;
 
-const Buttons = styled.div`
-  @media screen and (max-width: 400px) {
-    width: 100%;
-  }
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
 const Button = styled.button`
   margin: 0 0.5rem;
   @media screen and (max-width: 400px) {
@@ -105,7 +96,7 @@ class Panel extends Component {
 
   renderModal = () => {
     const { data } = this.props;
-    const { showRemoveModal, showBanModal } = this.state;
+    const { showRemoveModal } = this.state;
     return (
       <Fragment>
         <Modal

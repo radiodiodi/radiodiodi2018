@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Row = styled.div`
@@ -9,15 +9,6 @@ const Row = styled.div`
   &:hover {
     background-color: ${p => p.theme.color.shimmer};
   }
-`;
-
-const Expanded = styled.div`
-  padding: 0.5rem 0;
-  background-color: ${p => p.theme.color.contrast};
-`;
-
-const ExpandedRow = styled.div`
-  padding: 0.2rem 0;
 `;
 
 class Ban extends Component {

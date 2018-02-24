@@ -111,8 +111,7 @@ class AdminPage extends Component {
   }
 
   render() {
-    const { messages, bans, selected, selectedType, loading } = this.state;
-    const { history } = this.props;
+    const { messages, bans, selected, loading } = this.state;
 
     const messageRows = messages.map((m, index) => 
       <Message selected={this.isSelected(m, selected, 'message')} onSelect={this.onSelect} key={index} data={m} 
