@@ -14,10 +14,13 @@ const Container = styled.div`
 `;
 
 const Column = styled.div`
+  ${ p => p.hidden && 'display: none' };
   margin: 0.5rem 0.5rem;
 
   flex: 1 0 auto;
-  min-width: 400px;
+  @media screen and (min-width: 500px) {
+    min-width: 400px;
+  }
 
   color: ${p => p.theme.color.white};
 `;
@@ -97,6 +100,7 @@ class AdminPage extends Component {
   renderPanel = () => {
     const { selected, selectedType } = this.state;
     const { history } = this.props;
+
     if (selectedType === 'message') {
       return <MessagePanel refresh={this.refresh} history={history} data={selected} />
     } else if (selectedType === 'ban') {
@@ -130,7 +134,7 @@ class AdminPage extends Component {
             { banRows }
           </Log>
         </Column>
-        <Column>
+        <Column hidden={ !selected }>
           { this.renderPanel() }
         </Column>
       </Container>

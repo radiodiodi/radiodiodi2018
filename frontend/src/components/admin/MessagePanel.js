@@ -12,15 +12,33 @@ const Container = styled.div`
 const Row = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 400px) {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+  }
+  justify-content: space-between;
   padding: 0.5rem;
 `;
 
+const Buttons = styled.div`
+  @media screen and (max-width: 400px) {
+    width: 100%;
+  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 const Button = styled.button`
+  margin: 0 0.5rem;
+  @media screen and (max-width: 400px) {
+    margin: 0 0;
+  }
   background-color: ${p => p.theme.color.pink};
   padding: 1rem;
-  margin: 0 0.5rem;
   border: 0px;
   font-size: 1rem;
   font-family: 'Comfortaa';
@@ -61,6 +79,9 @@ const ModalButtons = styled.div`
 
 const ModalButton = styled(Button)`
   flex: 1;
+  @media screen and (max-width: 400px) {
+    margin: 0 0.5rem;
+  }
 `;
 
 class Panel extends Component {
@@ -160,8 +181,10 @@ class Panel extends Component {
         </Row>
         <Row>
           <Actions>Actions</Actions>
-          <Button onClick={() => this.setState({ showRemoveModal: true })}>Remove</Button>
-          <Button onClick={() => this.setState({ showBanModal: true })}>Ban by IP</Button>
+          <Buttons>
+            <Button onClick={() => this.setState({ showRemoveModal: true })}>Remove</Button>
+            <Button onClick={() => this.setState({ showBanModal: true })}>Ban by IP</Button>
+          </Buttons>
         </Row>
       </Container>
     ) : null;
