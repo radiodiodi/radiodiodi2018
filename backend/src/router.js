@@ -33,6 +33,7 @@ const checkAuthorization = async (ctx, next) => {
     return;
   }
 
+  utils.info('Auth succeeded.');
   await next();
 }
 
@@ -47,7 +48,7 @@ admin.get('/messages', async ctx => {
   ctx.type = 'application/json';
 });
 
-admin.delete('/messages/remove/:id', checkAuthorization, async ctx => {
+admin.delete('/messages/remove/:id', async ctx => {
   try {
     const id = ctx.params.id;
     models.messages.remove({ _id: id });
@@ -58,12 +59,20 @@ admin.delete('/messages/remove/:id', checkAuthorization, async ctx => {
   }
 });
 
-admin.delete('/users/ban/:id', checkAuthorization, async ctx => {
+admin.delete('/users/ban/:id', async ctx => {
   try {
     const id = ctx.params.id;
     const message = await models.messages.findOne({ _id: id });
-    console.log(id)
-    console.log(message)
+    
+    const ip = message.ip;
+    const existingBan = await models.bans.findOne({ ip, });
+    if (existingBan) {
+      ctx.throw(400, JSON.stringify({
+        error: 'User already banned.'
+      }));
+      return;
+    }
+
     models.bans.insert({
       ip: message.ip,
       name: message.name,
@@ -76,6 +85,37 @@ admin.delete('/users/ban/:id', checkAuthorization, async ctx => {
     utils.error(err);
     ctx.throw(500, err);
   }
+});
+
+admin.delete('/users/unban/:ip', async ctx => {
+  try {
+    const ip = ctx.params.ip;    
+    const existingBan = await models.bans.findOne({ ip, });
+
+    if (!existingBan) {
+      ctx.throw(400, JSON.stringify({
+        error: 'User not banned.'
+      }));
+      return;
+    }
+
+    models.bans.remove({ ip, });
+    ctx.status = 200;
+  } catch (err) {
+    utils.error(err);
+    ctx.throw(500, err);
+  }
+});
+
+admin.get('/users/banned', async ctx => {
+  const bans = await models.bans.find({}, {
+    sort: { timestamp: 1 },
+  });
+
+  ctx.body = JSON.stringify({
+    bans,
+  });
+  ctx.type = 'application/json';
 });
 
 router.use('/admin', checkAuthorization, admin.routes(), admin.allowedMethods());

@@ -26,6 +26,7 @@ const Log = styled.div`
 
 const Row = styled.div`
   padding: 0.2rem;
+  ${ p => p.error && 'color: red'};
 `;
 
 const InputContainer = styled.div`
@@ -118,7 +119,7 @@ class Shoutbox extends Component {
     const c = new Date(Date.now());
     const stamp = `${c.getDate()}.${c.getMonth()} ${c.getHours()}:${c.getMinutes()}`;
     return rows.map((row, index) => 
-      <Row key={index}>{`${stamp} ${row.name}: ${row.text}`}</Row>,
+      <Row error={row.error} key={index}>{`${stamp} ${row.name}: ${row.text}`}</Row>,
     );
   }
 

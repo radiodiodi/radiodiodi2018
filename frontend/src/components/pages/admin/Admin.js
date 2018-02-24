@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Message from '../../admin/message';
-import Panel from '../../admin/panel';
-import { fetchMessages } from '../../../utils';
+import Message from '../../admin/Message';
+import MessagePanel from '../../admin/MessagePanel';
+import BanPanel from '../../admin/BanPanel';
+import Ban from '../../admin/Ban';
+import { fetchMessages, fetchBans } from '../../../utils';
 
 const Container = styled.div`
   display: flex;
@@ -25,12 +27,15 @@ const Log = styled.div`
   overflow: scroll;
 
   border: 1px solid ${p => p.theme.color.white};
+  margin-bottom: 2rem;
 `;
 
 class AdminPage extends Component {
   state = {
     messages: [],
+    bans: [],
     selected: null,
+    selectedType: 'message', // or ban
     loading: true,
   }
 
@@ -49,32 +54,68 @@ class AdminPage extends Component {
         history.push('/login');
       }
     }
+  }
 
+  getBans = async () => {
+    try {
+      const bans = await fetchBans();
+      this.setState({
+        bans,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   componentDidMount() {
-    this.getMessages();
+    this.refresh();
   }
 
   componentDidUpdate = () => {
     // Scroll to bottom of chat log
-    this.log.scrollTop = this.log.scrollHeight;
+    this.log && (this.log.scrollTop = this.log.scrollHeight);
   }
 
-  onSelect = data => {
+  onSelect = (data, type) => {
     console.log(data);
     this.setState({
       selected: data,
+      selectedType: type,
     });
   }
 
-  isSelected = (msg, other) => msg && other && msg._id === other._id;
+  isSelected = (msg, other, type) => {
+    const { selectedType } = this.state;
+    return msg && other && msg._id === other._id && type === selectedType;
+  }
+
+  refresh = () => {
+    this.getMessages();
+    this.getBans();
+  }
+
+  renderPanel = () => {
+    const { selected, selectedType } = this.state;
+    const { history } = this.props;
+    if (selectedType === 'message') {
+      return <MessagePanel refresh={this.refresh} history={history} data={selected} />
+    } else if (selectedType === 'ban') {
+      return <BanPanel refresh={this.refresh} history={history} data={selected} />
+    } else {
+      throw new Error('Invalid selected type.');
+    }
+  }
 
   render() {
-    const { messages, selected, loading } = this.state;
+    const { messages, bans, selected, selectedType, loading } = this.state;
     const { history } = this.props;
+
     const messageRows = messages.map((m, index) => 
-      <Message selected={this.isSelected(m, selected)} onSelect={this.onSelect} key={index} data={m} 
+      <Message selected={this.isSelected(m, selected, 'message')} onSelect={this.onSelect} key={index} data={m} 
+    />);
+
+    const banRows = bans.map((b, index) => 
+      <Ban selected={this.isSelected(b, selected, 'ban')} onSelect={this.onSelect} key={index} data={b} 
     />);
   
     return !loading ? (
@@ -84,9 +125,13 @@ class AdminPage extends Component {
           <Log ref={l => { this.log = l }}>
             { messageRows }
           </Log>
+          <h2>Banned users</h2>
+          <Log ref={l => { this.bans = l }}>
+            { banRows }
+          </Log>
         </Column>
         <Column>
-          <Panel refresh={this.getMessages} history={history} data={selected} />
+          { this.renderPanel() }
         </Column>
       </Container>
     ) : (

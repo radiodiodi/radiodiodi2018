@@ -137,10 +137,74 @@ const banUserForMessage = async id => {
   }
 }
 
+const liftBan = async ip => {
+  const req = composeRequest(`${BACKEND_URL}/admin/users/unban/${ip}`, null, 'DELETE');
+
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 401) {
+      throw new AuthError();
+    } 
+    
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    console.log('Backend messages response:');
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
+const fetchBans = async () => {
+  const req = composeRequest(`${BACKEND_URL}/admin/users/banned`, null, 'GET');
+
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 401) {
+      throw new AuthError();
+    } 
+    
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    console.log('Backend messages response:');
+    console.log(data);
+
+    return data.bans;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 export {
   checkJWTAuth,
   fetchMessages,
   removeMessage,
   banUserForMessage,
+  fetchBans,
+  liftBan,
   AuthError,
 }

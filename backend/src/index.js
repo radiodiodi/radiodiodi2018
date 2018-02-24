@@ -52,7 +52,7 @@ const rateLimit = require('ws-rate-limit')('3s', 1);
 wss.on('connection', async (ws, req) => {
   rateLimit(ws);
 
-  ws.on('message', data => {
+  ws.on('message', async data => {
     const { name, text } = JSON.parse(data);
     utils.info(`Websocket: Received: "${text}" from "${name}"`);
 
@@ -62,6 +62,20 @@ wss.on('connection', async (ws, req) => {
       text,
       ip: req.connection.remoteAddress,
     };
+
+    const banned = await models.bans.findOne({ ip: message.ip });
+    console.log(banned)
+    if (banned) {
+      ws.send(JSON.stringify({
+        message: {
+          name: 'SERVER',
+          text: 'You are banned.',
+          timestamp: new Date(Date.now()),
+          error: true,
+        },
+      }));
+      return;
+    }
 
     models.messages.insert(message);
 
@@ -91,5 +105,15 @@ wss.on('connection', async (ws, req) => {
   }));
 
   ws.on('error', error => utils.error(`Websocket error. ${error}`));
-  ws.on('limited', data => utils.warning(`User from ip "${req.connection.remoteAddress}" has been throttled.`));
+  ws.on('limited', data => {
+    utils.warning(`User from ip "${req.connection.remoteAddress}" has been throttled.`);
+    ws.send(JSON.stringify({
+      message: {
+        name: 'SERVER',
+        text: 'Calm down, you are sending too many messages.',
+        timestamp: new Date(Date.now()),
+        error: true,
+      },
+    }));
+  });
 });

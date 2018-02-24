@@ -6,6 +6,7 @@ import { removeMessage, banUserForMessage } from '../../utils';
 const Container = styled.div`
   background-color: ${p => p.theme.color.contrast};
   padding: 0.5rem;
+  margin-bottom: 2rem;
 `;
 
 const Row = styled.div`

@@ -14,7 +14,7 @@ const Container = styled.div`
 class Message extends Component {
   select = () => {
     const { data, onSelect } = this.props;
-    onSelect(data);
+    onSelect(data, 'message');
   }
 
   render() {
