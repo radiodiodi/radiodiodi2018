@@ -20,8 +20,15 @@ const checkAuthorization = async (ctx, next) => {
   const json = await resp.json();
 
   if (json.error_description) {
-    ctx.throw(400, JSON.stringify({
+    ctx.throw(401, JSON.stringify({
       error: json.error_description,
+    }));
+    return;
+  }
+
+  if (json.hd !== 'radiodiodi.fi') {
+    ctx.throw(401, JSON.stringify({
+      error: 'Not a radiodiodi.fi email.',
     }));
     return;
   }
