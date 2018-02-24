@@ -27,7 +27,8 @@ const Column = styled.div`
 
 const Log = styled.div`
   max-height: 20rem;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   border: 1px solid ${p => p.theme.color.white};
   margin-bottom: 2rem;
