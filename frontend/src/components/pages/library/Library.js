@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { fetchSongsByField } from '../../../utils';
+import { fetchSongsByField, fetchSongs } from '../../../utils';
 
 const Container = styled.div`
-
 `;
 
 const Results = styled.div`
-  
 `;
 
 const Result = styled.div`
@@ -44,12 +42,16 @@ const SearchContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+
+  margin-bottom: 2rem;
 `;
 
 const SearchButton = styled.a`
   padding: 0.5rem;
   background-color: ${p => p.theme.color.white};
   color: ${p => p.theme.color.dark};
+  min-width: 5rem;
+  text-align: center;
   cursor: pointer;
 `;
 
@@ -67,7 +69,6 @@ const TypeLabel = styled.label`
 `;
 
 const TypePicker = styled.input`
-
 `;
 
 class Library extends Component {
@@ -80,9 +81,35 @@ class Library extends Component {
     trans: PropTypes.any
   };
 
+  fetchAll = async () => {
+    try {
+      const songs = await fetchSongs();
+      return songs;
+    } catch (err) {
+      console.log(err);
+      return [];
+    }
+  }
+
+  loadInitial = async () => {
+    const results = await this.fetchAll();
+    this.setState({
+      results,
+    });
+  }
+
+
+  componentDidMount() {
+    this.loadInitial();
+  }
+
   fetchBy = async (type, value) => {
     try {
-      return await fetchSongsByField(type, value);
+      if (value.length > 0) {
+        return await fetchSongsByField(type, value);
+      } else {
+        return await this.fetchAll();
+      }
     } catch (err) {
       console.log(err);
       return [];

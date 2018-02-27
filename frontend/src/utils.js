@@ -237,6 +237,38 @@ const fetchSongsByField = async (field, title) => {
   }
 }
 
+const fetchSongs = async () => {
+  const req = composeRequest(`${MUSIC_LIBRARY_URL}`, null, 'GET');
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 429) { // too many requests
+      await wait(1000); // ms
+      return fetchSongs();
+    }
+    
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    console.log('Backend messages response:');
+    console.log(data);
+
+    return data.results;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 export {
   checkJWTAuth,
   fetchMessages,
@@ -246,4 +278,5 @@ export {
   liftBan,
   AuthError,
   fetchSongsByField,
+  fetchSongs,
 }
