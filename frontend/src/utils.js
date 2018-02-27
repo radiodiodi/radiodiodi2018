@@ -1,9 +1,11 @@
 import 'whatwg-fetch';
 import Cookie from 'universal-cookie';
+import { setTimeout } from 'timers';
 
 const cookie = new Cookie();
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_HTTP_URL;
+const MUSIC_LIBRARY_URL = process.env.REACT_APP_MUSIC_LIBRARY_URL;
 
 class AuthError extends Error {
   constructor() {
@@ -199,6 +201,42 @@ const fetchBans = async () => {
   }
 }
 
+const wait = time => new Promise((resolve, reject) => {
+  setTimeout(resolve, time);
+});
+
+const fetchSongsByField = async (field, title) => {
+  const req = composeRequest(`${MUSIC_LIBRARY_URL}/${field}/${title}`, null, 'GET');
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 429) { // too many requests
+      await wait(1000); // ms
+      return fetchSongsByField(field, title);
+    }
+    
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    console.log('Backend messages response:');
+    console.log(data);
+
+    return data.results;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 export {
   checkJWTAuth,
   fetchMessages,
@@ -207,4 +245,5 @@ export {
   fetchBans,
   liftBan,
   AuthError,
+  fetchSongsByField,
 }
