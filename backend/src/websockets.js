@@ -7,7 +7,10 @@ let wss;
 const start = () => {
   utils.info(`Listening for Websockets on ${process.env.HOST} on port ${process.env.WS_PORT}.`);
 
-  wss = new WebSocket.Server({ port: process.env.WS_PORT });
+  wss = new WebSocket.Server({
+      host: process.env.HOST,
+      port: process.env.WS_PORT
+  });
   const rateLimit = require('ws-rate-limit')('3s', 1);
   wss.on('connection', async (ws, req) => {
     rateLimit(ws);
