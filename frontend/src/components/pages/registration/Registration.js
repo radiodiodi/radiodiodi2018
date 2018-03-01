@@ -9,6 +9,7 @@ import {
   RadioButton,
   SubmitButton
 } from '../../common/Form';
+import RegistrationForm from './RegistrationForm';
 
 const Container = styled.div`
   display: flex;
@@ -19,18 +20,9 @@ const Container = styled.div`
 `;
 
 const Paragraph = styled.div`
-  max-width: 50%;
-  margin: 0;
   color: ${p => p.theme.color.white};
-  @media screen and (max-width: 800px) {
-    max-width: 100%;
-  }
-`;
-
-const Paragraph2 = Paragraph.extend`
-  margin-bottom: 10px;
-  max-width: initial;
   max-width: 800px;
+  margin: auto;
 `;
 
 const Title = styled.h3`
@@ -51,38 +43,22 @@ const ContentRow = styled.div`
   }
 `;
 
+const Form = styled.form`min-width: 500px;`;
+
 class Registration extends Component {
   static contextTypes = {
     trans: PropTypes.any
   };
 
   render() {
-    const sponsorInterval = 3000; // milliseconds
     const { trans } = this.context;
 
     return (
       <Fragment>
-        <CountdownSection />
         <Container>
           <Paragraph>
             <Title>{trans.registration}</Title>
-            <form>
-              <TextInput label="Ohjelman nimi" />
-              <TextInput label="Esiintyjä (tiimi)" />
-              <TextInput label="Vastuuhenkilö" />
-              <TextInput label="Vastuuhenkilön sähköpostiosoite" type="email" />
-              <TextInput label="Genre" />
-              <TextArea label="Lisätietoja" />
-              <RadioButton
-                label="Tuottaja"
-                options={[
-                  'Minulla on tuottaja',
-                  'Tarvitsen tuottajan',
-                  'En tiedä mitä tämä tarkoittaa'
-                ]}
-              />
-              <SubmitButton />
-            </form>
+            <RegistrationForm />
           </Paragraph>
         </Container>
       </Fragment>

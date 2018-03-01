@@ -2,13 +2,21 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 const Text = styled.div`
+  display: inline-block;
+  width: ${p => (p.full ? '100%' : '50%')};
+  padding: 10px;
   margin-bottom: 1rem;
-  input,
+  vertical-align: top;
+  input:not([type='radio']),
   textarea {
+    background-color: ${p => p.theme.color.white};
     padding: 10px;
     border-radius: 5px;
+    width: 100%;
     border: none;
+    font-size: 1.1rem;
   }
+  ${p => (p.req ? `& > label:after { content: '*'; }` : '')};
 `;
 
 const Label = styled.label`
@@ -27,33 +35,52 @@ const Button = styled.input`
   border: 0;
 `;
 
-export function TextInput({ label, type = 'text' }) {
+const Radio = styled.div`
+  margin: 10px;
+  * {
+    padding: 10px;
+  }
+`;
+
+export function TextInput({ id, label, type = 'text', req, handler }) {
   return (
-    <Text>
+    <Text req={req}>
       <Label>{label}</Label>
-      <input type={type} />
+      <input type={type} onChange={e => handler(id, e.target.value)} />
     </Text>
   );
 }
 
-export function TextArea({ label, rows = 5 }) {
+export function TextArea({ id, label, rows = 5, req, handler }) {
   return (
-    <Text>
+    <Text full={true} req={req}>
       <Label>{label}</Label>
-      <textarea rows={rows} />
+      <textarea rows={rows} onChange={e => handler(id, e.target.value)} />
     </Text>
   );
 }
 
-export function RadioButton({ label, options, name = 'radio' }) {
+export function RadioButton({
+  id,
+  label,
+  options,
+  name = 'radio',
+  req,
+  handler
+}) {
   return (
-    <Text>
+    <Text req={req}>
       <Label>{label}</Label>
       {options.map(option => (
-        <div>
-          <input type="radio" id={option} name={name} />
+        <Radio key={option}>
+          <input
+            type="radio"
+            id={option}
+            name={name}
+            onChange={e => handler(id, option)}
+          />
           <label htmlFor={option}>{option}</label>
-        </div>
+        </Radio>
       ))}
     </Text>
   );
