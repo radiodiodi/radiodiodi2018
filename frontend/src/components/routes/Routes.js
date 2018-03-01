@@ -6,6 +6,7 @@ import Header from '../common/Header';
 import Footer from '../common/Footer';
 import Frontpage from '../pages/frontpage/Frontpage';
 import Sponsors from '../pages/sponsors/Sponsors';
+import Registration from '../pages/registration/Registration';
 import Shoutbox from '../pages/shoutbox/Shoutbox';
 import Admin from '../pages/admin/Admin';
 import Login from '../pages/admin/Login';
@@ -40,6 +41,7 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/" component={Frontpage} />
             <Route path="/sponsors" component={Sponsors} />
+            <Route path="/registration" component={Registration} />
             <Route path="/shoutbox" component={Shoutbox} />
             <Route path="/admin" component={Admin} />
             <Route path="/login" component={Login} />

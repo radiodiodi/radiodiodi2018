@@ -91,13 +91,14 @@ class Navigation extends Component {
 
     return (
       <Rectangle>
-        <BurgerButton onClick={ this.toggle }>
+        <BurgerButton onClick={this.toggle}>
           <i className="fa fa-bars" />
         </BurgerButton>
-        <Menu expanded={ expanded }>
-          <Link to="/">{ trans.frontpage }</Link>
-          <Link to="/sponsors">{ trans.forbusinesses }</Link>
-          <Language onClick={ changeLanguage }>{ trans.changelang }</Language>
+        <Menu expanded={expanded}>
+          <Link to="/">{trans.frontpage}</Link>
+          <Link to="/registration">{trans.registration}</Link>
+          <Link to="/sponsors">{trans.forbusinesses}</Link>
+          <Language onClick={changeLanguage}>{trans.changelang}</Language>
         </Menu>
       </Rectangle>
     );

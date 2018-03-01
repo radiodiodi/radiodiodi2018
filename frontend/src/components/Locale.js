@@ -32,7 +32,8 @@ const trans = new LocalizedStrings({
     radioprogramparagraph1:
       'Radiodiodi tarvitsee sinua! Oletko aina haaveillut oman radio-ohjelman tekemisestä? Ai et vai? Ei se haittaa!',
     radioprogramparagraph2:
-      'Radiodiodin ohjelma on aina ollut yhteisönsä tekemää ja näköistä. Lähetyskautemme aikana radiossa kuullaan satoja eri ääniä, joista yksi voit olla sinä. Ohjelmantekijäilmoittautuminen aukeaa 5.3. Lisätietoja ohjelman tekemisestä saa päätoimittajalta.'
+      'Radiodiodin ohjelma on aina ollut yhteisönsä tekemää ja näköistä. Lähetyskautemme aikana radiossa kuullaan satoja eri ääniä, joista yksi voit olla sinä. Ohjelmantekijäilmoittautuminen aukeaa 5.3. Lisätietoja ohjelman tekemisestä saa päätoimittajalta.',
+    registration: 'Ilmoittaudu'
   },
   en: {
     frontpage: 'Front page',
@@ -63,7 +64,8 @@ const trans = new LocalizedStrings({
     radioprogramparagraph1:
       'Radiodiodi needs you! Have you always wanted to host your own radio show? No? Not a problem!',
     radioprogramparagraph2:
-      'Radiodiodi looks and sounds like its community. During the broadcast period there are over a hundred different voices heard – and you can be one of them. The registration begins on March 5th. Contact the editor-in-chief for more info.'
+      'Radiodiodi looks and sounds like its community. During the broadcast period there are over a hundred different voices heard – and you can be one of them. The registration begins on March 5th. Contact the editor-in-chief for more info.',
+    registration: 'Sign up'
   }
 });
 
