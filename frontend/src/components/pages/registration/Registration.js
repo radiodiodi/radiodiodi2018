@@ -58,7 +58,7 @@ class Registration extends Component {
         <Container>
           <Paragraph>
             <Title>{trans.registration}</Title>
-            <RegistrationForm />
+            <h4>{trans.registrationopensat}</h4>
           </Paragraph>
         </Container>
       </Fragment>
