@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import {
+  registerProgramme,
+} from '../../../utils';
+
+import {
   TextInput,
   TextArea,
   RadioButton,
@@ -21,7 +25,7 @@ export default class RegistrationForm extends Component {
     this.setState(state => ({ ...state, [key]: value }));
   }
 
-  submit(e) {
+  async submit(e) {
     const requiredKeys = [
       'name',
       'team',
@@ -33,7 +37,9 @@ export default class RegistrationForm extends Component {
     const { state } = this;
     const missing = requiredKeys.filter(key => state[key] === undefined);
     if (missing.length === 0) {
-      fetch('http://localhost:8080/api/register', { method: 'POST', body: JSON.stringify(state), headers: { 'Content-Type': 'application/json' } });
+      const ok = await registerProgramme(state);
+      console.log(state)
+      ok && this.setState(state => ({ ...state, errors: ['Failed to register programme!'] }));
     } else {
       this.setState(state => ({ ...state, errors: missing }));
     }

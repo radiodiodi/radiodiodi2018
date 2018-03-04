@@ -3,7 +3,7 @@ require('dotenv').config()
 const ejs = require('ejs');
 const fs = require('fs');
 const htmlToText = require('html-to-text');
-
+const util = require('util');
 const htmlTemplate = fs.readFileSync('./resource/email.html', 'utf8');
 
 var send = require('gmail-send')({
@@ -12,10 +12,19 @@ var send = require('gmail-send')({
   subject: 'Radiodiodi 2018 ohjelmantekijäilmoittautuminen'
 });
 
-const sendEmail = (formParams) => {
+const sendPromise = util.promisify(send);
+
+const sendEmail = async formParams => {
   const html = ejs.render(htmlTemplate, { data: formParams });
   const text = htmlToText.fromString(html);
-  return send({ to: formParams.email, html, text });
+  try {
+    return await sendPromise({ to: formParams.email, html, text });
+  } catch (err) {
+    console.log(err);
+    console.log('Email data:');
+    console.log(formParams);
+    throw err;
+  }
 }
 
 module.exports = {

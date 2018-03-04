@@ -3,6 +3,7 @@ const Router = require('koa-router');
 const models = require('./models');
 const utils = require('./utils');
 const websockets = require('./websockets');
+const util = require('util')
 
 const router = new Router();
 const email = require('./email')
@@ -174,8 +175,14 @@ router.get('/inspirational-quote', async ctx => {
 });
 
 router.post('/api/register', async ctx => {
-  email.sendEmail(ctx.request.body || {});
-  ctx.body = ctx.request.body;
-})
+  const data = JSON.parse(ctx.request.body);
+  try {
+    await email.sendEmail(data || {});
+    ctx.body = data;
+    utils.info(`Sent registration email (user: ${data.email})`);
+  } catch (err) {
+    ctx.throw(500, 'Failed to send email.');
+  }
+});
 
 module.exports = router;

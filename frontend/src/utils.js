@@ -14,7 +14,14 @@ class AuthError extends Error {
   }
 }
 
-const composeRequest = (endpoint, id_token, method = 'GET') => {
+/**
+ * Create Request object
+ * @param {String} endpoint 
+ * @param {String} id_token 
+ * @param {String} method
+ * @param {Object} body
+ */
+const composeRequest = (endpoint, id_token, method = 'GET', body = {}) => {
   const token = id_token || cookie.get('jwt');
 
   const headers = new Headers();
@@ -22,6 +29,7 @@ const composeRequest = (endpoint, id_token, method = 'GET') => {
   const req = new Request(endpoint, {
     headers,
     method,
+    body,
   });
 
   return req;
@@ -269,6 +277,20 @@ const fetchSongs = async () => {
   }
 }
 
+const registerProgramme = async data => {
+  const body = JSON.stringify(data);
+  const req = composeRequest(`${BACKEND_URL}/api/register`, null, 'POST', body);
+
+  try {
+    const resp = fetch(req);
+    return resp.ok;
+  } catch (err) {
+    console.log(err);
+    return false;
+  }
+}
+
+
 export {
   checkJWTAuth,
   fetchMessages,
@@ -279,4 +301,5 @@ export {
   AuthError,
   fetchSongsByField,
   fetchSongs,
+  registerProgramme,
 }
