@@ -164,7 +164,10 @@ router.get('/stats', async ctx => {
 });
 
 router.get('/inspirational-quote', async ctx => {
-  ctx.body = `Kukkakaalia - kakkakuulia: hauska munansaannos`;
+  ctx.body = JSON.stringify({
+    quote: `Kukkakaalia - kakkakuulia: hauska munansaannos`,
+  });
+  ctx.type = 'application/json';
 });
 
 module.exports = router;
