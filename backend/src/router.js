@@ -3,6 +3,7 @@ const Router = require('koa-router');
 const models = require('./models');
 const utils = require('./utils');
 const websockets = require('./websockets');
+
 const router = new Router();
 const email = require('./email')
 
@@ -165,7 +166,11 @@ router.get('/stats', async ctx => {
 });
 
 router.get('/inspirational-quote', async ctx => {
-  ctx.body = `Kukkakaalia - kakkakuulia: hauska munansaannos`;
+  ctx.body = JSON.stringify({
+    quote: `Kukkakaalia - kakkakuulia: hauska munansaannos`,
+  });
+  ctx.type = 'application/json';
+  ctx.set('Access-Control-Allow-Origin', '*');
 });
 
 router.post('/api/register', async ctx => {
