@@ -165,7 +165,7 @@ router.get('/stats', async ctx => {
   }
 });
 
-router.get('/inspirational-quote', cors(), async ctx => {
+router.get('/inspirational-quote', cors({ origin: '*' }), async ctx => {
   ctx.body = JSON.stringify({
     quote: `Kukkakaalia - kakkakuulia: hauska munansaannos`,
   });
