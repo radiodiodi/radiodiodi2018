@@ -10,8 +10,13 @@ import {
   TextInput,
   TextArea,
   RadioButton,
-  SubmitButton
+  SubmitButton,
+  ErrorLabel
 } from '../../common/Form';
+
+const ResponseMessage = styled.h4`
+  color: ${p => p.theme.color.pink};
+`
 
 export default class RegistrationForm extends Component {
   constructor(props) {
@@ -38,16 +43,21 @@ export default class RegistrationForm extends Component {
     const missing = requiredKeys.filter(key => state[key] === undefined);
     if (missing.length === 0) {
       const ok = await registerProgramme(state);
-      console.log(state)
-      ok && this.setState(state => ({ ...state, errors: ['Failed to register programme!'] }));
+      if (ok) {
+        this.setState({ ...state, sent: true })
+      } else {
+        this.setState(state => ({ ...state, errors: ['Failed to register programme!'] }));
+      }
     } else {
-      this.setState(state => ({ ...state, errors: missing }));
+      this.setState(state => ({ ...state, errors: 'missing-fields' }));
     }
-    e.preventDefault;
   }
 
   render() {
     const { handler, submit } = this;
+    if (this.state.sent) {
+      return <ResponseMessage>Kiitos ilmoittautumisesta! Olemme yhteydessä lähiaikoina.</ResponseMessage>
+    }
     return (
       <form>
         <TextInput id="name" label="Ohjelman nimi" req handler={handler} />
@@ -85,6 +95,7 @@ export default class RegistrationForm extends Component {
           req
           handler={handler}
         />
+        {this.state.errors === 'missing-fields' ? <ErrorLabel>Pakollisia kenttiä puuttuu. Tarkista lomake.</ErrorLabel> : null}
         <SubmitButton handler={submit} />
       </form>
     );

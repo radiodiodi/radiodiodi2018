@@ -282,7 +282,7 @@ const registerProgramme = async data => {
   const req = composeRequest(`${BACKEND_URL}/api/register`, null, 'POST', body);
 
   try {
-    const resp = fetch(req);
+    const resp = await fetch(req);
     return resp.ok;
   } catch (err) {
     console.log(err);

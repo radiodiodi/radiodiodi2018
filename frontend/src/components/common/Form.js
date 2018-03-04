@@ -45,6 +45,11 @@ const Radio = styled.div`
   }
 `;
 
+export const ErrorLabel = styled.p`
+  color: ${p => p.theme.color.yellow};
+  text-align: center;
+`
+
 export function TextInput({ id, label, type = 'text', req, handler }) {
   return (
     <Text req={req}>
