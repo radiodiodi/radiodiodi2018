@@ -1,20 +1,21 @@
 require('dotenv').config()
 
-var ejs = require('ejs');
-var fs = require('fs');
+const ejs = require('ejs');
+const fs = require('fs');
+const htmlToText = require('html-to-text');
 
-const htmlContent = fs.readFileSync('./resource/email.html', 'utf8');
+const htmlTemplate = fs.readFileSync('./resource/email.html', 'utf8');
 
 var send = require('gmail-send')({
   user: process.env.EMAIL_ADDRESS,
   pass: process.env.EMAIL_PASSWORD,
-  subject: 'Radiodiodi 2018 ohjelmantekijäilmoittautuminen',
-  text: 'TODO: Create plaintext version of mail',
+  subject: 'Radiodiodi 2018 ohjelmantekijäilmoittautuminen'
 });
 
 const sendEmail = (formParams) => {
-  const htmlRenderized = ejs.render(htmlContent, {});
-  return send({ to: formParams.email, html: htmlRenderized });
+  const html = ejs.render(htmlTemplate, { data: formParams });
+  const text = htmlToText.fromString(html);
+  return send({ to: formParams.email, html, text });
 }
 
 module.exports = {

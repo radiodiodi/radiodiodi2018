@@ -83,16 +83,16 @@
         width: 100% !important;
         max-width: none !important;
         height: auto !important;
-      }   
+      }
     }
   </style><style type="text/css">
-    
+
     #ko_singleArticleBlock_3 .links-color a, #ko_singleArticleBlock_3 .links-color a:link, #ko_singleArticleBlock_3 .links-color a:visited, #ko_singleArticleBlock_3 .links-color a:hover{
       color: #3f3f3f;
       color: #ef67b3;
       text-decoration: underline
     }
-     #ko_singleArticleBlock_3 .long-text p{ Margin: 1em 0px }  #ko_singleArticleBlock_3 .long-text p:last-child{ Margin-bottom: 0px }  #ko_singleArticleBlock_3 .long-text p:first-child{ Margin-top: 0px } 
+     #ko_singleArticleBlock_3 .long-text p{ Margin: 1em 0px }  #ko_singleArticleBlock_3 .long-text p:last-child{ Margin-bottom: 0px }  #ko_singleArticleBlock_3 .long-text p:first-child{ Margin-top: 0px }
     #ko_footerBlock_2 .links-color a, #ko_footerBlock_2 .links-color a:link, #ko_footerBlock_2 .links-color a:visited, #ko_footerBlock_2 .links-color a:hover{
       color: #cccccc;
       color: #cccccc;
@@ -103,15 +103,16 @@
   <center>
 
   <!-- preheaderBlock -->
-  
+
   <!-- /preheaderBlock -->
 
+  <div style="height: 3px; background: #ef67b3;"></div>
   <table class="vb-outer" width="100%" cellpadding="0" border="0" cellspacing="0" bgcolor="#bfbfbf" style="background-color: #bfbfbf;" id="ko_singleArticleBlock_3"><tbody><tr><td class="vb-outer" align="center" valign="top" bgcolor="#bfbfbf" style="padding-left: 9px; padding-right: 9px; background-color: #121F40;">
 
 <!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="570"><tr><td align="center" valign="top"><![endif]-->
         <div class="oldwebkit" style="max-width: 570px;">
         <table width="570" border="0" cellpadding="0" cellspacing="18" class="vb-container fullpad" bgcolor="#121F40" style="border-collapse: separate; border-spacing: 18px; padding-left: 0; padding-right: 0; width: 100%; max-width: 570px; background-color: #121F40;"><tbody><tr><td width="100%" valign="top" align="left" class="links-color">
-              
+
                 <img border="0" hspace="0" vspace="0" width="534" class="mobile-full" alt="" style="border: 0px; display: block; vertical-align: top; max-width: 534px; width: 100%; height: auto;" src="https:/radiodiodi.fi/static/media/logo_white.46c56f24.svg" alt="Radiodiodi"></td>
           </tr><tr><td><table align="left" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td style="font-size: 22px; font-family: Lucida Sans Unicode, Lucida Grande, sans-serif; color: #eeeeee; text-align: left;">
                 <span style="color: #eeeeee;">
@@ -123,6 +124,19 @@
                 <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px;">
                   Kiitos ilmoittautumisesta Radiodiodin ohjelmantekijäksi! Ilmoittautumisesi on vastaanotettu ja sinuun otetaan yhteyttä kun ohjelmakalenteri alkaa valmistua.
                 </p>
+                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px;">
+                  Alla on ilmoittautumisesi tiedot. Ilmoitathan, mikäli tietoihin tulee muutoksia.
+                </p>
+                <ul>
+                  <li>Ohjelman nimi: <%= data.name %></li>
+                  <li>Tekijä(tiimi): <%= data.team %></li>
+                  <li>Vastuuhenkilö: <%= data.responsible %></li>
+                  <li>Vastuuhenkilön sähköposti: <%= data.email %></li>
+                  <li>Ohjelman genre: <%= data.genre || '-' %></li>
+                  <li>Osallistujien (arvioitu) määrä: <%= data.participants %></li>
+                  <li>Lisätietoja: <%= data.info || '-' %></li>
+                  <li>Tarvitsen tuottajan: <%= data.producer %></li>
+                </ul>
                 <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px;">
                   Jos sinulla on kysyttävää, ole yhteydessä toimitukseen osoitteessa <a href="mailto:toimitus@radiodiodi.fi" style="color: #3f3f3f; color: #ef67b3; text-decoration: underline;">toimitus@radiodiodi.fi</a>. Lisätietoja päivittyy Wapun lähestyessä osoitteeseen radiodiodi.fi. Hauskaa Wapun odotusta!
                 </p>
@@ -142,12 +156,12 @@
 
 <!--[if (gte mso 9)|(lte ie 8)]><table align="center" border="0" cellspacing="0" cellpadding="0" width="570"><tr><td align="center" valign="top"><![endif]-->
         <div class="oldwebkit" style="max-width: 570px;">
-        <table width="570" style="border-collapse: separate; border-spacing: 9px; padding-left: 9px; padding-right: 9px; width: 100%; max-width: 570px;" border="0" cellpadding="0" cellspacing="9" class="vb-container halfpad" align="center"><tbody><tr><td class="long-text links-color" style="text-align: center; font-size: 13px; color: #919191; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif;"><p style="Margin: 1em 0px; Margin-bottom: 0px; Margin-top: 0px;">Email sent to <a href="mailto:%5Bmail%5D" style="color: #cccccc; color: #cccccc; text-decoration: underline;">[mail]</a></p></td>
+        <table width="570" style="border-collapse: separate; border-spacing: 9px; padding-left: 9px; padding-right: 9px; width: 100%; max-width: 570px;" border="0" cellpadding="0" cellspacing="9" class="vb-container halfpad" align="center"><tbody><tr><td class="long-text links-color" style="text-align: center; font-size: 13px; color: #919191; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif;"><p style="Margin: 1em 0px; Margin-bottom: 0px; Margin-top: 0px;">Lähetetty osoitteeseen <a href="mailto:<%= data.email %>" style="color: #cccccc; color: #cccccc; text-decoration: underline;"><%= data.email %></a></p></td>
           </tr><tr><td style="text-align: center;">
               <a href="%5Bunsubscribe_link%5D" style="text-decoration: underline; color: #ffffff; text-align: center; font-size: 13px; font-weight: normal; font-family: Arial, Helvetica, sans-serif;" target="_new"><span></span></a>
             </td>
           </tr><tr style="text-align: center;"><td align="center">
-                <a target="_new" href="https://radiodiodi.fi" style=";"><img border="0" hspace="0" vspace="0" src="https://radiodiodi.fi/static/media/mascot.13c8efcc.svg" alt="Vyötiäinen" style="border: 0px; Margin: auto; width: 200px;"></a>
+                <a target="_new" href="https://radiodiodi.fi" style=";"><img border="0" hspace="0" vspace="0" src="https://radiodiodi.fi/static/media/mascot.13c8efcc.svg" alt="Vyötiäinen" style="border: 0px; Margin: auto; width: 200px; Margin-top: 20px; Margin-bottom: 20px;"></a>
             </td>
           </tr></tbody></table></div>
 <!--[if (gte mso 9)|(lte ie 8)]></td></tr></table><![endif]-->
