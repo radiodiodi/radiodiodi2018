@@ -176,6 +176,7 @@ router.get('/inspirational-quote', async ctx => {
 
 router.post('/api/register', async ctx => {
   const data = JSON.parse(ctx.request.body);
+  console.log(data);
   try {
     await email.sendEmail(data || {});
     ctx.body = data;
