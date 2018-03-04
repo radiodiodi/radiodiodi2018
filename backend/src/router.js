@@ -3,6 +3,8 @@ const Router = require('koa-router');
 const models = require('./models');
 const utils = require('./utils');
 const websockets = require('./websockets');
+const cors = require('@koa/cors');
+
 const router = new Router();
 
 const admin = new Router();
@@ -163,7 +165,7 @@ router.get('/stats', async ctx => {
   }
 });
 
-router.get('/inspirational-quote', async ctx => {
+router.get('/inspirational-quote', cors(), async ctx => {
   ctx.body = JSON.stringify({
     quote: `Kukkakaalia - kakkakuulia: hauska munansaannos`,
   });
