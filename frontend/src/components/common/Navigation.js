@@ -96,7 +96,7 @@ class Navigation extends Component {
         </BurgerButton>
         <Menu expanded={expanded}>
           <Link to="/">{trans.frontpage}</Link>
-          <Link to="/registration">{trans.registration}</Link>
+          <Link to="/ilmo">{trans.registration}</Link>
           <Link to="/sponsors">{trans.forbusinesses}</Link>
           <Language onClick={changeLanguage}>{trans.changelang}</Language>
         </Menu>

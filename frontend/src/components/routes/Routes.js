@@ -42,7 +42,7 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/" component={Frontpage} />
             <Route path="/sponsors" component={Sponsors} />
-            <Route path="/registration" component={Registration} />
+            <Route path="/ilmo" component={Registration} />
             <Route path="/shoutbox" component={Shoutbox} />
             <Route path="/admin" component={Admin} />
             <Route path="/login" component={Login} />
