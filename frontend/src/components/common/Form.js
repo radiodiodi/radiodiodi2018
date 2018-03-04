@@ -87,5 +87,5 @@ export function RadioButton({
 }
 
 export function SubmitButton({ text = 'Lähetä', handler }) {
-  return <Button type="submit" onClick={handler} value={text} />;
+  return <Button type="button" onClick={handler} value={text} />;
 }

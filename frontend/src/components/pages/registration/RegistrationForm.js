@@ -14,13 +14,31 @@ export default class RegistrationForm extends Component {
     super(props);
     this.state = {};
     this.handler = this.handler.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   handler(key, value) {
     this.setState(state => ({ ...state, [key]: value }));
   }
 
-  submit() {}
+  submit(e) {
+    const requiredKeys = [
+      'name',
+      'team',
+      'responsible',
+      'email',
+      'participants',
+      'producer'
+    ];
+    const { state } = this;
+    const missing = requiredKeys.filter(key => state[key] === undefined);
+    if (missing.length === 0) {
+      fetch('http://localhost:8080/api/register', { method: 'POST', body: JSON.stringify(state), headers: { 'Content-Type': 'application/json' } });
+    } else {
+      this.setState(state => ({ ...state, errors: missing }));
+    }
+    e.preventDefault;
+  }
 
   render() {
     const { handler, submit } = this;
@@ -61,7 +79,7 @@ export default class RegistrationForm extends Component {
           req
           handler={handler}
         />
-        <SubmitButton onClick={submit} />
+        <SubmitButton handler={submit} />
       </form>
     );
   }
