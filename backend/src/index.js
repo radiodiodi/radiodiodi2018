@@ -3,8 +3,10 @@ require('dotenv').config()
 const _ = require('lodash');
 
 const Koa = require('koa');
+const koaBody = require('koa-body');
 const cors = require('@koa/cors');
 const app = new Koa();
+app.use(koaBody());
 
 const utils = require('./utils');
 const router = require('./router');

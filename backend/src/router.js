@@ -4,6 +4,7 @@ const models = require('./models');
 const utils = require('./utils');
 const websockets = require('./websockets');
 const router = new Router();
+const email = require('./email')
 
 const admin = new Router();
 
@@ -64,7 +65,7 @@ admin.delete('/users/ban/:id', async ctx => {
   try {
     const id = ctx.params.id;
     const message = await models.messages.findOne({ _id: id });
-    
+
     const ip = message.ip;
     const existingBan = await models.bans.findOne({ ip, });
     if (existingBan) {
@@ -90,7 +91,7 @@ admin.delete('/users/ban/:id', async ctx => {
 
 admin.delete('/users/unban/:ip', async ctx => {
   try {
-    const ip = ctx.params.ip;    
+    const ip = ctx.params.ip;
     const existingBan = await models.bans.findOne({ ip, });
 
     if (!existingBan) {
@@ -133,7 +134,7 @@ router.get('/auth', checkAuthorization, async ctx => {
 
 router.get('/stats', async ctx => {
   const options = {
-    'sort': [['time','desc']] 
+    'sort': [['time', 'desc']]
   };
 
   try {
@@ -144,11 +145,11 @@ router.get('/stats', async ctx => {
 
     Object.keys(mountpoints).forEach((m) => {
       const obj = {
-          'x': mountpoints[m].map((r) => r.time),
-          'y': mountpoints[m].map((r) => r.listeners),
-          'type': 'scatter',
-          'line': {'shape': 'spline'},
-          'name': m
+        'x': mountpoints[m].map((r) => r.time),
+        'y': mountpoints[m].map((r) => r.listeners),
+        'type': 'scatter',
+        'line': { 'shape': 'spline' },
+        'name': m
       };
       arr.push(obj);
     });
@@ -166,5 +167,10 @@ router.get('/stats', async ctx => {
 router.get('/inspirational-quote', async ctx => {
   ctx.body = `Kukkakaalia - kakkakuulia: hauska munansaannos`;
 });
+
+router.post('/api/register', async ctx => {
+  email.sendEmail(ctx.request.body || {});
+  ctx.body = ctx.request.body;
+})
 
 module.exports = router;
