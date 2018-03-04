@@ -4,6 +4,9 @@ import styled from 'styled-components';
 const Text = styled.div`
   display: inline-block;
   width: ${p => (p.full ? '100%' : '50%')};
+  @media (max-width: 800px) {
+    width: 100%;
+  }
   padding: 10px;
   margin-bottom: 1rem;
   vertical-align: top;
@@ -27,7 +30,7 @@ const Label = styled.label`
 
 const Button = styled.input`
   padding: 1rem;
-  margin: 1rem;
+  margin: 1rem 0 2rem;
   width: 100%;
   background-color: ${p => p.theme.color.pink};
   font-family: 'Comfortaa';
