@@ -18,7 +18,12 @@ const sendEmail = async formParams => {
   const html = ejs.render(htmlTemplate, { data: formParams });
   const text = htmlToText.fromString(html);
   try {
-    return await sendPromise({ to: formParams.email, html, text });
+    return await sendPromise({
+      to: formParams.email,
+      bcc: process.env.BCC_ADDRESS,
+      html,
+      text
+    });
   } catch (err) {
     console.log(err);
     console.log('Email data:');
