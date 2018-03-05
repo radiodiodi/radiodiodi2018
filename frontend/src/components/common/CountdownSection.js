@@ -25,7 +25,7 @@ const MonospaceSpan = styled.span`
   color: ${p => p.theme.color.yellow};
 `;
 
-const Date = styled.span`
+const Link = styled.a`
   color: ${p => p.theme.color.white};
 `;
 
@@ -42,15 +42,15 @@ class CountdownSection extends Component {
 
   render() {
     const { trans } = this.context;
-    const date = <Date>{ trans.registrationdate }</Date>
+    const link = <Link href="/ilmo">radiodiodi.fi/ilmo!</Link>
     return (
       <SectionContainer>
-        <h2>{trans.timetoregistration} {date}</h2>
-        <Countdown
+        <h2>{trans.registrationopen} {link}</h2>
+        { /* disabled */ false && <Countdown
           countTo={'Mon Mar 05 2018 09:00:00 GMT+0200 (EET)'}
           interval={1000}
           contentTransformFn={this.toMonospace}
-        />
+        /> }
       </SectionContainer>
     );
   }

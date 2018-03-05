@@ -40,7 +40,8 @@ const trans = new LocalizedStrings({
     album: 'Albumi',
     nosongsfound: 'Ei hakutuloksia :(',
     search: 'Hae',
-    registrationopensat: 'Ilmoittautuminen aukeaa klo 9:00 maanantaina 5.3.!'
+    registrationopensat: 'Ilmoittautuminen aukeaa klo 9:00 maanantaina 5.3.!',
+    registrationopen: 'Ohjelmantekijäilmo on auki! Käy ilmoittautumassa osoitteessa ',
   },
   en: {
     frontpage: 'Front page',
@@ -79,7 +80,8 @@ const trans = new LocalizedStrings({
     album: 'Album',
     nosongsfound: 'No songs found :(',
     search: 'Search',
-    registrationopensat: 'The registration opens at 9:00 on the 5th of March!'
+    registrationopensat: 'The registration opens at 9:00 on the 5th of March!',
+    registrationopen: 'Programme registration is open! Register your programme at ',
   }
 });
 

@@ -170,6 +170,7 @@ export default class RegistrationForm extends Component {
           propositions={Object.values(this.state.propositions)}
           handler={propositionHandler}
         />
+        <p>Pyrimme kuvaamaan kaikki ohjelmantekijät ohjelmakalenteria varten. Valokuvaustilaisuus järjestetään 4.4. ja 5.4. OUBS-studiolla.</p>
         <CheckBox
           id="photoshoot"
           label="Valokuvausaika"
@@ -180,7 +181,7 @@ export default class RegistrationForm extends Component {
           handler={checkboxHandler}
         />
         <p>Jos haluat ilmoittautua tuottajaksi, laita viestiä osoitteeseen <Link href="mailto:studio@radiodiodi.fi">studio@radiodiodi.fi!</Link></p>
-        <p>Ohjelmantekijät kuvataan 4.4. ja 5.4. OUBS-studiolla. Jos jäi kysymyksiä, vastauksia löytyy postilokerosta <Link href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi.</Link></p>
+        <p>Jos jäi kysymyksiä, vastauksia löytyy postilokerosta <Link href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi.</Link></p>
         {this.state.errors === 'missing-fields' ? <ErrorLabel>Pakollisia kenttiä puuttuu. Tarkista lomake.</ErrorLabel> : null}
         {this.state.errors === 'server-error' ? <ErrorLabel>Lomakkeen lähetys epäonnistui. Syötithän oikean sähköpostiosoitteen?</ErrorLabel> : null}
         <SubmitButton handler={submit} />
