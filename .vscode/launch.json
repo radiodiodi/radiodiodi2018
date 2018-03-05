@@ -1,6 +1,17 @@
 {
   "version": "0.2.0",
   "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch BE via yarn",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": [
+        "debug"
+      ],
+      "cwd": "${workspaceFolder}/backend",
+      "port": 9229
+    },
       {
           "name": "Chrome",
           "type": "chrome",

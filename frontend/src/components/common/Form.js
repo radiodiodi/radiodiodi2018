@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
+import DatePicker from './PropositionPicker';
+
 const Text = styled.div`
   display: inline-block;
   width: ${p => (p.full ? '100%' : '50%')};
@@ -79,7 +81,7 @@ export function RadioButton({
   return (
     <Text req={req}>
       <Label>{label}</Label>
-      {options.map(option => (
+      {options.map((option, index) => (
         <Radio key={option}>
           <input
             type="radio"
@@ -90,6 +92,15 @@ export function RadioButton({
           <label htmlFor={option}>{option}</label>
         </Radio>
       ))}
+    </Text>
+  );
+}
+
+export function PropositionPicker({id, req, label, handler, propositions}) {
+  return (
+    <Text full req={ req }>
+      <Label>{ label }</Label>
+      <DatePicker propositions={propositions} handler={propos => handler(id, propos)} />
     </Text>
   );
 }

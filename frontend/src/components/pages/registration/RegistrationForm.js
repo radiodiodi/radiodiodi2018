@@ -11,7 +11,8 @@ import {
   TextArea,
   RadioButton,
   SubmitButton,
-  ErrorLabel
+  ErrorLabel,
+  PropositionPicker,
 } from '../../common/Form';
 
 const ResponseMessage = styled.h4`
@@ -21,13 +22,26 @@ const ResponseMessage = styled.h4`
 export default class RegistrationForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      propositions: [],
+    };
     this.handler = this.handler.bind(this);
+    this.propositionHandler = this.propositionHandler.bind(this);
     this.submit = this.submit.bind(this);
   }
 
   handler(key, value) {
     this.setState(state => ({ ...state, [key]: value }));
+  }
+
+  propositionHandler(key, value) {
+    const obj = {
+      ...this.state[key],
+      ...value,
+    };
+
+    Object.keys(obj).forEach((key) => (obj[key] == null) && delete obj[key]);
+    this.setState(state => ({ ...state, [key]: obj}));
   }
 
   async submit(e) {
@@ -37,7 +51,8 @@ export default class RegistrationForm extends Component {
       'responsible',
       'email',
       'participants',
-      'producer'
+      'producer',
+      'propositions'
     ];
     const { state } = this;
     const missing = requiredKeys.filter(key => state[key] === undefined);
@@ -54,7 +69,7 @@ export default class RegistrationForm extends Component {
   }
 
   render() {
-    const { handler, submit } = this;
+    const { handler, propositionHandler, submit } = this;
     if (this.state.sent) {
       return <ResponseMessage>Kiitos ilmoittautumisesta! Olemme yhteydessä lähiaikoina.</ResponseMessage>
     }
@@ -94,6 +109,13 @@ export default class RegistrationForm extends Component {
           ]}
           req
           handler={handler}
+        />
+        <PropositionPicker
+          id="propositions"
+          label="Ohjelma-aikaehdotukset"
+          req
+          propositions={Object.values(this.state.propositions)}
+          handler={propositionHandler}
         />
         {this.state.errors === 'missing-fields' ? <ErrorLabel>Pakollisia kenttiä puuttuu. Tarkista lomake.</ErrorLabel> : null}
         <SubmitButton handler={submit} />
