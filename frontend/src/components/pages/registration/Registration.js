@@ -60,7 +60,7 @@ class Registration extends Component {
           <Paragraph>
             <Title>{trans.registration}</Title>
             <p>Radiodiodin ohjelma on yhteisön tuottamaa. Käytännössä kuka vain voi ilmoittatutua mukaan tekemään ohjelmaa. Kannustamme monipuolisuuteen ja luovaan hulluuteen.</p>
-            <p>Ohjelmavuorot ovat yleensä tunnin tai parin mittaisia. Yöaikaan kuulaan myös pidempää ohjelmaa. Ohjelmaan sisältyy tyypillisesti puhetta, musiikkia sekä Radiodiodin tuottamia sponsorien mainoksia, mutta puitteet sallivat myös esimerkiksi livemusiikin esittämisen.</p>
+            <p>Ohjelmavuorot ovat yleensä tunnin tai parin mittaisia. Yöaikaan kuullaan myös pidempää ohjelmaa. Ohjelmaan sisältyy tyypillisesti puhetta, musiikkia sekä Radiodiodin tuottamia sponsorien mainoksia, mutta puitteet sallivat myös esimerkiksi livemusiikin esittämisen.</p>
             <p>Ohjelman teknisestä toteutuksesta vastaa toimitus. Studiossa on ohjelman esiintyjien lisäksi aina tuottaja, joka vastaa lähetysteknisistä asioista. Radio kouluttaa myös kiinnostuneita tuottajia ohjelmantekijöistä, joten oman ohjelman tuottaminen itse on mahdollista.</p>
             <hr />
             <RegistrationForm />
