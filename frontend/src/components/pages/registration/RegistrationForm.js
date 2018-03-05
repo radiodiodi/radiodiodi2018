@@ -142,6 +142,7 @@ export default class RegistrationForm extends Component {
           req
           handler={handler}
         />
+        <p>Valitse alta kaikki sopivat aikavälit ohjelmallesi. Aikavälit eivät merkkaa ohjelmasi kestoa, vaan sitä, milloin voit pitää ohjelmasi.</p>
         <PropositionPicker
           id="propositions"
           label="Ohjelma-aikaehdotukset"
