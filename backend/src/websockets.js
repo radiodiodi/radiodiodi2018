@@ -19,11 +19,14 @@ const start = () => {
       const { name, text } = JSON.parse(data);
       utils.info(`Websocket: Received: "${text}" from "${name}"`);
 
+      const forwardedIP = req.headers['x-forwarded-for'];
+      const ip = forwardedIP && forwardedIP !== '127.0.0.1' ? forwardedIP : req.connection.remoteAddress;
+
       const message = {
         timestamp: new Date(Date.now()),
         name,
         text,
-        ip: ws.upgradeReq.connection.remoteAddress,
+        ip,
       };
 
       const banned = await models.bans.findOne({ ip: message.ip });
