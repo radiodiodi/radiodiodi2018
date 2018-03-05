@@ -12,7 +12,8 @@ const Text = styled.div`
   padding: 10px;
   margin-bottom: 1rem;
   vertical-align: top;
-  input:not([type='radio']),
+  
+  input:not([type='radio']):not([type='checkbox']),
   textarea {
     background-color: ${p => p.theme.color.white};
     padding: 10px;
@@ -61,11 +62,11 @@ export function TextInput({ id, label, type = 'text', req, handler }) {
   );
 }
 
-export function TextArea({ id, label, rows = 5, req, handler }) {
+export function TextArea({ id, label, rows = 5, req, handler, placeholder, maxlength }) {
   return (
     <Text full={true} req={req}>
       <Label>{label}</Label>
-      <textarea rows={rows} onChange={e => handler(id, e.target.value)} />
+      <textarea rows={rows} maxlength={maxlength} placeholder={placeholder} onChange={e => handler(id, e.target.value)} />
     </Text>
   );
 }
@@ -92,6 +93,29 @@ export function RadioButton({
           <label htmlFor={option}>{option}</label>
         </Radio>
       ))}
+    </Text>
+  );
+}
+
+export function CheckBox({
+  id, label, options, handler, req,
+}) {
+  return (
+    <Text req={req}>
+      <Label>{label}</Label>
+      {options.map((option, index) => {
+        return (
+          <Radio key={option}>
+            <input
+              type="checkbox"
+              id={option}
+              name={`${id}-${option}`}
+              onChange={e => handler(`${id}`, option, e.target.checked)}
+            />
+            <label htmlFor={option}>{option}</label>
+          </Radio>
+        );
+      })}
     </Text>
   );
 }

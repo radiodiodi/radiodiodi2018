@@ -13,6 +13,7 @@ import {
   SubmitButton,
   ErrorLabel,
   PropositionPicker,
+  CheckBox,
 } from '../../common/Form';
 
 const ResponseMessage = styled.h4`
@@ -33,11 +34,22 @@ export default class RegistrationForm extends Component {
     };
     this.handler = this.handler.bind(this);
     this.propositionHandler = this.propositionHandler.bind(this);
+    this.checkboxHandler = this.checkboxHandler.bind(this);
     this.submit = this.submit.bind(this);
   }
 
   handler(key, value) {
     this.setState(state => ({ ...state, [key]: value }));
+  }
+
+  checkboxHandler(key, option, value) {
+    this.setState(state => ({ 
+      ...state, 
+      [key]: {
+        ...state[key],
+        [option]: value,
+      }
+    }));
   }
 
   propositionHandler(key, value) {
@@ -66,6 +78,7 @@ export default class RegistrationForm extends Component {
       const data = {
         ...state,
         propositions: Object.values(state.propositions),
+        photoshoot: state.photoshoot && Object.keys(state.photoshoot) || [],
       };
       const ok = await registerProgramme(data);
       if (ok) {
@@ -79,7 +92,7 @@ export default class RegistrationForm extends Component {
   }
 
   render() {
-    const { handler, propositionHandler, submit } = this;
+    const { handler, propositionHandler, checkboxHandler, submit } = this;
     if (this.state.sent) {
       return (
         <Fragment>
@@ -98,7 +111,9 @@ export default class RegistrationForm extends Component {
         <TextArea 
           id="description" 
           label="Ohjelman kuvaus" 
-          req 
+          placeholder="Miten markkinoisit ohjelmaasi radion kuuntelijoille? Tämä tulee näkyviin ohjelmakalenteriin sen julkaisun jälkeen. Maksimissaan 400 merkkiä."
+          req
+          maxlength="400"
           handler={handler} 
         />
         <TextInput id="team" label="Esiintyjä (tiimi)" req handler={handler} />
@@ -130,7 +145,12 @@ export default class RegistrationForm extends Component {
           req
           handler={handler}
         />
-        <TextArea id="info" label="Lisätietoja" handler={handler} />
+        <TextArea 
+          id="info"
+          placeholder="Kysymyksiä toimitukselle? Erityisiä toiveita lähetykseen liittyen? Muita toiveita? Tänne vaan." 
+          label="Lisätietoja"
+          handler={handler} 
+        />
         <RadioButton
           id="producer"
           label="Tuottaja"
@@ -150,10 +170,19 @@ export default class RegistrationForm extends Component {
           propositions={Object.values(this.state.propositions)}
           handler={propositionHandler}
         />
+        <CheckBox
+          id="photoshoot"
+          label="Valokuvausaika"
+          options={[
+            '4.4.',
+            '5.4.',
+          ]}
+          handler={checkboxHandler}
+        />
         <p>Jos haluat ilmoittautua tuottajaksi, laita viestiä osoitteeseen <Link href="mailto:studio@radiodiodi.fi">studio@radiodiodi.fi!</Link></p>
+        <p>Ohjelmantekijät kuvataan 4.4. ja 5.4. OUBS-studiolla. Jos jäi kysymyksiä, vastauksia löytyy postilokerosta <Link href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi.</Link></p>
         {this.state.errors === 'missing-fields' ? <ErrorLabel>Pakollisia kenttiä puuttuu. Tarkista lomake.</ErrorLabel> : null}
         {this.state.errors === 'server-error' ? <ErrorLabel>Lomakkeen lähetys epäonnistui. Syötithän oikean sähköpostiosoitteen?</ErrorLabel> : null}
-        <p>Ohjelmantekijät kuvataan 4.4. ja 5.4. OUBS-studiolla. Jos jäi kysymyksiä, vastauksia löytyy postilokerosta <Link href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi.</Link></p>
         <SubmitButton handler={submit} />
       </form>
     );
