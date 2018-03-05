@@ -19,6 +19,10 @@ const ResponseMessage = styled.h4`
   color: ${p => p.theme.color.pink};
 `
 
+const Link = styled.a`
+  color: ${p => p.theme.color.pink};
+`;
+
 export default class RegistrationForm extends Component {
   constructor(props) {
     super(props);
@@ -128,6 +132,7 @@ export default class RegistrationForm extends Component {
           propositions={Object.values(this.state.propositions)}
           handler={propositionHandler}
         />
+        <p>Jos haluat ilmoittautua tuottajaksi, laita viestiä osoitteeseen <Link href="mailto:studio@radiodiodi.fi">studio@radiodiodi.fi!</Link></p>
         {this.state.errors === 'missing-fields' ? <ErrorLabel>Pakollisia kenttiä puuttuu. Tarkista lomake.</ErrorLabel> : null}
         <SubmitButton handler={submit} />
       </form>
