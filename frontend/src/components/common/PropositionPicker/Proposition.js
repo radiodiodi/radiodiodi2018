@@ -12,6 +12,9 @@ const PropositionRow = styled.span`
 
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 const Column = styled.div`
@@ -19,6 +22,10 @@ const Column = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 0.5rem;
+  flex: ${p => p.flex && '1' || '0.5'};
+  @media screen and (max-width: 600px) {
+    margin-top: 0.5rem;
+  }
 `;
 
 const Label = styled.label`
@@ -93,16 +100,16 @@ class Proposition extends Component {
     return (
       <Fragment>
         <PropositionRow>
-          <Column>
+          <Column flex>
             <Label>Päivämäärä</Label>
             <DatePicker onClick={this.onDatePickerClick} date={ date } />
           </Column>
           <Column>
-            <Label>Ensimmäinen sopiva kellonaika</Label>
+            <Label>Ensimmäinen sopiva aloituskellonaika</Label>
             <TimePicker onChange={this.onStartTimeChange} time={ startTime } />
           </Column>
           <Column>
-            <Label>Viimeinen sopiva kellonaika</Label>
+            <Label>Viimeinen sopiva lopetuskellonaika</Label>
             <TimePicker onChange={this.onEndTimeChange} time={ endTime } />
           </Column>
           <RemoveButton onClick={this.remove} src={ cross } />
