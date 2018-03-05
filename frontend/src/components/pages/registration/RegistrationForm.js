@@ -17,6 +17,7 @@ import {
 
 const ResponseMessage = styled.h4`
   color: ${p => p.theme.color.pink};
+  margin-bottom: 1rem;
 `
 
 const Link = styled.a`
@@ -28,6 +29,7 @@ export default class RegistrationForm extends Component {
     super(props);
     this.state = {
       propositions: [],
+      sent: false,
     };
     this.handler = this.handler.bind(this);
     this.propositionHandler = this.propositionHandler.bind(this);
@@ -79,7 +81,16 @@ export default class RegistrationForm extends Component {
   render() {
     const { handler, propositionHandler, submit } = this;
     if (this.state.sent) {
-      return <ResponseMessage>Kiitos ilmoittautumisesta! Olemme yhteydessä lähiaikoina.</ResponseMessage>
+      return (
+        <Fragment>
+        <ResponseMessage>
+        Kiitos ilmoittautumisesta! Olemme yhteydessä lähiaikoina.<br />
+        </ResponseMessage>
+        <ResponseMessage>
+        Ohjelmantekijät kuvataan 4.5. ja 5.5. OUBS-studiolla. Jos jäi kysymyksiä, vastauksia löytyy postilokerosta <Link href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi.</Link>
+        </ResponseMessage>
+        </Fragment>
+      );
     }
     return (
       <form>
@@ -140,6 +151,7 @@ export default class RegistrationForm extends Component {
         />
         <p>Jos haluat ilmoittautua tuottajaksi, laita viestiä osoitteeseen <Link href="mailto:studio@radiodiodi.fi">studio@radiodiodi.fi!</Link></p>
         {this.state.errors === 'missing-fields' ? <ErrorLabel>Pakollisia kenttiä puuttuu. Tarkista lomake.</ErrorLabel> : null}
+        <p>Ohjelmantekijät kuvataan 4.5. ja 5.5. OUBS-studiolla. Jos jäi kysymyksiä, vastauksia löytyy postilokerosta <Link href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi.</Link></p>
         <SubmitButton handler={submit} />
       </form>
     );
