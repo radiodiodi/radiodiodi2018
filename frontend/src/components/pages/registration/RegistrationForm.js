@@ -56,10 +56,14 @@ export default class RegistrationForm extends Component {
     ];
     const { state } = this;
     const missing = requiredKeys.filter(key => state[key] === undefined);
-    if (missing.length === 0) {
-      const ok = await registerProgramme(state);
+    if (missing.length === 0 && state.propositions && Object.keys(state.propositions).length > 0) {
+      const data = {
+        ...state,
+        propositions: Object.values(state.propositions),
+      };
+      const ok = await registerProgramme(data);
       if (ok) {
-        this.setState({ ...state, sent: true })
+        this.setState({ ...state, errors: null, sent: true });
       } else {
         this.setState(state => ({ ...state, errors: ['Failed to register programme!'] }));
       }

@@ -180,6 +180,7 @@ router.post('/api/register', async ctx => {
   try {
     await email.sendEmail(data || {});
     ctx.body = data;
+    await models.registrations.insert(data);
     utils.info(`Sent registration email (user: ${data.email})`);
   } catch (err) {
     ctx.throw(500, 'Failed to send email.');

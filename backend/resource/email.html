@@ -121,29 +121,32 @@
               </td>
             </tr><tr><td height="9" style="font-size: 1px; line-height: 1px;"> </td>
             </tr><tr><td align="left" class="long-text links-color" style="text-align: left; font-size: 15px; font-family: Lucida Sans Unicode, Lucida Grande, sans-serif; color: #eeeeee;">
-                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px;">
+                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px; color: #eeeeee;">
                   Kiitos ilmoittautumisesta Radiodiodin ohjelmantekijäksi! Ilmoittautumisesi on vastaanotettu ja sinuun otetaan yhteyttä kun ohjelmakalenteri alkaa valmistua.
                 </p>
-                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px;">
+                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px; color: #eeeeee;">
                   Alla on ilmoittautumisesi tiedot. Ilmoitathan, mikäli tietoihin tulee muutoksia.
                 </p>
-                <ul>
-                  <li>Ohjelman nimi: <%= data.name %></li>
-                  <li>Tekijä(tiimi): <%= data.team %></li>
-                  <li>Vastuuhenkilö: <%= data.responsible %></li>
-                  <li>Vastuuhenkilön sähköposti: <%= data.email %></li>
-                  <li>Ohjelman genre: <%= data.genre || '-' %></li>
-                  <li>Osallistujien (arvioitu) määrä: <%= data.participants %></li>
-                  <li>Lisätietoja: <%= data.info || '-' %></li>
-                  <li>Tarvitsen tuottajan: <%= data.producer %></li>
+                <ul style="color: #eeeeee;">
+                  <li style="color: #eeeeee;">Ohjelman nimi: <%= data.name %></li>
+                  <li style="color: #eeeeee;">Tekijä(tiimi): <%= data.team %></li>
+                  <li style="color: #eeeeee;">Vastuuhenkilö: <%= data.responsible %></li>
+                  <li style="color: #eeeeee;">Vastuuhenkilön sähköposti: <%= data.email %></li>
+                  <li style="color: #eeeeee;">Ohjelman genre: <%= data.genre || '-' %></li>
+                  <li style="color: #eeeeee;">Osallistujien (arvioitu) määrä: <%= data.participants %></li>
+                  <li style="color: #eeeeee;">Lisätietoja: <%= data.info || '-' %></li>
+                  <li style="color: #eeeeee;">Tarvitsen tuottajan: <%= data.producer %></li>
+                  <% for (var i=0; i<data.propositions.length; i++) { %>
+                    <li style="color: #eeeeee;">Sopiva aika: <%= data.propositions[i].date %>, klo <%= data.propositions[i].startTime %> - <%= data.propositions[i].endTime %></li>
+                  <% } %>
                 </ul>
-                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px;">
+                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px; color: #eeeeee;">
                   Jos sinulla on kysyttävää, ole yhteydessä toimitukseen osoitteessa <a href="mailto:toimitus@radiodiodi.fi" style="color: #3f3f3f; color: #ef67b3; text-decoration: underline;">toimitus@radiodiodi.fi</a>. Lisätietoja päivittyy Wapun lähestyessä osoitteeseen radiodiodi.fi. Hauskaa Wapun odotusta!
                 </p>
-                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 30px; line-height: 20px;">
+                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 30px; line-height: 20px; color: #eeeeee;">
                   Wappuisin terveisin
                 </p>
-                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px;">
+                <p style="Margin: 1em 0px; Margin-bottom: 15px; Margin-top: 0px; line-height: 20px; color: #eeeeee;">
                   Radiodiodin toimitus
                 </p>
               </td>

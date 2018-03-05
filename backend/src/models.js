@@ -12,8 +12,14 @@ const shoutboxDB = monk(mongo_shoutbox);
 const messages = shoutboxDB.get('messages');
 const bans = shoutboxDB.get('bans');
 
+const mongo_registrations = `${process.env.MONGODB_HOST}/${process.env.MONGODB_REGISTRATION_DB}`;
+utils.info(`Mongo registration DB: ${mongo_registrations}`);
+const registrationDB = monk(mongo_registrations);
+const registrations = registrationDB.get('registrations');
+
 module.exports = {
   listeners,
   messages,
   bans,
+  registrations,
 };
