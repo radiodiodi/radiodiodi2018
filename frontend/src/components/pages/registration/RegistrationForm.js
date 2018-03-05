@@ -84,6 +84,12 @@ export default class RegistrationForm extends Component {
     return (
       <form>
         <TextInput id="name" label="Ohjelman nimi" req handler={handler} />
+        <TextArea 
+          id="description" 
+          label="Ohjelman kuvaus" 
+          req 
+          handler={handler} 
+        />
         <TextInput id="team" label="Esiintyjä (tiimi)" req handler={handler} />
         <TextInput
           id="responsible"
