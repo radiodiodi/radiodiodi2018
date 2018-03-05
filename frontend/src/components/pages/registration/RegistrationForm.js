@@ -71,7 +71,7 @@ export default class RegistrationForm extends Component {
       if (ok) {
         this.setState({ ...state, errors: null, sent: true });
       } else {
-        this.setState(state => ({ ...state, errors: ['Failed to register programme!'] }));
+        this.setState(state => ({ ...state, errors: 'server-error' }));
       }
     } else {
       this.setState(state => ({ ...state, errors: 'missing-fields' }));
@@ -87,7 +87,7 @@ export default class RegistrationForm extends Component {
         Kiitos ilmoittautumisesta! Olemme yhteydessä lähiaikoina.<br />
         </ResponseMessage>
         <ResponseMessage>
-        Ohjelmantekijät kuvataan 4.5. ja 5.5. OUBS-studiolla. Jos jäi kysymyksiä, vastauksia löytyy postilokerosta <Link href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi.</Link>
+        Ohjelmantekijät kuvataan 4.4. ja 5.4. OUBS-studiolla. Jos jäi kysymyksiä, vastauksia löytyy postilokerosta <Link href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi.</Link>
         </ResponseMessage>
         </Fragment>
       );
@@ -152,7 +152,8 @@ export default class RegistrationForm extends Component {
         />
         <p>Jos haluat ilmoittautua tuottajaksi, laita viestiä osoitteeseen <Link href="mailto:studio@radiodiodi.fi">studio@radiodiodi.fi!</Link></p>
         {this.state.errors === 'missing-fields' ? <ErrorLabel>Pakollisia kenttiä puuttuu. Tarkista lomake.</ErrorLabel> : null}
-        <p>Ohjelmantekijät kuvataan 4.5. ja 5.5. OUBS-studiolla. Jos jäi kysymyksiä, vastauksia löytyy postilokerosta <Link href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi.</Link></p>
+        {this.state.errors === 'server-error' ? <ErrorLabel>Lomakkeen lähetys epäonnistui. Syötithän oikean sähköpostiosoitteen?</ErrorLabel> : null}
+        <p>Ohjelmantekijät kuvataan 4.4. ja 5.4. OUBS-studiolla. Jos jäi kysymyksiä, vastauksia löytyy postilokerosta <Link href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi.</Link></p>
         <SubmitButton handler={submit} />
       </form>
     );
