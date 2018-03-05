@@ -11,7 +11,7 @@ const start = () => {
       host: process.env.HOST,
       port: process.env.WS_PORT
   });
-  const rateLimit = require('ws-rate-limit')('3s', 1);
+  const rateLimit = require('ws-rate-limit')('5s', 3);
   wss.on('connection', async (ws, req) => {
     rateLimit(ws);
 
