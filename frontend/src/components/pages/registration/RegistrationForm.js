@@ -31,6 +31,8 @@ export default class RegistrationForm extends Component {
     this.state = {
       propositions: [],
       sent: false,
+      duration: 1,
+      participants: 1,
     };
     this.handler = this.handler.bind(this);
     this.propositionHandler = this.propositionHandler.bind(this);
@@ -137,6 +139,8 @@ export default class RegistrationForm extends Component {
           type="number"
           req
           handler={handler}
+          min="1"
+          value={this.state.participants}
         />
         <TextInput
           id="duration"
@@ -144,6 +148,9 @@ export default class RegistrationForm extends Component {
           type="number"
           req
           handler={handler}
+          min="1"
+          max="24"
+          value={this.state.duration}
         />
         <TextArea 
           id="info"

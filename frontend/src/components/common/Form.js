@@ -53,11 +53,11 @@ export const ErrorLabel = styled.p`
   text-align: center;
 `
 
-export function TextInput({ id, label, type = 'text', req, handler }) {
+export function TextInput({ id, label, type = 'text', req, handler, ...others }) {
   return (
     <Text req={req}>
       <Label>{label}</Label>
-      <input type={type} onChange={e => handler(id, e.target.value)} />
+      <input type={type} onChange={e => handler(id, e.target.value)} {...others} />
     </Text>
   );
 }
