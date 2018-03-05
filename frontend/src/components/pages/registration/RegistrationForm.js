@@ -102,6 +102,13 @@ export default class RegistrationForm extends Component {
           req
           handler={handler}
         />
+        <TextInput
+          id="duration"
+          label="Ohjelman kesto (tunneissa)"
+          type="number"
+          req
+          handler={handler}
+        />
         <TextArea id="info" label="Lisätietoja" handler={handler} />
         <RadioButton
           id="producer"
