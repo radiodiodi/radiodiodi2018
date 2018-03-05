@@ -23,7 +23,7 @@ const start = () => {
         timestamp: new Date(Date.now()),
         name,
         text,
-        ip: req.connection.remoteAddress,
+        ip: ws.upgradeReq.connection.remoteAddress,
       };
 
       const banned = await models.bans.findOne({ ip: message.ip });
