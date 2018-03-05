@@ -3,6 +3,7 @@ const Router = require('koa-router');
 const models = require('./models');
 const utils = require('./utils');
 const websockets = require('./websockets');
+const RateLimit = require('koa2-ratelimit').RateLimit;
 const util = require('util')
 
 const router = new Router();
@@ -174,7 +175,14 @@ router.get('/inspirational-quote', async ctx => {
   ctx.set('Access-Control-Allow-Origin', '*');
 });
 
-router.post('/api/register', async ctx => {
+const submitThrottle = RateLimit.middleware({
+  interval: {
+    sec: 1,
+  },
+  max: 1,
+});
+
+router.post('/api/register', submitThrottle, async ctx => {
   const data = JSON.parse(ctx.request.body);
   console.log(data);
   try {
