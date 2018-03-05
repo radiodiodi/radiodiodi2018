@@ -21,7 +21,7 @@ const Container = styled.div`
 const Log = styled.div`
   width: 100%;
   flex: 1;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 const Row = styled.div`
