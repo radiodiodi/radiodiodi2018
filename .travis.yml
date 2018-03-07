@@ -5,5 +5,4 @@ install:
     - cd frontend
     - yarn install
 script:
-    - cd frontend
     - yarn test
