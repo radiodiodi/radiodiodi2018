@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+    - "8"
+install:
+    - cd frontend
+    - yarn install
+script:
+    - cd frontend
+    - yarn test
