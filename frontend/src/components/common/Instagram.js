@@ -19,10 +19,10 @@ class Instagram extends Component {
     const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
     const url = `https://api.instagram.com/v1/users/${userId}/media/recent/?access_token=${accessToken}&count=${count}`;
 
-    const resp = await fetch(url);
-    const data = await resp.json();
-
     try {
+      const resp = await fetch(url);
+      const data = await resp.json();
+
       const imageLinks = data.data.map(obj => ({
         img: obj.images.standard_resolution.url,
         link: obj.link,
