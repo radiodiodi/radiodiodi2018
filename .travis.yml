@@ -17,5 +17,5 @@ script:
 
       echo "$PRIVATE_KEY" > "$PWD/key";
       chmod 600 "$PWD/key";
-      ssh -i "$PWD/key" -oStrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_SERVER 'bash deploy_radiodiodi2018.sh';
+      ssh -i "$PWD/key" -oStrictHostKeyChecking=no -oBatchMode=yes $DEPLOY_USER@$DEPLOY_SERVER 'bash deploy_radiodiodi2018.sh';
     fi
