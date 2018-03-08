@@ -1,9 +1,19 @@
 language: node_js
 node_js:
-    - "8"
+  - '8'
 install:
-    - cd frontend
-    - yarn install
+  - pushd frontend
+  - yarn install
+  - popd
 script:
-    - yarn test
-    - "$TRAVIS_BRANCH" == 'production' && ssh-add - <<< "$PRIVATE_KEY" && ssh $DEPLOY_USER@$DEPLOY_SERVER 'bash deploy_radiodiodi2018.sh'
+  - pushd frontend
+  - yarn test
+  - popd
+before_deploy:
+  - openssl aes-256-cbc -K $encrypted_18d0203649e0_key -iv $encrypted_18d0203649e0_iv
+    -in "$PWD/deploy_key.enc" -out /tmp/deploy_key -d
+deploy:
+  provider: script
+  script: bash .travis_deploy.sh
+  on:
+    branch: production
