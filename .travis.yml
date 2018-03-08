@@ -6,3 +6,4 @@ install:
     - yarn install
 script:
     - yarn test
+    - if [ $TRAVIS_BRANCH == 'production' ]; then; ssh-add - <<< "$PRIVATE_KEY"; ssh $DEPLOY_USER@$DEPLOY_SERVER 'bash deploy_radiodiodi2018.sh'; fi
