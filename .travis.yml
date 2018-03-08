@@ -9,8 +9,13 @@ script:
   - |
     if [ "$TRAVIS_BRANCH" == 'production' ]
     then
-      echo "$PUBLIC_KEY";
+      if [ -z "$PRIVATE_KEY" ]
+      then
+        echo "PRIVATE_KEY is not set!";
+        exit 1;
+      fi
+
       echo "$PRIVATE_KEY" > "$PWD/key";
-      chmod 600 id_rsa;
+      chmod 600 "$PWD/key";
       ssh -i "$PWD/key" -oStrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_SERVER 'bash deploy_radiodiodi2018.sh';
     fi
