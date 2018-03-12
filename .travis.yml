@@ -15,8 +15,7 @@ before_deploy:
 deploy:
   provider: script
   script:
-    - eval "$(ssh-agent -s)"
-    - ssh-add /tmp/deploy_key
-    - ssh "$DEPLOY_USER@$DEPLOY_SERVER" 'bash deploy_radiodiodi2018.sh';
+    - chmod 600 /tmp/deploy_key
+    - ssh -i /tmp/deploy_key "$DEPLOY_USER@$DEPLOY_SERVER" 'bash deploy_radiodiodi2018.sh';
   on:
     branch: production
