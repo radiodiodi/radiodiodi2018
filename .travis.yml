@@ -8,12 +8,12 @@ script:
   - yarn test
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_18d0203649e0_key -iv $encrypted_18d0203649e0_iv
-    -in key.enc -out key -d
+    -in "$PWD/deploy_key.enc" -out /tmp/deploy_key -d
 deploy:
   provider: script
   script:
     - eval "$(ssh-agent -s)"
-    - ssh-add key
+    - ssh-add /tmp/deploy_key
     - ssh "$DEPLOY_USER@$DEPLOY_SERVER" 'bash deploy_radiodiodi2018.sh';
   on:
     branch: production
