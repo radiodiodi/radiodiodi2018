@@ -97,6 +97,7 @@ class Navigation extends Component {
         <Menu expanded={expanded}>
           <Link to="/">{trans.frontpage}</Link>
           <Link to="/ilmo">{trans.registration}</Link>
+          <Link to="/guide">{trans.oto}</Link>
           <Link to="/sponsors">{trans.forbusinesses}</Link>
           <Language onClick={changeLanguage}>{trans.changelang}</Language>
         </Menu>

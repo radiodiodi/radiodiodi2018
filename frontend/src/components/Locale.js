@@ -1,7 +1,8 @@
 import LocalizedStrings from 'react-localization';
 import Cookies from 'universal-cookie';
+import { merge } from 'lodash';
 
-const trans = new LocalizedStrings({
+const common = {
   fi: {
     frontpage: 'Etusivu',
     changelang: 'In English',
@@ -42,6 +43,9 @@ const trans = new LocalizedStrings({
     search: 'Hae',
     registrationopensat: 'Ilmoittautuminen aukeaa klo 9:00 maanantaina 5.3.!',
     registrationopen: 'Ohjelmantekijäilmo on auki! Käy ilmoittautumassa osoitteessa ',
+    oto: 'Ohjelmantekijän opas',
+    faq: 'UKK',
+    programme: 'Ohjelma',
   },
   en: {
     frontpage: 'Front page',
@@ -82,8 +86,28 @@ const trans = new LocalizedStrings({
     search: 'Search',
     registrationopensat: 'The registration opens at 9:00 on the 5th of March!',
     registrationopen: 'Programme registration is open! Register your programme at ',
+    oto: 'Programme maker\'s guide',
+    faq: 'FAQ',
+    programme: 'Programme',
   }
-});
+};
+
+const faq = {
+  fi: {
+    faquestion1: 'Mikä on Wappu?',
+    faanswer1: 'Sellainen perverssi ilo.',
+    faquestion2: 'Onko Juuso lyhyt?',
+    faanswer2: 'On.',
+  },
+  en: {
+    faquestion1: 'What is Wappu?',
+    faanswer1: 'A kind of perverse joy.',
+    faquestion2: 'Is Juuso short?',
+    faanswer2: 'Yes.',
+  },
+}
+
+const trans = new LocalizedStrings(merge(common, faq));
 
 const cookies = new Cookies();
 const lang = cookies.get('lang');

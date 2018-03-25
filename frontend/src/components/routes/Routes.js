@@ -11,6 +11,7 @@ import Shoutbox from '../pages/shoutbox/Shoutbox';
 import Library from '../pages/library/Library';
 import Admin from '../pages/admin/Admin';
 import Login from '../pages/admin/Login';
+import Guide from '../pages/guide/Guide';
 import Cookie from 'universal-cookie';
 
 class Routes extends Component {
@@ -43,6 +44,7 @@ class Routes extends Component {
             <Route exact path="/" component={Frontpage} />
             <Route path="/sponsors" component={Sponsors} />
             <Route path="/ilmo" component={Registration} />
+            <Route path="/guide" component={Guide} />
             <Route path="/shoutbox" component={Shoutbox} />
             <Route path="/admin" component={Admin} />
             <Route path="/login" component={Login} />
