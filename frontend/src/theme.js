@@ -55,6 +55,9 @@ injectGlobal`
         color: ${theme.color.pink};
         margin: 1em 0 0;
     }
+    label {
+        font-weight: 600;
+    }
 `;
 
 export default theme;

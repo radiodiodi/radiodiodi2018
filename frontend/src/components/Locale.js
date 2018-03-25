@@ -46,6 +46,14 @@ const common = {
     oto: 'Ohjelmantekijän opas',
     faq: 'UKK',
     programme: 'Ohjelma',
+    otoprogrammetext: 'Tavanomainen radio-ohjelma kestää kaksi tuntia.',
+    programmeduration: 'Syötä ohjelmasi kesto (tunneissa): ',
+    programmedurationsubtitle: 'Ohjelmasi rakenne voisi näyttää esimerkiksi tältä:',
+    speech: 'Puhetta',
+    music: 'Musiikkia',
+    jingles: 'Jinglejä',
+    ads: 'Mainoksia',
+    hours: 'tuntia'
   },
   en: {
     frontpage: 'Front page',
@@ -89,6 +97,14 @@ const common = {
     oto: 'Programme maker\'s guide',
     faq: 'FAQ',
     programme: 'Programme',
+    otoprogrammetext: 'A standard radio programme is two hours long.',
+    programmeduration: 'Enter the duration of your programme (h): ',
+    programmedurationsubtitle: 'The structure of your programme could look like this: ',
+    speech: 'Speech',
+    music: 'Music',
+    jingles: 'Jingles',
+    ads: 'Ads',
+    hours: 'hours',
   }
 };
 
