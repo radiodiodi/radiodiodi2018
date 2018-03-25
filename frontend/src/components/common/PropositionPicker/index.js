@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import plus from '../../../images/plus.png';
 import Proposition from './Proposition';

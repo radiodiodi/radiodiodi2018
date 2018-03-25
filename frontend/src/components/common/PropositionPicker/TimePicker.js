@@ -17,10 +17,6 @@ const Widget = styled.select`
 const leftPad = n => n >= 10 ? `${n}` : `0${n}`;
 
 class TimePicker extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     const { time, onChange } = this.props;
     const times = [...Array(24).keys()].map((n, i) => {

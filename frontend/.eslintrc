@@ -1,0 +1,7 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "no-mixed-operators": "off",
+    "jsx-a11y/href-no-hash": "off"
+  }
+}

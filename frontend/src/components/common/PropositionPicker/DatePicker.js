@@ -10,10 +10,6 @@ const Widget = styled.div`
 `;
 
 class DatePicker extends Component {
-  constructor() {
-    super();
-  }
-
   render() {
     const { date, onClick } = this.props;
     return (

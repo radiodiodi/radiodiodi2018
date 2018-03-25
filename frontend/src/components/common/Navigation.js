@@ -19,7 +19,7 @@ const LinkMixin = (p) => `
   &:hover {
     text-decoration: underline;
   }
-`; 
+`;
 
 const Rectangle = styled.div`
   background-color: ${p => p.theme.color.contrast};
