@@ -38,9 +38,9 @@ class FAQ extends Component {
     trans: PropTypes.any
   };
 
-  renderQuestionAndAnswer(question, answer) {
+  renderQuestionAndAnswer(question, answer, key) {
     return (
-      <Fragment>
+      <Fragment key={key}>
         <Question>{question}</Question>
         <Answer>{answer}</Answer>
       </Fragment>
@@ -53,7 +53,7 @@ class FAQ extends Component {
     return (
       <Container>
         <h3>{ trans.faq }</h3>
-        { qas(trans).map(qa => this.renderQuestionAndAnswer(qa.question, qa.answer)) }
+        { qas(trans).map((qa, index) => this.renderQuestionAndAnswer(qa.question, qa.answer, index)) }
       </Container>
     );
   }
