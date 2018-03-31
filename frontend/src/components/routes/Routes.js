@@ -24,13 +24,15 @@ class Routes extends Component {
 
   static contextTypes = {
     trans: PropTypes.any,
+    faq: PropTypes.any,
   }
 
   changeLanguage() {
-    const { trans } = this.context;
+    const { trans, faq } = this.context;
     const prevLang = trans.getLanguage();
     const lang = prevLang === 'fi' ? 'en' : 'fi'
     trans.setLanguage(lang);
+    faq.setLanguage(lang);
     this.cookie.set('lang', lang);
     this.setState({});
   }

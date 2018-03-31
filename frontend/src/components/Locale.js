@@ -116,25 +116,70 @@ const common = {
   }
 };
 
-const faq = {
+// Ketkä saavat tehdä ohjelmaa Radiodiodissa?
+// Kaikki, jotka ehtivät ohjelma-ajan varaamaan! :)
+// Mitä musiikkia saa soittaa?
+// Kaikkea laillisesti hankittua musiikkia, kuten CD-levyt, vinyylit, kasetit ja itse tuotetut teokset. Myös mm. Suomen iTunesista tai Bandcampista ostetut kappaleet käyvät. Lisäkysymyksiin saa vastauksen laittamalla mailia toimitus@radiodiodi.fi .
+// Saako studiossa syödä/juoda? Entä alkoholi?
+// Kunhan laitteet pysyvät ehjänä ja kunnossa, mikään ei estä studiossa syömistä tai juomista.
+// Onko ohjelmantekijöille ruokaa tai juomaa talon puolesta?
+// BTW tarjoaa pullollisen toniciaan jokaiselle ohjelmantekijälle. Pidemmille ohjelmasessioille kannattaa varata omaa evästä mukaan.
+// Haluan toimia tuottajana, mitä teen?
+// Laita mailia rekry@radiodiodi.fi!
+// Voiko Radiodiodin tekemiseen osallistua muuten kuin ohjelmaa tekemällä?
+// Voi kyllä! Olemme kokonaisvaltainen mediaproduktio, joten tarvetta taustatiimissämme on paitsi erilaisten teknologioiden taitajille, niin myös markkinoinnille, graafiselle osaamiselle, yrityssuhdepuurtamistyölle ja melkein kaikelle muullekin. Lisätietoja saa mailista rekry@radiodiodi.fi!
+// Voiko Radiossa soittaa elävää musiikkia/esiintyä?
+// Kyllä voi, erittäin hyvä idea!
+// Saako ohjelmaan tuoda vieraita?
+// Vieraat ovat oivallinen tapa piristää radio-ohjelmaa. Mikäli haluat tuoda ohjelmaasi vieraita, kerrothan sen ohjelmakuvauksessasi ja toimitukselle toimitus@radiodiodi.fi!
+
+
+const faqStrings = {
   fi: {
-    faquestion1: 'Mikä on Wappu?',
-    faanswer1: 'Sellainen perverssi ilo.',
-    faquestion2: 'Onko Juuso lyhyt?',
-    faanswer2: 'On.',
+    faquestion1: 'Ketkä saavat tehdä ohjelmaa Radiodiodissa?',
+    faanswer1: 'Kaikki, jotka ehtivät ohjelma-ajan varaamaan! :)',
+    faquestion2: 'Mitä musiikkia saa soittaa?',
+    faanswer2: 'Kaikkea laillisesti hankittua musiikkia, kuten CD-levyt, vinyylit, kasetit ja itse tuotetut teokset. Myös mm. Suomen iTunesista tai Bandcampista ostetut kappaleet käyvät. Lisäkysymyksiin saa vastauksen laittamalla mailia <a href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi</a>.',
+    faquestion3: 'Saako studiossa syödä/juoda? Entä alkoholi?',
+    faanswer3: 'Kunhan laitteet pysyvät ehjänä ja kunnossa, mikään ei estä studiossa syömistä tai juomista.',
+    faquestion4: 'Onko ohjelmantekijöille ruokaa tai juomaa talon puolesta?',
+    faanswer4: 'BTW tarjoaa pullollisen toniciaan jokaiselle ohjelmantekijälle. Pidemmille ohjelmasessioille kannattaa varata omaa evästä mukaan.',
+    faquestion5: 'Haluan toimia tuottajana, mitä teen?',
+    faanswer5: 'Laita mailia <a href="mailto:rekry@radiodiodi.fi">rekry@radiodiodi.fi</a>!',
+    faquestion6: 'Voiko Radiodiodin tekemiseen osallistua muuten kuin ohjelmaa tekemällä?',
+    faanswer6: 'Voi kyllä! Olemme kokonaisvaltainen mediaproduktio, joten tarvetta taustatiimissämme on paitsi erilaisten teknologioiden taitajille, niin myös markkinoinnille, graafiselle osaamiselle, yrityssuhdepuurtamistyölle ja melkein kaikelle muullekin. Lisätietoja saa mailista <a href="mailto:rekry@radiodiodi.fi">rekry@radiodiodi.fi</a>!',
+    faquestion7: 'Voiko Radiossa soittaa elävää musiikkia/esiintyä?',
+    faanswer7: 'Kyllä voi, erittäin hyvä idea!',
+    faquestion8: 'Saako ohjelmaan tuoda vieraita?',
+    faanswer8: 'Vieraat ovat oivallinen tapa piristää radio-ohjelmaa. Mikäli haluat tuoda ohjelmaasi vieraita, kerrothan sen ohjelmakuvauksessasi ja toimitukselle <a href="mailto:rekry@radiodiodi.fi">rekry@radiodiodi.fi</a>!',
   },
   en: {
-    faquestion1: 'What is Wappu?',
-    faanswer1: 'A kind of perverse joy.',
-    faquestion2: 'Is Juuso short?',
-    faanswer2: 'Yes.',
+    faquestion1: 'Who are allowed to host a programme in Radiodiodi?',
+    faanswer1: 'Everyone, who manages to reserve a programme slot! :)',
+    faquestion2: 'What music am I allowed to play on air?',
+    faanswer2: 'All kinds of legally obtained music, which includes CDs, vinyls, casettes and self-produced music. Also music from iTunes Finland and e.g. Bandcamp is allowed. If you have more questions, please contact <a href="mailto:toimitus@radiodiodi.fi">toimitus@radiodiodi.fi</a>.',
+    faquestion3: 'Am I allowed to eat or drink in the studio? What about alcohol?',
+    faanswer3: 'As long as the equipment is unharmed, eating and drinking is totally allowed.',
+    faquestion4: 'Is there free food or drinks for programme hosts?',
+    faanswer4: 'The tonic company BTW provides a bottle of tonic for every host. Bring your own grub for longer sessions.',
+    faquestion5: 'I want to be a producer. What do I do?',
+    faanswer5: 'Contact us at <a href="mailto:rekry@radiodiodi.fi">rekry@radiodiodi.fi</a>!',
+    faquestion6: 'Can I help with the production in addition to being a programme host?',
+    faanswer6: 'Oh yes! We are a full fledged media production, so there is a need for all kinds of experts and non-experts in the team. We need skills in marketing, graphic design, corporate affairs and pretty much everything else. For more information, contact <a href="mailto:rekry@radiodiodi.fi">rekry@radiodiodi.fi</a>!',
+    faquestion7: 'Can I play live music or perform on air?',
+    faanswer7: 'You totally can, great idea!',
+    faquestion8: 'Can I bring guests to the studio?',
+    faanswer8: 'Guests are a great way to spice up a programme. If you wish to bring guests to the studio, please tell us about it in your programme description and via email at <a href="mailto:rekry@radiodiodi.fi">rekry@radiodiodi.fi</a>!',
   },
 }
 
-const trans = new LocalizedStrings(merge(common, faq));
+const trans = new LocalizedStrings(common);
+const faq = new LocalizedStrings(faqStrings);
 
 const cookies = new Cookies();
 const lang = cookies.get('lang');
 trans.setLanguage(lang || 'fi');
+faq.setLanguage(lang || 'fi');
 
 export default trans;
+export { faq, };

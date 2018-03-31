@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Routes from './routes/Routes';
 import theme from '../theme';
-import trans from './Locale';
+import trans, { faq } from './Locale';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -13,6 +13,7 @@ class TranslationProvider extends Component {
   getChildContext() {
     return {
       trans,
+      faq,
     };
   }
 
@@ -23,6 +24,7 @@ class TranslationProvider extends Component {
 
 TranslationProvider.childContextTypes = {
   trans: PropTypes.object,
+  faq: PropTypes.object,
 };
 
 class App extends Component {

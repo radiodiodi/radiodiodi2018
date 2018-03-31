@@ -58,6 +58,9 @@ injectGlobal`
     label {
         font-weight: 600;
     }
+    a {
+      color: ${theme.color.pink};
+    }
 `;
 
 export default theme;

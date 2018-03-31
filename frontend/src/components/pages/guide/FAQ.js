@@ -31,29 +31,50 @@ const qas = trans => [
     question: trans.faquestion2,
     answer: trans.faanswer2,
   },
+  {
+    question: trans.faquestion3,
+    answer: trans.faanswer3,
+  },
+  {
+    question: trans.faquestion4,
+    answer: trans.faanswer4,
+  },
+  {
+    question: trans.faquestion5,
+    answer: trans.faanswer5,
+  },
+  {
+    question: trans.faquestion6,
+    answer: trans.faanswer6,
+  },
+  {
+    question: trans.faquestion7,
+    answer: trans.faanswer7,
+  },
 ];
 
 class FAQ extends Component {
   static contextTypes = {
-    trans: PropTypes.any
+    trans: PropTypes.any,
+    faq: PropTypes.any
   };
 
   renderQuestionAndAnswer(question, answer, key) {
     return (
       <Fragment key={key}>
-        <Question>{question}</Question>
-        <Answer>{answer}</Answer>
+        <Question dangerouslySetInnerHTML={{__html: question}} />
+        <Answer dangerouslySetInnerHTML={{__html: answer}} />
       </Fragment>
     );
   }
 
   render() {
-    const { trans } = this.context;
+    const { trans, faq } = this.context;
 
     return (
       <Container>
         <h3>{ trans.faq }</h3>
-        { qas(trans).map((qa, index) => this.renderQuestionAndAnswer(qa.question, qa.answer, index)) }
+        { qas(faq).map((qa, index) => this.renderQuestionAndAnswer(qa.question, qa.answer, index)) }
       </Container>
     );
   }
