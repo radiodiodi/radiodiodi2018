@@ -48,7 +48,21 @@ class Programme extends Component {
   }
 
   calculateAmounts = hours => {
-    const calc = perc => Number(perc * hours).toFixed(1);
+    const { trans } = this.context;
+
+    const calc = perc => {
+      const num = perc * hours;
+      const wholes = Math.floor(num);
+      const decimals = num - wholes;
+      const mins = Math.floor(decimals * 60);
+
+      const hoursText = wholes === 1 ? trans.hour : trans.hours;
+      const minsText = mins === 1 ? trans.minute : trans.minutes;
+
+      const hourPart = wholes > 0 ? `${wholes} ${hoursText}` : '';
+      const minutePart = mins > 0 ? `${mins} ${minsText}`: '';
+      return `${hourPart} ${minutePart}`;
+    };
 
     return {
       ads: calc(0.05),
@@ -70,15 +84,20 @@ class Programme extends Component {
         </p>
         <InputLabel>
           { trans.programmeduration }
-          <DurationInput value={duration} onChange={this.onInputChange} />
+          <DurationInput
+            type="number"
+            value={duration}
+            onChange={this.onInputChange}
+            min={0}
+          />
         </InputLabel>
 
         <Subtitle>{trans.programmedurationsubtitle}</Subtitle>
         <AmountContainer>
-          <Row>{trans.speech}: {amounts.speech} {trans.hours}</Row>
-          <Row>{trans.music}: {amounts.music} {trans.hours}</Row>
-          <Row>{trans.jingles}: {amounts.jingles} {trans.hours}</Row>
-          <Row>{trans.ads}: {amounts.ads} {trans.hours}</Row>
+          <Row>{trans.speech}: {amounts.speech}</Row>
+          <Row>{trans.music}: {amounts.music}</Row>
+          <Row>{trans.jingles}: {amounts.jingles}</Row>
+          <Row>{trans.ads}: {amounts.ads}</Row>
         </AmountContainer>
       </Container>
     );

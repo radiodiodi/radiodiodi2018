@@ -53,7 +53,10 @@ const common = {
     music: 'Musiikkia',
     jingles: 'Jinglejä',
     ads: 'Mainoksia',
+    hour: 'tunti',
     hours: 'tuntia',
+    minute: 'minuutti',
+    minutes: 'minuuttia',
     preliminarycalendar: 'Alustava ohjelmakalenteri',
   },
   en: {
@@ -105,7 +108,10 @@ const common = {
     music: 'Music',
     jingles: 'Jingles',
     ads: 'Ads',
+    hour: 'hour',
     hours: 'hours',
+    minute: 'minute',
+    minutes: 'minutes',
     preliminarycalendar: 'Preliminary programme schedule',
   }
 };
