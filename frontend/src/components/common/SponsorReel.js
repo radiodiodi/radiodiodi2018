@@ -1,13 +1,20 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import shuffle from 'shuffle-array';
 import FadeImage from './FadeImage';
+
 import futurice from './../../images/futurice.svg';
+import vincit from './../../images/vincit.png';
+import abb from './../../images/abb.png';
+import genelec from './../../images/genelec.png';
+import srv from './../../images/srv.png';
+import btw from './../../images/btw.png';
 
 const ReelImage = styled(FadeImage)`
-  margin: 0 0 2rem;
   align-self: center;
-  max-width: 70%;
+  max-width: 100%;
+  max-height: 100%;
   text-align: justify;
 `;
 
@@ -17,15 +24,31 @@ const Title = styled.small`
   margin: 0.5rem;
 `;
 
+const ImageContainer = styled.div`
+  height: 100px;
+  width: 300px;
+  margin: 0 0 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+`;
+
 class SponsorReel extends Component {
   constructor() {
     super();
     this.state = {
       current: 0,
       counter: 0,
-      images: [
+      images: shuffle([
         futurice,
-      ],
+        vincit,
+        abb,
+        genelec,
+        srv,
+        btw,
+      ]),
     };
 
     this.updateCurrent = this.updateCurrent.bind(this);
@@ -61,9 +84,11 @@ class SponsorReel extends Component {
     const image = images[current];
     return <Fragment>
       <Title>{ trans.incollaboration }</Title>
-      <ReelImage
-        src={ image }
-      />
+      <ImageContainer>
+        <ReelImage
+          src={ image }
+        />
+      </ImageContainer>
     </Fragment>;
   }
 }

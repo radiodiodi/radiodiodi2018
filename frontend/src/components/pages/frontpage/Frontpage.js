@@ -83,7 +83,7 @@ class Frontpage extends Component {
           </Paragraph>
           <PlayerWrapper>
             <Player />
-            {/* disabled */ false && <SponsorReel interval={sponsorInterval} />}
+            <SponsorReel interval={sponsorInterval} />
           </PlayerWrapper>
         </Container>
         <ContentRow>
