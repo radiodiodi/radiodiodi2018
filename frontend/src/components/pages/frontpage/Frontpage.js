@@ -7,6 +7,7 @@ import Player from '../../common/Player';
 import Instagram from '../../common/Instagram';
 import SponsorReel from '../../common/SponsorReel';
 import CountdownSection from '../../common/CountdownSection';
+import GCalendar from '../../common/GCalendar';
 
 const Container = styled.div`
   display: flex;
@@ -54,7 +55,6 @@ const Title = styled.h3`
 const ContentRow = styled.div`
   padding: 2rem 0;
   margin: 2rem 0;
-  border-bottom: solid;
   border-top: solid;
   border-width: 2px;
   border-color: ${p => p.theme.color.pink};
@@ -91,7 +91,12 @@ class Frontpage extends Component {
           <Paragraph2>{trans.radioprogramparagraph1}</Paragraph2>
           <Paragraph2>{trans.radioprogramparagraph2}</Paragraph2>
         </ContentRow>
-        <ImageGallery />
+        <ContentRow>
+          <GCalendar />
+        </ContentRow>
+        <ContentRow>
+          <ImageGallery />
+        </ContentRow>
         <Instagram />
       </Fragment>
     );
