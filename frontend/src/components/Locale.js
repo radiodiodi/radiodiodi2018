@@ -116,24 +116,6 @@ const common = {
   }
 };
 
-// Ketkä saavat tehdä ohjelmaa Radiodiodissa?
-// Kaikki, jotka ehtivät ohjelma-ajan varaamaan! :)
-// Mitä musiikkia saa soittaa?
-// Kaikkea laillisesti hankittua musiikkia, kuten CD-levyt, vinyylit, kasetit ja itse tuotetut teokset. Myös mm. Suomen iTunesista tai Bandcampista ostetut kappaleet käyvät. Lisäkysymyksiin saa vastauksen laittamalla mailia toimitus@radiodiodi.fi .
-// Saako studiossa syödä/juoda? Entä alkoholi?
-// Kunhan laitteet pysyvät ehjänä ja kunnossa, mikään ei estä studiossa syömistä tai juomista.
-// Onko ohjelmantekijöille ruokaa tai juomaa talon puolesta?
-// BTW tarjoaa pullollisen toniciaan jokaiselle ohjelmantekijälle. Pidemmille ohjelmasessioille kannattaa varata omaa evästä mukaan.
-// Haluan toimia tuottajana, mitä teen?
-// Laita mailia rekry@radiodiodi.fi!
-// Voiko Radiodiodin tekemiseen osallistua muuten kuin ohjelmaa tekemällä?
-// Voi kyllä! Olemme kokonaisvaltainen mediaproduktio, joten tarvetta taustatiimissämme on paitsi erilaisten teknologioiden taitajille, niin myös markkinoinnille, graafiselle osaamiselle, yrityssuhdepuurtamistyölle ja melkein kaikelle muullekin. Lisätietoja saa mailista rekry@radiodiodi.fi!
-// Voiko Radiossa soittaa elävää musiikkia/esiintyä?
-// Kyllä voi, erittäin hyvä idea!
-// Saako ohjelmaan tuoda vieraita?
-// Vieraat ovat oivallinen tapa piristää radio-ohjelmaa. Mikäli haluat tuoda ohjelmaasi vieraita, kerrothan sen ohjelmakuvauksessasi ja toimitukselle toimitus@radiodiodi.fi!
-
-
 const faqStrings = {
   fi: {
     faquestion1: 'Ketkä saavat tehdä ohjelmaa Radiodiodissa?',
