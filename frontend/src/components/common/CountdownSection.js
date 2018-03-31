@@ -46,6 +46,7 @@ class CountdownSection extends Component {
     return (
       <SectionContainer>
         <h2>{trans.registrationopen} {link}</h2>
+        <h4 dangerouslySetInnerHTML={{__html: trans.calendarreleased}}></h4>
         { /* disabled */ false && <Countdown
           countTo={'Mon Mar 05 2018 09:00:00 GMT+0200 (EET)'}
           interval={1000}
