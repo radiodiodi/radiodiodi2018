@@ -59,6 +59,7 @@ const common = {
     minute: 'minuutti',
     minutes: 'minuuttia',
     preliminarycalendar: 'Alustava ohjelmakalenteri',
+    musiclibrary: 'Musiikkikirjasto',
   },
   en: {
     frontpage: 'Front page',
@@ -115,6 +116,7 @@ const common = {
     minute: 'minute',
     minutes: 'minutes',
     preliminarycalendar: 'Preliminary programme schedule',
+    musiclibrary: 'Music library',
   }
 };
 
