@@ -21,7 +21,7 @@ class AuthError extends Error {
  * @param {String} method
  * @param {Object} body
  */
-const composeRequest = (endpoint, id_token, method = 'GET', body = {}) => {
+const composeRequest = (endpoint, id_token, method = 'GET', body = null) => {
   const token = id_token || cookie.get('jwt');
 
   const headers = new Headers();
