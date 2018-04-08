@@ -126,6 +126,6 @@ function listEvents(auth) {
 
 module.exports = () =>
   readFile('client_secret.json')
-    .then(r => r.json())
+    .then(r => JSON.parse(r))
     .then(content => authorize(content, listEvents))
     .catch(console.log);
