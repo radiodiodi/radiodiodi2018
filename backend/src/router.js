@@ -8,6 +8,7 @@ const util = require('util')
 
 const router = new Router();
 const email = require('./email')
+const getCalendar = require('./calendar')
 
 const admin = new Router();
 
@@ -171,6 +172,13 @@ router.get('/inspirational-quote', async ctx => {
   ctx.body = JSON.stringify({
     quote: `Kukkakaalia - kakkakuulia: hauska munansaannos`,
   });
+  ctx.type = 'application/json';
+  ctx.set('Access-Control-Allow-Origin', '*');
+});
+
+router.get('/programmes', async ctx => {
+  let data = await getCalendar()
+  ctx.body = JSON.stringify(data);
   ctx.type = 'application/json';
   ctx.set('Access-Control-Allow-Origin', '*');
 });
