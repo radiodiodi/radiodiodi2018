@@ -50,16 +50,24 @@ class InstagramGallery extends PureComponent {
     trans: PropTypes.any,
   }
 
+  shortenText = text => {
+    /* Take N first whole words, where N is the amount of words below 100 characters total */
+    const MAX_CHAR_LENGTH = 100;
+    return text.length < MAX_CHAR_LENGTH
+      ? text
+      : `${text.split(' ').slice(0, text.substring(0, MAX_CHAR_LENGTH).split(' ').length - 1).join(' ')}...`;
+  }
+
   render() {
     const { objs, error } = this.props;
     const { trans } = this.context;
 
-    const images = !error 
+    const images = !error
       ? objs.map((obj, index) =>
         <Card key={index} href={ obj.link }>
           <Image alt={ trans.instagramimage } src={ obj.img } />
           <Caption>
-            <Text>{ obj.text }</Text>
+            <Text>{ this.shortenText(obj.text) }</Text>
           </Caption>
         </Card>
       ) : (
