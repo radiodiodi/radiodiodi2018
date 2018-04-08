@@ -6,15 +6,16 @@ const readFile = promisify(fs.readFile);
 const google = require('googleapis');
 const googleAuth = require('google-auth-library');
 
+const calendar = google.calendar('v3');
+const listFn = promisify(calendar.events.list);
+
 const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 const TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
   process.env.USERPROFILE) + '/.credentials/';
 const TOKEN_PATH = TOKEN_DIR + 'radiodiodi-calendar-credentials.json';
-
 const CALENDAR_ID = "radiodiodi.fi_9g8tojuhcb2dgj82l51sr09jno%40group.calendar.google.com";
 const START_DATE = new Date(Date.parse("2018-04-12T00:00:00.000+03:00"));
 const END_DATE = new Date(Date.parse("2018-05-01T00:00:00.000+03:00"));
-
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -93,8 +94,6 @@ function storeToken(token) {
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
 function listEvents(auth) {
-  const calendar = google.calendar('v3');
-  const listFn = promisify(calendar.events.list);
   return listFn({
     auth: auth,
     calendarId: CALENDAR_ID,
@@ -105,14 +104,13 @@ function listEvents(auth) {
   }).then(response => {
     const events = response.items;
     if (events.length == 0) {
-      console.log('No upcoming events found.');
+      return [];
     } else {
-      console.log('Received ' + events.length + ' events from Google Calendar.');
       const new_calendar = [];
       for (let i = 0; i < events.length; i++) {
         const event = events[i];
         const title = event.summary;
-        const by = event.description || "";
+        const by = event.description || '';
         const start = event.start.dateTime || event.start.date;
         const end = event.end.dateTime || event.end.date;
         const result = {
@@ -126,6 +124,8 @@ function listEvents(auth) {
   });
 }
 
-module.exports = () => readFile('client_secret.json').then(content =>
-  authorize(JSON.parse(content), listEvents)
-).catch(console.log);
+module.exports = () =>
+  readFile('client_secret.json')
+    .then(r => r.json())
+    .then(content => authorize(content, listEvents))
+    .catch(console.log);
