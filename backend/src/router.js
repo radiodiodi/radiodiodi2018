@@ -183,6 +183,17 @@ router.get('/programmes', async ctx => {
   ctx.set('Access-Control-Allow-Origin', '*');
 });
 
+router.get('/now_playing', async ctx => {
+  let data = await getCalendar()
+  let past = data.filter(d => {
+    return Date.parse(d['start']) < new Date
+  })
+  let show = past[past.length - 1] || {}
+  ctx.body = JSON.stringify(show);
+  ctx.type = 'application/json';
+  ctx.set('Access-Control-Allow-Origin', '*');
+});
+
 const submitThrottle = RateLimit.middleware({
   interval: {
     sec: 1,
