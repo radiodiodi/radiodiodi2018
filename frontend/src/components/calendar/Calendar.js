@@ -12,10 +12,9 @@ class Calendar extends React.Component {
     fetch('http://localhost:8080/programmes')
       .then(r => r.json()).then(r => {
         r = r.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
-        r = r.map(this.parseDescriptionField)
         const grouped = groupBy(r, (x) => x.start.substr(8, 2));
         this.setState({
-          today: "1" + (new Date).getDate(),
+          today: "16",//+ (new Date).getDate(),
           weekdays: ['Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai', 'Sunnuntai'],
           all: grouped,
           ready: true
@@ -23,27 +22,21 @@ class Calendar extends React.Component {
       });
 
   }
-  parseDescriptionField(programme) {
-    const parts = programme.by.split('---\n');
-    return {
-      ...programme,
-      ...{
-        team: parts[0],
-        description: parts[1],
-        genre: parts[3]
-      }
-    }
-  }
   render() {
     const { ready, all, today } = this.state;
     if (!ready) return null
-    return <div>{all[today].map(p => (
-      <div className="chart-show">
-        <small>{p.start.substr(11, 5) + ' - ' + p.end.substr(11, 5)}</small>
-        <p>{p.title}</p>
-        <p className="chart-description">{p.team}</p>
-      </div>)
-    )}</div>
+    return (
+      <div>
+        {all[today] && all[today].map(p => (
+          <div className="chart-show">
+            <small>{p.start.substr(11, 5) + ' - ' + p.end.substr(11, 5)}</small>
+            <p>{p.title}</p>
+            <p className="chart-description">{p.team}</p>
+            <p className="chart-description">{p.description}</p>
+          </div>)
+        )}
+      </div>
+    )
   }
 }
 

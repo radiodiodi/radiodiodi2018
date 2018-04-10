@@ -20,6 +20,19 @@ const CALENDAR_INTERVAL = 1000 * 60 * 60; // 1 hour
 
 let calendar_data = [];
 
+function parseEventDescription(event) {
+  const parts = event.description.split('---\n').map(p => p.replace(/\r?\n?/g, ''));
+  return {
+    ...event,
+    ...{
+      team: parts[0],
+      description: parts[1],
+      genre: parts[3],
+      image: parts[4]
+    }
+  }
+}
+
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
  * given callback function.
@@ -113,13 +126,15 @@ function listEvents(auth) {
       for (let i = 0; i < events.length; i++) {
         const event = events[i];
         const title = event.summary;
-        const by = event.description || '';
+        const description = event.description || '';
         const start = event.start.dateTime || event.start.date;
         const end = event.end.dateTime || event.end.date;
-        const result = {
-          'title': title, 'by': by,
-          'start': start, 'end': end
-        };
+        const result = parseEventDescription({
+          title,
+          description,
+          start,
+          end
+        });
         new_calendar.push(result);
       }
       return new_calendar;
