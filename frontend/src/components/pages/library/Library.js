@@ -71,6 +71,25 @@ const TypeLabel = styled.label`
 const TypePicker = styled.input`
 `;
 
+
+const AnnouncementBox = styled.div`
+  text-align: center;
+  padding: 0 2rem 2rem;
+  margin-bottom: 2rem;
+  border-bottom: solid;
+  border-width: 2px;
+  border-color: ${p => p.theme.color.pink};
+
+  @media screen and (max-width: 800px) {
+    margin-top: 2rem;
+  }
+`;
+
+const OutOfOrder = () =>
+  <AnnouncementBox>
+    <Error>Musiikkikirjastoa päivitetään parhaillaan, eikä haku ole tällä hetkellä käytössä. Pahoittelut vaivasta.</Error>
+  </AnnouncementBox>
+
 class Library extends Component {
   state = {
     results: [],
