@@ -16,6 +16,9 @@ const TOKEN_PATH = TOKEN_DIR + 'radiodiodi-calendar-credentials.json';
 const CALENDAR_ID = "radiodiodi.fi_9g8tojuhcb2dgj82l51sr09jno%40group.calendar.google.com";
 const START_DATE = new Date(Date.parse("2018-04-12T00:00:00.000+03:00"));
 const END_DATE = new Date(Date.parse("2018-05-01T00:00:00.000+03:00"));
+const CALENDAR_INTERVAL = 1000 * 60 * 60; // 1 hour
+
+let calendar_data = [];
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -124,8 +127,17 @@ function listEvents(auth) {
   });
 }
 
-module.exports = () =>
-  readFile('client_secret.json')
-    .then(r => JSON.parse(r))
-    .then(content => authorize(content, listEvents))
-    .catch(console.log);
+const initCalendarReader = credentials => {
+  const readCalendar = () => authorize(credentials, listEvents)
+    .then(results => { calendar_data = results; })
+    .then(_ => console.log('Updated calendar'));
+  readCalendar();
+  setInterval(readCalendar, CALENDAR_INTERVAL);
+}
+
+readFile('client_secret.json')
+  .then(r => JSON.parse(r))
+  .then(initCalendarReader)
+  .catch(console.log);
+
+module.exports = () => calendar_data;

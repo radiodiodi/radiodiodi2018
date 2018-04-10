@@ -176,15 +176,15 @@ router.get('/inspirational-quote', async ctx => {
   ctx.set('Access-Control-Allow-Origin', '*');
 });
 
-router.get('/programmes', async ctx => {
-  let data = await getCalendar()
+router.get('/programmes', ctx => {
+  let data = getCalendar()
   ctx.body = JSON.stringify(data);
   ctx.type = 'application/json';
   ctx.set('Access-Control-Allow-Origin', '*');
 });
 
-router.get('/now_playing', async ctx => {
-  let data = await getCalendar()
+router.get('/now_playing', ctx => {
+  let data = getCalendar()
   let past = data.filter(d => {
     return Date.parse(d['start']) < new Date
   })
