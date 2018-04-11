@@ -12,6 +12,11 @@ const getCalendar = require('./calendar')
 
 const admin = new Router();
 
+const allowAllCors = async (ctx, next) => {
+  await next();
+  ctx.set('Access-Control-Allow-Origin', '*');
+}
+
 const verifyUrl = token => `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`;
 const checkAuthorization = async (ctx, next) => {
   const auth = ctx.headers.authorization;
@@ -168,22 +173,20 @@ router.get('/stats', async ctx => {
   }
 });
 
-router.get('/inspirational-quote', async ctx => {
+router.get('/inspirational-quote', allowAllCors, ctx => {
   ctx.body = JSON.stringify({
     quote: `Kukkakaalia - kakkakuulia: hauska munansaannos`,
   });
   ctx.type = 'application/json';
-  ctx.set('Access-Control-Allow-Origin', '*');
 });
 
-router.get('/programmes', ctx => {
+router.get('/programmes', allowAllCors, ctx => {
   let data = getCalendar()
   ctx.body = JSON.stringify(data);
   ctx.type = 'application/json';
-  ctx.set('Access-Control-Allow-Origin', '*');
 });
 
-router.get('/now_playing', ctx => {
+router.get('/now_playing', allowAllCors, ctx => {
   let data = getCalendar()
   let past = data.filter(d => {
     return Date.parse(d['start']) < new Date
@@ -191,7 +194,6 @@ router.get('/now_playing', ctx => {
   let show = past[past.length - 1] || {}
   ctx.body = JSON.stringify(show);
   ctx.type = 'application/json';
-  ctx.set('Access-Control-Allow-Origin', '*');
 });
 
 const submitThrottle = RateLimit.middleware({
