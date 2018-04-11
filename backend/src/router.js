@@ -181,17 +181,25 @@ router.get('/inspirational-quote', allowAllCors, ctx => {
 });
 
 router.get('/programmes', allowAllCors, ctx => {
-  let data = getCalendar()
+  const data = getCalendar();
   ctx.body = JSON.stringify(data);
   ctx.type = 'application/json';
 });
 
 router.get('/now_playing', allowAllCors, ctx => {
-  let data = getCalendar()
-  let past = data.filter(d => {
+  const data = getCalendar();
+  if (!data) {
+    ctx.throw(500, 'Internal server error.');
+    utils.error('Faield to get calendar data. Data: ');
+    console.log(data);
+    return;
+  }
+
+  const past = data.filter(d => {
     return Date.parse(d['start']) < new Date
-  })
-  let show = past[past.length - 1] || {}
+  });
+
+  const show = past[past.length - 1] || {};
   ctx.body = JSON.stringify(show);
   ctx.type = 'application/json';
 });
