@@ -26,6 +26,18 @@ const Button = styled.button`
   padding: 0.5rem;
   font-size: 14px;
   border: none;
+  &:first-child {
+    float: left;
+  }
+  &:last-child {
+    float: right;
+  }
+  min-width: 100px;
+`
+
+const Controls = styled.div`
+  margin: 0 0.5rem 1.5rem;
+  text-align: center;
 `
 
 const Title = styled.h4`
@@ -96,9 +108,11 @@ class Calendar extends React.Component {
     return (
       <div>
         <h2>Ohjelmakalenteri</h2>
-        <Button onClick={this.decrementDay}>Edellinen</Button>
-        <span>{today}.4.2018</span>
-        <Button onClick={this.incrementDay}>Seuraava</Button>
+        <Controls>
+          <Button onClick={this.decrementDay}>Edellinen</Button>
+          <span>{today}.4.2018</span>
+          <Button onClick={this.incrementDay}>Seuraava</Button>
+        </Controls>
         {all[today] && all[today].map(p => <Program p={p} />)}
       </div>
     )
