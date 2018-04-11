@@ -8,8 +8,14 @@ const util = require('util')
 
 const router = new Router();
 const email = require('./email')
+const getCalendar = require('./calendar')
 
 const admin = new Router();
+
+const allowAllCors = async (ctx, next) => {
+  await next();
+  ctx.set('Access-Control-Allow-Origin', '*');
+}
 
 const verifyUrl = token => `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`;
 const checkAuthorization = async (ctx, next) => {
@@ -167,12 +173,35 @@ router.get('/stats', async ctx => {
   }
 });
 
-router.get('/inspirational-quote', async ctx => {
+router.get('/inspirational-quote', allowAllCors, ctx => {
   ctx.body = JSON.stringify({
     quote: `Kukkakaalia - kakkakuulia: hauska munansaannos`,
   });
   ctx.type = 'application/json';
-  ctx.set('Access-Control-Allow-Origin', '*');
+});
+
+router.get('/programmes', allowAllCors, ctx => {
+  const data = getCalendar();
+  ctx.body = JSON.stringify(data);
+  ctx.type = 'application/json';
+});
+
+router.get('/now_playing', allowAllCors, ctx => {
+  const data = getCalendar();
+  if (!data) {
+    ctx.throw(500, 'Internal server error.');
+    utils.error('Faield to get calendar data. Data: ');
+    console.log(data);
+    return;
+  }
+
+  const past = data.filter(d => {
+    return Date.parse(d['start']) < new Date
+  });
+
+  const show = past[past.length - 1] || {};
+  ctx.body = JSON.stringify(show);
+  ctx.type = 'application/json';
 });
 
 const submitThrottle = RateLimit.middleware({

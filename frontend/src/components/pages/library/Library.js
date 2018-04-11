@@ -85,11 +85,6 @@ const AnnouncementBox = styled.div`
   }
 `;
 
-const OutOfOrder = () =>
-  <AnnouncementBox>
-    <Error>Musiikkikirjastoa päivitetään parhaillaan, eikä haku ole tällä hetkellä käytössä. Pahoittelut vaivasta.</Error>
-  </AnnouncementBox>
-
 class Library extends Component {
   state = {
     results: [],
@@ -196,6 +191,15 @@ class Library extends Component {
     );
   }
 
+  renderOutOfOrder = () => {
+    const { trans } = this.context;
+    return (
+      <AnnouncementBox>
+        <Error>{ trans.libraryoutoforder }</Error>
+      </AnnouncementBox>
+    );
+  }
+
   onInput = () => {
     const value = this.input.value;
     const { type } = this.state;
@@ -232,6 +236,7 @@ class Library extends Component {
 
     return (
       <Container>
+        { this.renderOutOfOrder() }
         <h2>{ trans.librarybrowser }</h2>
         <TypePickerContainer>
           <TypeLabel>
