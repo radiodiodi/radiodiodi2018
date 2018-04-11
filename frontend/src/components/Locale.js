@@ -60,6 +60,7 @@ const common = {
     minutes: 'minuuttia',
     preliminarycalendar: 'Alustava ohjelmakalenteri',
     musiclibrary: 'Musiikkikirjasto',
+    libraryoutoforder: 'Musiikkikirjastoa päivitetään parhaillaan, eikä haku ole tällä hetkellä käytössä. Pahoittelut vaivasta.',
   },
   en: {
     frontpage: 'Front page',
@@ -117,6 +118,7 @@ const common = {
     minutes: 'minutes',
     preliminarycalendar: 'Preliminary programme schedule',
     musiclibrary: 'Music library',
+    libraryoutoforder: 'The music library is being upgraded, and the search is therefore disabled. Sorry for the inconvenience.',
   }
 };
 
