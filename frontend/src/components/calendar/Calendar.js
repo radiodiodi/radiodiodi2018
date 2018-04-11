@@ -48,6 +48,14 @@ class Calendar extends React.Component {
     this.state = {
       ready: false
     }
+    this.incrementDay = this.incrementDay.bind(this)
+    this.decrementDay = this.decrementDay.bind(this)
+  }
+  incrementDay() {
+    this.setState(({ today }) => ({ today: today + 1 }))
+  }
+  decrementDay() {
+    this.setState(({ today }) => ({ today: today - 1 }))
   }
   componentWillMount() {
     fetch('http://localhost:8080/programmes')
@@ -55,7 +63,7 @@ class Calendar extends React.Component {
         r = r.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
         const grouped = groupBy(r, (x) => x.start.substr(8, 2));
         this.setState({
-          today: "16",//+ (new Date).getDate(),
+          today: Math.max((new Date).getDate(), 16),
           weekdays: ['Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai', 'Sunnuntai'],
           all: grouped,
           ready: true
