@@ -2,6 +2,7 @@ const fs = require('fs');
 const readline = require('readline');
 const { promisify } = require('util');
 const readFile = promisify(fs.readFile);
+const utils = require('./utils');
 
 const google = require('googleapis');
 const googleAuth = require('google-auth-library');
@@ -143,10 +144,20 @@ function listEvents(auth) {
 }
 
 const initCalendarReader = credentials => {
-  const readCalendar = () => authorize(credentials, listEvents)
-    .then(results => { calendar_data = results; })
-    .then(_ => console.log('Updated calendar'));
+  const readCalendar = async () => {
+    try {
+      const results = await authorize(credentials, listEvents);
+  
+      calendar_data = results;
+      utils.info(`Updated calendar. Fetched ${results.length} results.`);
+    } catch (err) {
+      utils.error('Error while authorizing calendar.');
+      console.log(err);
+    }
+  };
+
   readCalendar();
+
   setInterval(readCalendar, CALENDAR_INTERVAL);
 }
 
