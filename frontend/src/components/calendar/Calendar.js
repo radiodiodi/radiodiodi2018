@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import { groupBy } from 'lodash';
 import { shortenText } from '../../utils'
 
-const Program = styled.div`
-  background-color: ${p => p.theme.color.pink};
-  color: ${p => p.theme.color.dark};
-  padding: 0.5rem;
+const ProgramBlock = styled.div`
+  background-color: ${p => p.theme.color.blue};
+  color: ${p => p.theme.color.white};
+  padding: 1rem;
   margin: 0.5rem;
   min-height: 170px;
 `
@@ -29,9 +29,15 @@ const Button = styled.button`
 `
 
 const Title = styled.h4`
+  color: ${p => p.theme.color.pink};
   margin: 0.5rem 0;
   font-size: 18px;
-  border-bottom: 1px solid ${p => p.theme.color.dark};
+  border-bottom: 1px solid ${p => p.theme.color.pink};
+`
+
+const Genre = styled.small`
+  float: right;
+  padding: 0 0.5rem;
 `
 
 const Author = styled.p`
@@ -41,6 +47,19 @@ const Author = styled.p`
 const P = styled.p`
   font-size: 12px;
 `
+
+const Program = ({ p }) => (
+  <ProgramBlock>
+    {p.image
+      ? <Img src={`https://radiodiodi.fi/static/img/${p.image}`} />
+      : <ImagePlaceholder />}
+    <small>{p.start.substr(11, 5) + ' - ' + p.end.substr(11, 5)}</small>
+    <Genre>{p.genre}</Genre>
+    <Title>{p.title}</Title>
+    <Author>{p.team}</Author>
+    {p.description && <P>{shortenText(p.description, 200)}</P>}
+  </ProgramBlock>
+)
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -80,17 +99,7 @@ class Calendar extends React.Component {
         <Button onClick={this.decrementDay}>Edellinen</Button>
         <span>{today}.4.2018</span>
         <Button onClick={this.incrementDay}>Seuraava</Button>
-        {all[today] && all[today].map(p => (
-          <Program>
-            {p.image
-              ? <Img src={`https://radiodiodi.fi/static/img/${p.image}`} />
-              : <ImagePlaceholder />}
-            <small>{p.start.substr(11, 5) + ' - ' + p.end.substr(11, 5)}</small>
-            <Title>{p.title}</Title>
-            <Author>{p.team}</Author>
-            {p.description && <P>{shortenText(p.description, 200)}</P>}
-          </Program>)
-        )}
+        {all[today] && all[today].map(p => <Program p={p} />)}
       </div>
     )
   }
