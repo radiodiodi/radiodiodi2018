@@ -8,6 +8,7 @@ import Instagram from '../../common/Instagram';
 import SponsorReel from '../../common/SponsorReel';
 import CountdownSection from '../../common/CountdownSection';
 import GCalendar from '../../common/GCalendar';
+import Calendar from '../../calendar/Calendar';
 
 const Container = styled.div`
   display: flex;
@@ -86,6 +87,7 @@ class Frontpage extends Component {
             <SponsorReel interval={sponsorInterval} />
           </PlayerWrapper>
         </Container>
+        <Calendar />
         <ContentRow>
           <Title>{trans.radioprogramheading}</Title>
           <Paragraph2>{trans.radioprogramparagraph1}</Paragraph2>
