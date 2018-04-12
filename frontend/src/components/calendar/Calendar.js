@@ -42,7 +42,7 @@ const Controls = styled.div`
 
 const Title = styled.h4`
   color: ${p => p.theme.color.pink};
-  margin: 0.5rem 0;
+  margin: 0.5rem 160px 0.5rem 0;
   font-size: 18px;
   border-bottom: 1px solid ${p => p.theme.color.pink};
 `
