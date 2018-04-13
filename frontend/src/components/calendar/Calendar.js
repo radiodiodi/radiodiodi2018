@@ -94,7 +94,7 @@ class Calendar extends React.Component {
         r = r.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
         const grouped = groupBy(r, (x) => x.start.substr(8, 2));
         this.setState({
-          today: Math.max((new Date).getDate(), 16),
+          today: Math.max((new Date()).getDate(), 16),
           weekdays: ['Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai', 'Sunnuntai'],
           all: grouped,
           ready: true
