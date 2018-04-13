@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import shuffle from 'shuffle-array';
@@ -11,6 +11,11 @@ import genelec from './../../images/genelec.png';
 import srv from './../../images/srv.png';
 import btw from './../../images/btw.png';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const ReelImage = styled(FadeImage)`
   align-self: center;
   max-width: 100%;
@@ -21,7 +26,7 @@ const ReelImage = styled(FadeImage)`
 const Title = styled.small`
   text-align: center;
   color: ${p => p.theme.color.white};
-  margin: 0.5rem;
+  margin: 3rem 0.5rem 0.5rem;
 `;
 
 const ImageContainer = styled.div`
@@ -82,14 +87,16 @@ class SponsorReel extends Component {
     const { images, current } = this.state;
     const { trans } = this.context;
     const image = images[current];
-    return <Fragment>
-      <Title>{ trans.incollaboration }</Title>
-      <ImageContainer>
-        <ReelImage
-          src={ image }
-        />
-      </ImageContainer>
-    </Fragment>;
+    return (
+      <Container>
+        <Title>{ trans.incollaboration }</Title>
+        <ImageContainer>
+          <ReelImage
+            src={ image }
+          />
+        </ImageContainer>
+      </Container>
+    );
   }
 }
 

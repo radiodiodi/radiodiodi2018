@@ -6,9 +6,9 @@ import ImageGallery from '../../common/ImageGallery';
 import Player from '../../common/Player';
 import Instagram from '../../common/Instagram';
 import SponsorReel from '../../common/SponsorReel';
-import CountdownSection from '../../common/CountdownSection';
 import GCalendar from '../../common/GCalendar';
 import Calendar from '../../calendar/Calendar';
+import Shoutbox from '../../common/Shoutbox';
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +19,6 @@ const Container = styled.div`
 `;
 
 const Paragraph = styled.div`
-  max-width: 50%;
   margin: 0;
   color: ${p => p.theme.color.white};
   @media screen and (max-width: 800px) {
@@ -36,7 +35,6 @@ const Paragraph2 = Paragraph.extend`
 const PlayerWrapper = styled.div`
   @media screen and (min-width: 800px) {
     margin: 0 0 1rem 1rem;
-    margin-top: 4rem;
   }
 
   @media screen and (max-width: 800px) {
@@ -44,7 +42,7 @@ const PlayerWrapper = styled.div`
   }
 
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: column;
 `;
 
@@ -76,18 +74,20 @@ class Frontpage extends Component {
 
     return (
       <Fragment>
-        <CountdownSection />
         <Container>
-          <Paragraph>
-            <Title>{trans.whatisheading}</Title>
-            {trans.whatis}
-          </Paragraph>
           <PlayerWrapper>
-            <Player />
+            <Paragraph>
+              <Title>{trans.whatisheading}</Title>
+              {trans.whatis}
+            </Paragraph>
             <SponsorReel interval={sponsorInterval} />
           </PlayerWrapper>
+          <PlayerWrapper>
+            <Player />
+            <Shoutbox />
+          </PlayerWrapper>
         </Container>
-        { /* DISABLED */ false && <Calendar /> }
+        <Calendar />
         <ContentRow>
           <Title>{trans.radioprogramheading}</Title>
           <Paragraph2>{trans.radioprogramparagraph1}</Paragraph2>
