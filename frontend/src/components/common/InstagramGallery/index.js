@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import FadeImage from '../FadeImage';
 import ImageContainer from './ImageContainer';
+import { shortenText } from '../../../utils'
 
 const Card = styled.a`
   align-self: flex-start;
@@ -26,7 +27,7 @@ const Card = styled.a`
   }
 `;
 
-const Image = styled(FadeImage)`
+const Image = styled(FadeImage) `
   max-width: 100%;
   margin-bottom: 1rem;
 `;
@@ -50,36 +51,28 @@ class InstagramGallery extends PureComponent {
     trans: PropTypes.any,
   }
 
-  shortenText = text => {
-    /* Take N first whole words, where N is the amount of words below 100 characters total */
-    const MAX_CHAR_LENGTH = 100;
-    return text.length < MAX_CHAR_LENGTH
-      ? text
-      : `${text.split(' ').slice(0, text.substring(0, MAX_CHAR_LENGTH).split(' ').length - 1).join(' ')}...`;
-  }
-
   render() {
     const { objs, error } = this.props;
     const { trans } = this.context;
 
     const images = !error
       ? objs.map((obj, index) =>
-        <Card key={index} href={ obj.link }>
-          <Image alt={ trans.instagramimage } src={ obj.img } />
+        <Card key={index} href={obj.link}>
+          <Image alt={trans.instagramimage} src={obj.img} />
           <Caption>
-            <Text>{ this.shortenText(obj.text) }</Text>
+            <Text>{shortenText(obj.text)}</Text>
           </Caption>
         </Card>
       ) : (
         <Card error>
-          <Text>{ trans.failedtoloadimages }</Text>
+          <Text>{trans.failedtoloadimages}</Text>
         </Card>
       );
 
     return (
       <Fragment>
-        <h2>{ trans.instagramfeed }</h2>
-        <ImageContainer images={ images } />
+        <h2>{trans.instagramfeed}</h2>
+        <ImageContainer images={images} />
       </Fragment>
     );
   }

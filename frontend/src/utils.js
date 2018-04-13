@@ -44,7 +44,7 @@ const checkJWTAuth = async token => {
 
   try {
     const resp = await fetch(req);
-  
+
     console.log('Backend auth response:');
     console.log(resp);
 
@@ -63,8 +63,8 @@ const fetchMessages = async () => {
 
     if (resp.status === 401) {
       throw new AuthError();
-    } 
-    
+    }
+
     const data = isJSON(resp)
       ? await resp.json()
       : await resp.text();
@@ -95,8 +95,8 @@ const removeMessage = async id => {
 
     if (resp.status === 401) {
       throw new AuthError();
-    } 
-    
+    }
+
     const data = isJSON(resp)
       ? await resp.json()
       : await resp.text();
@@ -125,8 +125,8 @@ const banUserForMessage = async id => {
 
     if (resp.status === 401) {
       throw new AuthError();
-    } 
-    
+    }
+
     const data = isJSON(resp)
       ? await resp.json()
       : await resp.text();
@@ -155,8 +155,8 @@ const liftBan = async ip => {
 
     if (resp.status === 401) {
       throw new AuthError();
-    } 
-    
+    }
+
     const data = isJSON(resp)
       ? await resp.json()
       : await resp.text();
@@ -185,8 +185,8 @@ const fetchBans = async () => {
 
     if (resp.status === 401) {
       throw new AuthError();
-    } 
-    
+    }
+
     const data = isJSON(resp)
       ? await resp.json()
       : await resp.text();
@@ -222,7 +222,7 @@ const fetchSongsByField = async (field, title) => {
       await wait(1000); // ms
       return fetchSongsByField(field, title);
     }
-    
+
     const data = isJSON(resp)
       ? await resp.json()
       : await resp.text();
@@ -254,7 +254,7 @@ const fetchSongs = async () => {
       await wait(1000); // ms
       return fetchSongs();
     }
-    
+
     const data = isJSON(resp)
       ? await resp.json()
       : await resp.text();
@@ -290,6 +290,11 @@ const registerProgramme = async data => {
   }
 }
 
+/* Take N first whole words, where N is the amount of words below 100 characters total */
+const shortenText = (text, maxLength = 100) =>
+  text.length < maxLength
+    ? text
+    : `${text.split(' ').slice(0, text.substring(0, maxLength).split(' ').length - 1).join(' ')}...`;
 
 export {
   checkJWTAuth,
@@ -302,4 +307,5 @@ export {
   fetchSongsByField,
   fetchSongs,
   registerProgramme,
+  shortenText,
 }
