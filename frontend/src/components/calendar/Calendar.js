@@ -118,7 +118,7 @@ class Calendar extends React.Component {
           <span>{today}.4.2018</span>
           <Button onClick={this.incrementDay}>Seuraava</Button>
         </Controls>
-        {all[today] && all[today].map(p => <Program p={p} />)}
+        {all[today] && all[today].map(p => <Program p={p} key={String(p.start) + String(today)} />)}
       </div>
     )
   }
