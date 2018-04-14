@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Cookie from 'universal-cookie';
+import PropTypes from 'prop-types';
 
 const WS_URL = process.env.REACT_APP_BACKEND_WS_URL;
 const MAX_MESSAGES = 100;
@@ -69,6 +70,10 @@ class Shoutbox extends Component {
     this.cookie = new Cookie();
   }
 
+  static contextTypes = {
+    trans: PropTypes.any
+  };
+
   handleData = rawData => {
     const data = JSON.parse(rawData);
 
@@ -94,6 +99,7 @@ class Shoutbox extends Component {
     } else {
       console.log('Invalid websocket data:');
       console.log(data);
+      this.showError();
     }
   }
 
@@ -129,10 +135,25 @@ class Shoutbox extends Component {
     );
   }
 
+  showError = evt => {
+    const { trans } = this.context;
+
+    this.setState({
+      log: [{
+        error: true,
+        name: 'SERVER',
+        text: trans.shoutboxerror,
+        timestamp: new Date(Date.now()),
+      }],
+    });
+
+    console.log(`Websocket error. Data: ${evt.data}`);
+  }
+
   connect = () => {
     this.connection = new WebSocket(WS_URL);
     this.connection.onmessage = evt => this.handleData(evt.data);
-    this.connection.onerror = evt => console.log(`Websocket error. Data: ${evt.data}`);
+    this.connection.onerror = this.showError;
     this.connection.onclose = () => setTimeout(this.connect, 1000);
 
     const username = this.cookie.get('username') || '';
@@ -158,6 +179,7 @@ class Shoutbox extends Component {
 
   render() {
     const { log } = this.state;
+    const { trans } = this.context;
     return (
       <Container>
         <Log innerRef={chatLog => { this.chatLog = chatLog } }>
@@ -166,14 +188,14 @@ class Shoutbox extends Component {
 
         <InputContainer>
           <Username 
-            placeholder="Username" 
+            placeholder={trans.username} 
             innerRef={ input => { this.username = input } } />
           <Prompt 
-            placeholder="Message..." 
+            placeholder={trans.messageplaceholder} 
             onKeyPress={this.onPromptKeyPress} 
             innerRef={ input => { this.prompt = input } } />
           <SendButton 
-            onClick={this.sendMessage}>Send</SendButton>
+            onClick={this.sendMessage}>{trans.send}</SendButton>
         </InputContainer>
       </Container>
     );
