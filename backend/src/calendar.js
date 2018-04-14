@@ -22,7 +22,7 @@ const CALENDAR_INTERVAL = 1000 * 60 * 60; // 1 hour
 let calendar_data = [];
 
 function parseEventDescription(event) {
-  const parts = event.description.split('---\n').map(p => p.replace(/\r?\n?/g, ''));
+  const parts = event.description.split('---').map(p => p.replace(/\r?\n?/g, ''));
   return {
     ...event,
     ...{
