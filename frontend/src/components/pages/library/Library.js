@@ -155,7 +155,7 @@ class Library extends Component {
     return (
       <Result white key={index}>
         <Column>{ result.title }</Column>
-        <Column>{ result.artist.join(', ') }</Column>
+        <Column>{ result.artist }</Column>
         <Column>{ result.album }</Column>
       </Result>
     );
