@@ -224,4 +224,62 @@ router.post('/api/register', submitThrottle, async ctx => {
   }
 });
 
+router.post('/api/update_current_song', async ctx => {
+  let data;
+  try {
+    data = ctx.request.body;
+    const { auth } = data;
+    if (auth !== process.env.RADIODJ2_AUTH_SECRET) {
+      ctx.throw(401, 'Unauthorized');
+      return;
+    }
+    if (!data.title || !data.artist) {
+      throw new Error('Invalid title or artist');
+    }
+  } catch (error) {
+    console.log(error);
+    ctx.throw(400, 'Bad request');
+    return;
+  }
+
+  try {
+    const { title, artist } = data;
+    await models.now_playing.insert({
+      timestamp: new Date(),
+      title: String(title),
+      artist: String(artist),
+    });
+  } catch (error) {
+    console.log(error);
+    ctx.throw(500, 'Internal server error.');
+    return;
+  }
+
+  ctx.body = JSON.stringify({
+    status: ok,
+  });
+});
+
+router.get('/api/current_song', async ctx => {
+  const results = await models.now_playing.find({}, {
+    limit: 1,
+    sort: {
+      timestamp: 1,
+    }
+  });
+
+  if (results.length === 0) {
+    ctx.body = JSON.stringify({});
+    return;
+  }
+
+  const current = results[0];
+
+  ctx.body = JSON.stringify({
+    title: current.title,
+    artist: current.artist,
+    timestamp: current.timestamp,
+  });
+});
+
 module.exports = router;
