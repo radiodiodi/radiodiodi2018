@@ -2,20 +2,22 @@ import React from 'react';
 import styled from 'styled-components'
 import { groupBy } from 'lodash';
 import { shortenText } from '../../utils'
+import placeholderImg from '../../images/placeholder_dark.svg'
 
 const ProgramBlock = styled.div`
   background-color: ${p => p.theme.color.blue};
   color: ${p => p.theme.color.white};
   padding: 1rem;
   margin: 0.5rem;
-  min-height: 170px;
+  min-height: ${p => p.maintainance ? 'none' : '180px'};
 `
 
 const ImagePlaceholder = styled.div`
   height: 150px;
   width: 150px;
   float: right;
-  background-color: ${p => p.theme.color.dark};
+  background-image: url(${placeholderImg});
+  background-size: cover;
 `
 
 const Img = ImagePlaceholder.withComponent('img')
@@ -60,18 +62,21 @@ const P = styled.p`
   font-size: 12px;
 `
 
-const Program = ({ p }) => (
-  <ProgramBlock>
-    {p.image
-      ? <Img src={`https://radiodiodi.fi/static/img/${p.image}`} />
-      : <ImagePlaceholder />}
-    <small>{p.start.substr(11, 5) + ' - ' + p.end.substr(11, 5)}</small>
-    <Genre>{p.genre}</Genre>
-    <Title>{p.title}</Title>
-    <Author>{p.team}</Author>
-    {p.description && <P>{shortenText(p.description, 200)}</P>}
-  </ProgramBlock>
-)
+const Program = ({ p }) => {
+  const maintainance = p.title === 'HUOLTOTAUKO'
+  return (
+    <ProgramBlock maintainance={maintainance}>
+      {p.image
+        ? <Img src={`https://radiodiodi.fi/static/img/${p.image}`} />
+        : !maintainance ? <ImagePlaceholder /> : null}
+      <small>{p.start.substr(11, 5) + ' - ' + p.end.substr(11, 5)}</small>
+      <Genre>{p.genre}</Genre>
+      <Title>{p.title}</Title>
+      <Author>{p.team}</Author>
+      {p.description && <P>{shortenText(p.description, 200)}</P>}
+    </ProgramBlock>
+  )
+}
 
 class Calendar extends React.Component {
   constructor(props) {
