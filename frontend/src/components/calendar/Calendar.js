@@ -79,7 +79,7 @@ class Calendar extends React.Component {
     if (!ready) return null
     return (
       <div>
-        <h2>Ohjelmakalenteri</h2>
+        <h2 id="calendar">Ohjelmakalenteri</h2>
         {calendarControls}
         {all[today] && all[today].map(p => <Program p={p} key={String(p.start) + String(today)} />)}
         {calendarControls}
