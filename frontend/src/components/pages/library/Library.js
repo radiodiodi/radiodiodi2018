@@ -152,10 +152,16 @@ class Library extends Component {
   }
 
   renderResult = (result, index) => {
+    if (!result || !result.title) return null;
+
+    const artistData = Array.isArray(result.artist)
+      ? result.artist.join(', ')
+      : result.artist;
+
     return (
       <Result white key={index}>
         <Column>{ result.title }</Column>
-        <Column>{ result.artist.join(', ') }</Column>
+        <Column>{ artistData }</Column>
         <Column>{ result.album }</Column>
       </Result>
     );
