@@ -42,7 +42,7 @@ class Calendar extends React.Component {
     this.setState(({ today }) => ({ today: today - 1 }))
   }
   componentWillMount() {
-    fetch('http://localhost:8080/programmes')
+    fetch(`${process.env.REACT_APP_BACKEND_HTTP_URL}/programmes`)
       .then(r => r.json()).then(r => {
         r = r.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
         const grouped = groupBy(r, (x) => x.start.substr(8, 2));
@@ -52,8 +52,7 @@ class Calendar extends React.Component {
           all: grouped,
           ready: true
         });
-      });
-
+      }).catch(e => console.log(e));
   }
   render() {
     const { ready, all, today } = this.state;
