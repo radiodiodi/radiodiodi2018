@@ -7,7 +7,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const Button = styled.button`
-  background-color: ${p => p.theme.color.pink};
+  background-color: ${p => p.theme.color.yellow};
   color: ${p => p.theme.color.dark};
   padding: 0.5rem;
   font-size: 14px;
@@ -22,7 +22,7 @@ const Button = styled.button`
 `
 
 const Controls = styled.div`
-  margin: 0 0.5rem 1.5rem;
+  margin: 1.5rem 0.5rem;
   text-align: center;
 `
 
@@ -36,10 +36,10 @@ class Calendar extends React.Component {
     this.decrementDay = this.decrementDay.bind(this)
   }
   incrementDay() {
-    this.setState(({ today }) => ({ today: today + 1 }))
+    this.setState(({ today }) => ({ today: Math.min(30, today + 1) }))
   }
   decrementDay() {
-    this.setState(({ today }) => ({ today: today - 1 }))
+    this.setState(({ today }) => ({ today: Math.max(16, today - 1) }))
   }
   componentWillMount() {
     fetch(`${process.env.REACT_APP_BACKEND_HTTP_URL}/programmes`)
@@ -56,16 +56,18 @@ class Calendar extends React.Component {
   }
   render() {
     const { ready, all, today } = this.state;
+    const calendarControls = <Controls>
+      <Button onClick={this.decrementDay}>Edellinen</Button>
+      <span>{today}.4.2018</span>
+      <Button onClick={this.incrementDay}>Seuraava</Button>
+    </Controls>
     if (!ready) return null
     return (
       <div>
         <h2>Ohjelmakalenteri</h2>
-        <Controls>
-          <Button onClick={this.decrementDay}>Edellinen</Button>
-          <span>{today}.4.2018</span>
-          <Button onClick={this.incrementDay}>Seuraava</Button>
-        </Controls>
+        {calendarControls}
         {all[today] && all[today].map(p => <Program p={p} key={String(p.start) + String(today)} />)}
+        {calendarControls}
       </div>
     )
   }
