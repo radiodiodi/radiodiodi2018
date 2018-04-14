@@ -242,7 +242,6 @@ class Library extends Component {
 
     return (
       <Container>
-        { this.renderOutOfOrder() }
         <h2>{ trans.librarybrowser }</h2>
         <TypePickerContainer>
           <TypeLabel>
