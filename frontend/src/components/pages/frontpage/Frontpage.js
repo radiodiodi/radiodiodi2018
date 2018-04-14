@@ -94,9 +94,6 @@ class Frontpage extends Component {
           <Paragraph2>{trans.radioprogramparagraph2}</Paragraph2>
         </ContentRow>
         <ContentRow>
-          <GCalendar />
-        </ContentRow>
-        <ContentRow>
           <ImageGallery />
         </ContentRow>
         <Instagram />

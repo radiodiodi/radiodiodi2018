@@ -61,6 +61,7 @@ const common = {
     preliminarycalendar: 'Alustava ohjelmakalenteri',
     musiclibrary: 'Musiikkikirjasto',
     libraryoutoforder: 'Musiikkikirjastoa päivitetään parhaillaan, eikä haku ole tällä hetkellä käytössä. Pahoittelut vaivasta.',
+    gcalvisiblehere: 'Kalenteri on luettavissa kokonaisuudessaan täällä',
   },
   en: {
     frontpage: 'Front page',
@@ -119,6 +120,7 @@ const common = {
     preliminarycalendar: 'Preliminary programme schedule',
     musiclibrary: 'Music library',
     libraryoutoforder: 'The music library is being upgraded, and the search is therefore disabled. Sorry for the inconvenience.',
+    gcalvisiblehere: 'The complete calendar can be seen here',
   }
 };
 

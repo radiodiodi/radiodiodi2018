@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import { groupBy } from 'lodash';
 import Program from './Program'
+import PropTypes from 'prop-types';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -26,6 +27,11 @@ const Controls = styled.div`
   text-align: center;
 `
 
+const CalendarLink = styled.div`
+  color: ${p => p.theme.color.white};
+  text-align: center;
+`;
+
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
@@ -35,6 +41,11 @@ class Calendar extends React.Component {
     this.incrementDay = this.incrementDay.bind(this)
     this.decrementDay = this.decrementDay.bind(this)
   }
+
+  static contextTypes = {
+    trans: PropTypes.any
+  };
+
   incrementDay() {
     this.setState(({ today }) => ({ today: Math.min(30, today + 1) }))
   }
@@ -56,6 +67,7 @@ class Calendar extends React.Component {
   }
   render() {
     const { ready, all, today } = this.state;
+    const { trans } = this.context;
     const calendarControls = <Controls>
       <Button onClick={this.decrementDay}>Edellinen</Button>
       <span>{today}.4.2018</span>
@@ -68,6 +80,11 @@ class Calendar extends React.Component {
         {calendarControls}
         {all[today] && all[today].map(p => <Program p={p} key={String(p.start) + String(today)} />)}
         {calendarControls}
+        <CalendarLink>
+          {trans.gcalvisiblehere}: <a href="https://calendar.google.com/calendar/b/4/r?cid=radiodiodi.fi_9g8tojuhcb2dgj82l51sr09jno@group.calendar.google.com">
+            Google Calendar
+          </a>
+        </CalendarLink>
       </div>
     )
   }
