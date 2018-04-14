@@ -32,14 +32,16 @@ const Paragraph2 = Paragraph.extend`
   max-width: 800px;
 `;
 
-const PlayerWrapper = styled.div`
+const ColumnContainer = styled.div`
   @media screen and (min-width: 800px) {
-    margin: 0 0 1rem 1rem;
+    margin: 0 ${p => p.margin ? '2rem' : 0}; 1rem 1rem;
   }
 
   @media screen and (max-width: 800px) {
     order: -1;
   }
+
+  ${p => p.margin && 'margin-right: 2rem'};
 
   display: flex;
   justify-content: space-between;
@@ -63,6 +65,12 @@ const ContentRow = styled.div`
   }
 `;
 
+const ShoutboxTitle = styled.h4`
+  margin: 2rem 0 1rem;
+  font-size: 1.5rem;
+  color: ${p => p.theme.color.white};
+`;
+
 class Frontpage extends Component {
   static contextTypes = {
     trans: PropTypes.any
@@ -75,17 +83,18 @@ class Frontpage extends Component {
     return (
       <Fragment>
         <Container>
-          <PlayerWrapper>
+          <ColumnContainer margin>
             <Paragraph>
               <Title>{trans.whatisheading}</Title>
               {trans.whatis}
             </Paragraph>
             <SponsorReel interval={sponsorInterval} />
-          </PlayerWrapper>
-          <PlayerWrapper>
+          </ColumnContainer>
+          <ColumnContainer>
             <Player />
+            <ShoutboxTitle>{trans.shoutbox}</ShoutboxTitle>
             <Shoutbox />
-          </PlayerWrapper>
+          </ColumnContainer>
         </Container>
         <Calendar />
         <ContentRow>

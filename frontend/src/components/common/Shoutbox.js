@@ -14,7 +14,6 @@ const Container = styled.div`
   justify-content: space-between;
 
   padding: 1rem;
-  margin: 1rem 0;
   min-width: 10rem;
   height: 25rem;
 `;

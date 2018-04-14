@@ -60,6 +60,11 @@ const common = {
     preliminarycalendar: 'Alustava ohjelmakalenteri',
     musiclibrary: 'Musiikkikirjasto',
     libraryoutoforder: 'Musiikkikirjastoa päivitetään parhaillaan, eikä haku ole tällä hetkellä käytössä. Pahoittelut vaivasta.',
+    username: 'Nimi',
+    messageplaceholder: 'Huutista...',
+    send: 'Lähetä',
+    shoutboxerror: 'Huutislaatikko ei saa yhteyttä! :(',
+    shoutbox: 'Huutislaatikko',
   },
   en: {
     frontpage: 'Front page',
@@ -118,6 +123,11 @@ const common = {
     preliminarycalendar: 'Preliminary programme schedule',
     musiclibrary: 'Music library',
     libraryoutoforder: 'The music library is being upgraded, and the search is therefore disabled. Sorry for the inconvenience.',
+    username: 'Username',
+    messageplaceholder: 'Message...',
+    send: 'Send',
+    shoutboxerror: 'Shoutbox failed to connect! :(',
+    shoutbox: 'Shoutbox',
   }
 };
 
