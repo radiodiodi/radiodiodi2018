@@ -93,7 +93,7 @@ class Program extends React.Component {
     const p = this.props.p
     const maintainance = p.title === 'HUOLTOTAUKO'
     const image = p.image
-      ? <Img src={`https://radiodiodi.fi/static/img/${p.image}`} />
+      ? <Img src={`${process.env.REACT_APP_STATIC_URL}/img/${p.image}`} />
       : !maintainance ? <ImagePlaceholder placeholder /> : null
     const head = isMobile => (
       <Wrapper mobile={isMobile}>
