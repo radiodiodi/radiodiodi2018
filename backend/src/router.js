@@ -256,7 +256,7 @@ router.post('/api/update_current_song', async ctx => {
   }
 
   ctx.body = JSON.stringify({
-    status: ok,
+    status: 'ok',
   });
 });
 
