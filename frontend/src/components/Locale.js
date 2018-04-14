@@ -1,6 +1,5 @@
 import LocalizedStrings from 'react-localization';
 import Cookies from 'universal-cookie';
-import { merge } from 'lodash';
 
 const common = {
   fi: {

@@ -22,7 +22,7 @@ const Column = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: 0 0.5rem;
-  flex: ${p => p.flex && '1' || '0.5'};
+  flex: ${p => p.flex ? '1' : '0.5'};
   @media screen and (max-width: 600px) {
     margin-top: 0.5rem;
   }

@@ -55,13 +55,16 @@ class Calendar extends React.Component {
   componentWillMount() {
     fetch(`${process.env.REACT_APP_BACKEND_HTTP_URL}/programmes`)
       .then(r => r.json()).then(r => {
+        if (!r || !Array.isArray(r)) {
+          return;
+        }
         r = r.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
         const grouped = groupBy(r, (x) => x.start.substr(8, 2));
         this.setState({
-          today: Math.max((new Date).getDate(), 16),
+          today: Math.max((new Date()).getDate(), 16),
           weekdays: ['Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai', 'Sunnuntai'],
           all: grouped,
-          ready: true
+          ready: true,
         });
       }).catch(e => console.log(e));
   }

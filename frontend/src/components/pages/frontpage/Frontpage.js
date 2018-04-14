@@ -7,7 +7,6 @@ import Player from '../../common/Player';
 import Instagram from '../../common/Instagram';
 import SponsorReel from '../../common/SponsorReel';
 import CountdownSection from '../../common/CountdownSection';
-import GCalendar from '../../common/GCalendar';
 import Calendar from '../../calendar/Calendar';
 
 const Container = styled.div`
