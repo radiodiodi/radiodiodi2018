@@ -87,7 +87,7 @@ class Frontpage extends Component {
             <SponsorReel interval={sponsorInterval} />
           </PlayerWrapper>
         </Container>
-        { /* DISABLED */ false && <Calendar /> }
+        <Calendar />
         <ContentRow>
           <Title>{trans.radioprogramheading}</Title>
           <Paragraph2>{trans.radioprogramparagraph1}</Paragraph2>
