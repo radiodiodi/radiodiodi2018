@@ -60,13 +60,13 @@ class Banner extends PureComponent {
           <Logo src={mascot} />
         </Link>
         <SocialMediaContainer>
-          <SocialMediaLink float href="https://instagram.com/radiodiodi">
+          <SocialMediaLink target="_blank" float href="https://instagram.com/radiodiodi">
             <SocialMediaButton className="fab fa-instagram" />
           </SocialMediaLink>
-          <SocialMediaLink href="https://www.facebook.com/radiodiodi">
+          <SocialMediaLink target="_blank" href="https://www.facebook.com/radiodiodi">
             <SocialMediaButton className="fab fa-facebook" />
           </SocialMediaLink>
-          <SocialMediaLink href="https://t.me/radiodiodioffseason">
+          <SocialMediaLink target="_blank" href="https://t.me/radiodiodioffseason">
             <SocialMediaButton className="fab fa-telegram" />
           </SocialMediaLink>
         </SocialMediaContainer>
