@@ -328,10 +328,6 @@ const fetchCurrentSong = async () => {
       }
     }
 
-    if (new Date() - new Date(Date.parse(data.timestamp)) > 10 * 60 * 1000) { // if over 10 minutes ago
-      return null;
-    }
-
     return data;
   } catch (err) {
     console.log(err);
