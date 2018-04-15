@@ -47,16 +47,16 @@ const qas = trans => [
 
     <p>Radiodiodissa on sisällöllisesti ollut ohjelmaa saatananpalvonnasta kristilliseen ohjelmaan ja musiikin analysoinnista tarinankerrontaan.</p>
 
-    <p>Teknisesti ohjelma voi sisältää vaikkapa puhetta, nauhalta soitettua musiikkia, livemusiikkia, freestyleräppiä, DJ - settejä ja ääniefektejä.</p>
+    <p>Teknisesti ohjelma voi sisältää vaikkapa puhetta, nauhalta soitettua musiikkia, livemusiikkia, freestyleräppiä, DJ-settejä ja ääniefektejä.</p>
 
     <p>Huom: Jos ohjelma sisältää jotakin muuta kuin musiikin soittamista ja puhumista, ota yhteyttä etukäteen, jotta toimitus voi valmistella studion erikoisempaa ohjelmaa varten. Autamme mielellämme typerienkin ideoidesi toteuttamisessa.</p>
   `}, {
     question: 'Kuinka monta ihmistä lähetykseen mahtuu?',
-    answer: 'Studion lähetyspöydän ympärille mahtuu kerralla mukavasti 8 - 10 ihmistä.Mikrofonilliset headsetit löytyvät kuudelle henkilölle, ja kondensaattorimikrofoneilla isompikin porukka saadaan ääneen. Studion voi tunkea täyteen ihmisiä, mutta kannattaa miettiä, onko se tarkoituksenmukaista.Useampi ihminen ei voi puhua toistensa päälle, jos puheesta on tarkoitus saada selvää.'
+    answer: 'Studion lähetyspöydän ympärille mahtuu kerralla mukavasti 8-10 ihmistä. Mikrofonilliset headsetit löytyvät kuudelle henkilölle, ja kondensaattorimikrofoneilla isompikin porukka saadaan ääneen. Studion voi tunkea täyteen ihmisiä, mutta kannattaa miettiä, onko se tarkoituksenmukaista.Useampi ihminen ei voi puhua toistensa päälle, jos puheesta on tarkoitus saada selvää.'
   },
   {
     question: 'Mitä musiikkia voin soittaa?',
-    answer: 'Kaikkea laillisesti hankittua musiikkia, kuten CD- levyt, vinyylit, kasetit ja itse tuotetut teokset.Myös mm.Suomen iTunesista tai Bandcampista ostetut kappaleet käyvät.Suoratoistopalvelut eivät ole hyväksyttävä lähde. Esimerkiksi Spotify tai Youtube eivät siis valitettavasti ole käytettävissä. Jos haluat omat levysi meidän levytietokantaan helposti soitettavaksi, tuo ne radion konteille kopioitavaksi vähintään 3 päivää ennen omaa ohjelmaasi. Muista pyytää omat levysi takaisin ohjelmasi jälkeen. Lisäkysymyksiin saa vastauksen laittamalla mailia toimitus@radiodiodi.fi'
+    answer: 'Kaikkea laillisesti hankittua musiikkia, kuten CD-levyt, vinyylit, kasetit ja itse tuotetut teokset. Myös mm. Suomen iTunesista tai Bandcampista ostetut kappaleet käyvät. Suoratoistopalvelut eivät ole hyväksyttävä lähde. Esimerkiksi Spotify tai Youtube eivät siis valitettavasti ole käytettävissä. Jos haluat omat levysi meidän levytietokantaan helposti soitettavaksi, tuo ne radion konteille kopioitavaksi vähintään 3 päivää ennen omaa ohjelmaasi. Muista pyytää omat levysi takaisin ohjelmasi jälkeen. Lisäkysymyksiin saa vastauksen laittamalla mailia toimitus@radiodiodi.fi.'
   },
   {
     question: 'Mitä en saa tehdä radiossa?',
@@ -68,14 +68,14 @@ const qas = trans => [
 
 <p>Tämän lisäksi studiossa on laajat mahdollisuudet toistaa ääntä. Muun muassa:</p>
 <ul>
-  <li>Kaikkea meidän <a href="https://radiodiodi.fi/library">musiikkikannassa</a> olevaa musiikkia voi soittaa tuottajakoneelta</li>
-  <li>DJ - mikseri kahdella CD- deckilläja kahdella vinyylideckillä</li>
+<li>Kaikkea meidän <a href="https://radiodiodi.fi/library">musiikkikannassa</a> olevaa musiikkia voi soittaa tuottajakoneelta</li>
+<li>DJ - mikseri kahdella CD- deckilläja kahdella vinyylideckillä</li>
 <li>C-kasettisoitin</li>
 <li>Oman tietokoneen saa kiinni USB- kaapelilla</li>
 </ul>
 HUOM: Omalta muistitikulta ei voi soittaa suoraan musiikkia, jos et käytää omaa tietokonettasi! Tuottajakoneeseen ei saa kytkeä mitään ylimääräisiä laitteita.
 
-<p>Myös analogiset liitännät omiin laitteisiin, livemusiikki ja kaikenlaiset outoudet onnistuvat (esim.Kimble - laudan naksuttelu on saatu kuulumaan lähetykseen).Jos teet mitään muuta kuin pelkkää puheohjelmaa tai valmiista äänilähteistä soittamista, ota aina yhteyttä etukäteen.Ota myös rohkeasti yhteyttä, jos et ole jostain asiasta varma.Studiotiimin saa kiinni osoitteesta studio@radiodiodi.fi</p>`
+<p>Myös analogiset liitännät omiin laitteisiin, livemusiikki ja kaikenlaiset outoudet onnistuvat – esimerkiksi Kimble-laudan naksuttelu on saatu kuulumaan lähetykseen. Jos teet mitään muuta kuin pelkkää puheohjelmaa tai valmiista äänilähteistä soittamista, ota aina yhteyttä etukäteen. Ota myös rohkeasti yhteyttä, jos et ole jostain asiasta varma. Studiotiimin saa kiinni osoitteesta studio@radiodiodi.fi</p>`
   }, {
     question: 'Miten se koko homma toimii käytännössä?',
     answer:
@@ -83,38 +83,38 @@ HUOM: Omalta muistitikulta ei voi soittaa suoraan musiikkia, jos et käytää om
 <ul>
 <li>Suunnittele ohjelmasi! Hyvin suunniteltua ohjelmaa on mukava tehdä lähetyspäivänä.</li>
 <li>Ohjelmaa suunnitellessa varaa mainoksille ja jingleille yhteensä n. 5 minuuttia per tunti</li>
-<li>Varmista, että haluamasi musiikki on soitettavissa (lähetyksessä)[#musiikki] ja tuo tarpeelliset mediat konteille etukäteen</li>
+<li>Varmista, että haluamasi musiikki on <a href="/library">soitettavissa lähetyksessä</a> ja tuo tarpeelliset mediat konteille etukäteen</li>
 </ul>
 Lähetyspäivänä:
 <ul>
 <li>Ole paikalla vähintään 15 minuuttia ennen lähetyksesi alkua</li>
 <li>Tule lämpiöön, eli keskimmäiseen konttiin (osoite)</li>
-<li>Lähetyksesi tuottajan pitäisi olla siellä odottamassa.Jos ketään ei tule paikalle 5 minuuttia ennen lähetystä, kurkkaa varovasti studiokonttiin</li>
+<li>Lähetyksesi tuottajan pitäisi olla siellä odottamassa. Jos ketään ei tule paikalle 5 minuuttia ennen lähetystä, kurkkaa varovasti studiokonttiin</li>
 <li>Tuottaja selittää käytännön asiat </li>
-<li>Varaudu lopettamaan puhuminen noin 5 min.ennen oman ohjelmasi loppua.Laita tällöin myös musiikkia jonoon, jotta seuraavat tekijät pääsevät valmistautumaan ajoissa.</li>
+<li>Varaudu lopettamaan puhuminen noin 5 min.ennen oman ohjelmasi loppua. Laita tällöin myös musiikkia jonoon, jotta seuraavat tekijät pääsevät valmistautumaan ajoissa.</li>
 <li>Kerää tavarasi</li>
 <li>Pyydä kopioitavaksi tuomasi levyt takaisin</li></ul>`
   }, {
     question: 'Onko ohjelmantekijöille ruokaa tai juomaa talon puolesta?',
-    answer: 'BTWTonic tarjoaa pullollisen toniciaan jokaiselle ohjelmantekijälle.Pidemmille ohjelmasessioille kannattaa varata omaa evästä mukaan.'
+    answer: 'BTWTonic tarjoaa pullollisen toniciaan jokaiselle ohjelmantekijälle. Pidemmille ohjelmasessioille kannattaa varata omaa evästä mukaan.'
   }, {
-    question: 'Saako studiossa syödä/ juoda ? Entä alkoholi?',
+    question: 'Saako studiossa syödä/juoda? Entä alkoholi?',
     answer: 'Kunhan laitteet pysyvät ehjänä ja kunnossa, mikään ei estä studiossa syömistä tai juomista.'
   }, {
     question: 'Miten mainosten soittaminen tapahtuu?',
-    answer: 'Kaikissa päiväaikaan lähetettävissä ohjelmissa soitetaan mainoksia.Tuottaja huolehtii näiden soittamisesta käytännössä, mutta varaathan ohjelmastasi yhteensä n. 5 minuuttia tunnissa mainoksille ja jingleille.'
+    answer: 'Kaikissa päiväaikaan lähetettävissä ohjelmissa soitetaan mainoksia. Tuottaja huolehtii näiden soittamisesta käytännössä, mutta varaathan ohjelmastasi yhteensä n. 5 minuuttia tunnissa mainoksille ja jingleille.'
   }, {
     question: 'Mikä on jingle?',
-    answer: 'Jingle on lyhyt audiopätkä, jossa kerrotaan mitä radioasemaa kuuntelet.Esimerkkinä "Kuuntelet Radio Novaa taajudella 106.2” Näitäkin soitetaan oman ohjelman ohessa tuottajan toimesta; yleensä mainosten yhteydessä.'
+    answer: 'Jingle on lyhyt audiopätkä, jossa kerrotaan mitä radioasemaa kuuntelet. Esimerkkinä "Kuuntelet Radio Novaa taajudella 106.2” Näitäkin soitetaan oman ohjelman ohessa tuottajan toimesta; yleensä mainosten yhteydessä.'
   }, {
     question: 'Voinko äänittää jinglen omalle ohjelmalleni?',
-    answer: 'Kyllä! Voit nauhoittaa sen itse ja lähettää meille etukäteen.Ota yhteyttä studio@radiodiodi.fi jos tämä kiinnostaa.'
+    answer: 'Kyllä! Voit nauhoittaa sen itse ja lähettää meille etukäteen. Ota yhteyttä studio@radiodiodi.fi jos tämä kiinnostaa.'
   }, {
     question: 'Saanko ohjelmani talteen jotenkin?',
     answer: 'Meidän puolelta ei ole mahdollista saada ohjelmien nauhoituksia jälkikäteen.'
   }, {
     question: 'Voinko tehdä etälähetyksen?',
-    answer: 'Tämäkin on mahdollista.Ilmoita tästä etukäteen studio@radiodiodi.fi niin katsotaan miten tämä onnistuu.'
+    answer: 'Tämäkin on mahdollista. Ilmoita tästä etukäteen studio@radiodiodi.fi niin katsotaan miten tämä onnistuu.'
   }, {
     question: 'Kuka on tuottaja?',
     answer: 'Tuottaja vastaa lähetyksen teknisestä puolesta, jotta tekijät saat keskittyä itse ohjelman tekemiseen. Hän huolehtii mm. mikrofonien äänenvoimakkuudesta sekä jinglejen, mainoksien ja musiikin soittamisesta. Hän on studiossa paikalla ja voi myös osallistua ohjelmantekoon, tai tehdä ohjelmaa kokonaan itse. Kaikista näistä voi sopia konteilla tuottajan kanssa ennen lähetystä.'
@@ -126,7 +126,7 @@ Lähetyspäivänä:
     answer: 'Laita sähköpostia studio@radiodiodi.fi. Tuottajakoulutuksia järjestetään kiinnostuneille studion rakennusviikolla ja ensimmäisen lähetysviikon aikana.'
   }, {
     question: 'Voinko tehdä jotain muuta lähetyksen eteen?',
-    answer: 'Ehdottomasti! Radiodiodin eteen tehdään ympäri vuotta monenlaista hommaa ja erityisesti huhtikuussa on konteilla paljon tekemistä. Joka vuonna projektissa tarvitaan monialaista osaamista: äänitekniikkaa, yrityssuhteita, markkinointia, rakennusta, lähetystekniikkaa, IT:tä sekä vaikka mitä muuta. Ota yhteyttä rekry@radiodiodio.fi tai tule ja nykäise meitä hihasta, jos sinua kiinnostaa olla mukana tänä tai ensi vuonna!'
+    answer: 'Ehdottomasti! Radiodiodin eteen tehdään ympäri vuotta monenlaista hommaa ja erityisesti huhtikuussa on konteilla paljon tekemistä. Joka vuonna projektissa tarvitaan monialaista osaamista: äänitekniikkaa, yrityssuhteita, markkinointia, rakennusta, lähetystekniikkaa, IT:tä sekä vaikka mitä muuta. Ota yhteyttä rekry@radiodiodi.fi tai tule ja nykäise meitä hihasta, jos sinua kiinnostaa olla mukana tänä tai ensi vuonna!'
   }
 ];
 
