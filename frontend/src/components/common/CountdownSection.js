@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Countdown from './Countdown';
-
 const SectionContainer = styled.div`
   text-align: center;
   padding: 0 2rem 2rem;
@@ -25,7 +23,7 @@ const MonospaceSpan = styled.span`
   color: ${p => p.theme.color.yellow};
 `;
 
-const Link = styled.a`
+const Header = styled.h2`
   color: ${p => p.theme.color.white};
 `;
 
@@ -42,16 +40,9 @@ class CountdownSection extends Component {
 
   render() {
     const { trans } = this.context;
-    const link = <Link href="/ilmo">radiodiodi.fi/ilmo!</Link>
     return (
       <SectionContainer>
-        <h2>{trans.registrationopen} {link}</h2>
-        <h4 dangerouslySetInnerHTML={{__html: trans.calendarreleased}}></h4>
-        { /* disabled */ false && <Countdown
-          countTo={'Mon Mar 05 2018 09:00:00 GMT+0200 (EET)'}
-          interval={1000}
-          contentTransformFn={this.toMonospace}
-        /> }
+        <Header dangerouslySetInnerHTML={{__html: trans.calendarreleased}}></Header>
       </SectionContainer>
     );
   }

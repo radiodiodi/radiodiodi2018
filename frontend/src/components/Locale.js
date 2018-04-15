@@ -42,7 +42,7 @@ const common = {
     search: 'Hae',
     registrationopensat: 'Ilmoittautuminen aukeaa klo 9:00 maanantaina 5.3.!',
     registrationopen: 'Ohjelmantekijäilmo on auki! Käy ilmoittautumassa osoitteessa ',
-    calendarreleased: 'Ohjelmakalenteri on julkaistu! Katso alustava aikataulu <a href="/#calendar">täältä</a>!',
+    calendarreleased: 'Ohjelmakalenteri on julkaistu! Katso aikataulu <a href="/#calendar">alta</a>!',
     oto: 'Ohjelmantekijän opas',
     faq: 'UKK',
     programme: 'Ohjelma',
@@ -65,6 +65,7 @@ const common = {
     send: 'Lähetä',
     shoutboxerror: 'Huutislaatikko ei saa yhteyttä! :(',
     shoutbox: 'Huutislaatikko',
+    gcalvisiblehere: 'Kalenteri on luettavissa kokonaisuudessaan täällä',
   },
   en: {
     frontpage: 'Front page',
@@ -105,7 +106,7 @@ const common = {
     search: 'Search',
     registrationopensat: 'The registration opens at 9:00 on the 5th of March!',
     registrationopen: 'Programme registration is open! Register your programme at ',
-    calendarreleased: 'The programme schedule has been released! See the preliminary timetable <a href="/#calendar">here</a>!',
+    calendarreleased: 'The programme schedule has been released! See the schedule <a href="/#calendar">here</a>!',
     oto: 'Programme maker\'s guide',
     faq: 'FAQ',
     programme: 'Programme',
@@ -128,6 +129,7 @@ const common = {
     send: 'Send',
     shoutboxerror: 'Shoutbox failed to connect! :(',
     shoutbox: 'Shoutbox',
+    gcalvisiblehere: 'The complete calendar can be seen here',
   }
 };
 

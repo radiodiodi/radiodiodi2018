@@ -79,7 +79,7 @@ export default class RegistrationForm extends Component {
       const data = {
         ...state,
         propositions: Object.values(state.propositions),
-        photoshoot: state.photoshoot && Object.keys(state.photoshoot) || [],
+        photoshoot: state.photoshoot ? Object.keys(state.photoshoot) : [],
       };
       const ok = await registerProgramme(data);
       if (ok) {

@@ -6,7 +6,6 @@ import ImageGallery from '../../common/ImageGallery';
 import Player from '../../common/Player';
 import Instagram from '../../common/Instagram';
 import SponsorReel from '../../common/SponsorReel';
-import GCalendar from '../../common/GCalendar';
 import Calendar from '../../calendar/Calendar';
 import Shoutbox from '../../common/Shoutbox';
 
@@ -101,9 +100,6 @@ class Frontpage extends Component {
           <Title>{trans.radioprogramheading}</Title>
           <Paragraph2>{trans.radioprogramparagraph1}</Paragraph2>
           <Paragraph2>{trans.radioprogramparagraph2}</Paragraph2>
-        </ContentRow>
-        <ContentRow>
-          <GCalendar />
         </ContentRow>
         <ContentRow>
           <ImageGallery />

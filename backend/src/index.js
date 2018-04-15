@@ -1,19 +1,16 @@
-require('dotenv').config()
-
-const _ = require('lodash');
+require('dotenv').config();
 
 const Koa = require('koa');
 const koaBody = require('koa-body');
 const cors = require('@koa/cors');
+const utils = require('./utils');
+const router = require('./router');
+const websockets = require('./websockets');
+
 const app = new Koa();
 app.use(koaBody());
 
-const utils = require('./utils');
-const router = require('./router');
-const models = require('./models');
-const websockets = require('./websockets');
-
-const FRONTEND_URL = process.env.FRONTEND_URL;
+const { FRONTEND_URL } = process.env;
 
 // x-response-time
 app.use(async (ctx, next) => {

@@ -1,6 +1,7 @@
 const WebSocket = require('ws');
 const models = require('./models');
 const utils = require('./utils');
+const rateLimiter = require('ws-rate-limit');
 
 let wss;
 
@@ -8,10 +9,10 @@ const start = () => {
   utils.info(`Listening for Websockets on ${process.env.HOST} on port ${process.env.WS_PORT}.`);
 
   wss = new WebSocket.Server({
-      host: process.env.HOST,
-      port: process.env.WS_PORT
+    host: process.env.HOST,
+    port: process.env.WS_PORT,
   });
-  const rateLimit = require('ws-rate-limit')('5s', 3);
+  const rateLimit = rateLimiter('5s', 3);
   wss.on('connection', async (ws, req) => {
     rateLimit(ws);
 
@@ -30,7 +31,7 @@ const start = () => {
       };
 
       const banned = await models.bans.findOne({ ip: message.ip });
-      console.log(banned)
+      console.log(banned);
       if (banned) {
         ws.send(JSON.stringify({
           message: {
@@ -45,7 +46,7 @@ const start = () => {
 
       const dbMessage = await models.messages.insert(message);
 
-      wss.clients.forEach(function each(client) {
+      wss.clients.forEach((client) => {
         if (client.readyState === WebSocket.OPEN) {
           client.send(JSON.stringify({
             message: {
@@ -73,7 +74,7 @@ const start = () => {
     }));
 
     ws.on('error', error => utils.error(`Websocket error. ${error}`));
-    ws.on('limited', data => {
+    ws.on('limited', () => {
       utils.warning(`User from ip "${req.connection.remoteAddress}" has been throttled.`);
       ws.send(JSON.stringify({
         message: {
@@ -88,16 +89,16 @@ const start = () => {
 };
 
 const eraseMessage = id => {
-  wss.clients.forEach(function each(client) {
+  wss.clients.forEach((client) => {
     if (client.readyState === WebSocket.OPEN) {
       client.send(JSON.stringify({
         erase: id,
       }));
     }
   });
-}
+};
 
 module.exports = {
   start,
   eraseMessage,
-}
+};

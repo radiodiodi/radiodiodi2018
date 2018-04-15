@@ -1,15 +1,16 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const ejs = require('ejs');
 const fs = require('fs');
 const htmlToText = require('html-to-text');
 const util = require('util');
+
 const htmlTemplate = fs.readFileSync('./resource/email.html', 'utf8');
 
-var send = require('gmail-send')({
+const send = require('gmail-send')({
   user: process.env.EMAIL_ADDRESS,
   pass: process.env.EMAIL_PASSWORD,
-  subject: 'Radiodiodi 2018 ohjelmantekijäilmoittautuminen'
+  subject: 'Radiodiodi 2018 ohjelmantekijäilmoittautuminen',
 });
 
 const sendPromise = util.promisify(send);
@@ -22,7 +23,7 @@ const sendEmail = async formParams => {
       to: formParams.email,
       bcc: process.env.BCC_ADDRESS,
       html,
-      text
+      text,
     });
   } catch (err) {
     console.log(err);
@@ -30,8 +31,8 @@ const sendEmail = async formParams => {
     console.log(formParams);
     throw err;
   }
-}
+};
 
 module.exports = {
-  sendEmail
-}
+  sendEmail,
+};
