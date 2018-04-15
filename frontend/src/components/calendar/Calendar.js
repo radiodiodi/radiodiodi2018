@@ -69,19 +69,13 @@ class Calendar extends React.Component {
   }
 
   render() {
-<<<<<<< HEAD
     const { oneDayPreview } = this.props;
-    const { ready, all, today, weekdays } = this.state;
-    const { trans } = this.context;
-
-=======
     const { ready, all, today} = this.state;
     const { trans } = this.context;
     const weekdays = [
       trans.mon, trans.tue, trans.wed, trans.thu,
       trans.fri, trans.sat, trans.sun
     ];
->>>>>>> Add translations to calendar naviagion.
     const dayOfTheWeek = weekdays[(today - 16) % 7];
     const calendarControls = <Controls>
       <Button onClick={this.decrementDay}>{trans.previous}</Button>

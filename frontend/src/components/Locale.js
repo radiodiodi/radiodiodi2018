@@ -83,7 +83,7 @@ const common = {
   en: {
     frontpage: 'Front page',
     changelang: 'Suomeksi',
-    forbusinesses: ' ',
+    forbusinesses: '​',
     timetoregistration: 'Show registration begins on',
     registrationdate: 'the 5th of March at 9 a.m.!',
     instagramfeed: '#Instagram Feed',

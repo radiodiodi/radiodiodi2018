@@ -1,7 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import ReactModal from 'react-modal';
-import { liftBan } from '../../utils';
 
 const Container = styled.div`
   background-color: ${p => p.theme.color.contrast};
@@ -21,58 +19,6 @@ const Row = styled.div`
   }
   justify-content: space-between;
   padding: 0.5rem;
-`;
-
-const Button = styled.button`
-  margin: 0 0.5rem;
-  @media screen and (max-width: 400px) {
-    margin: 0 0;
-  }
-  background-color: ${p => p.theme.color.pink};
-  padding: 1rem;
-  border: 0px;
-  font-size: 1rem;
-  font-family: 'Comfortaa';
-  cursor: pointer;
-`;
-
-const Actions = styled.div`
-  flex: 1;
-`;
-
-const Modal = styled(ReactModal)`
-  width: 500px;
-  @media screen and (max-width: 600px) {
-    width: 90vw;
-  }
-
-  margin: auto;
-  padding: 1rem;
-  margin-top: calc(50vh - 0.5 * 400px);
-  background-color: ${p => p.theme.color.dark};
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const ModalContent = styled.div`
-  flex: 1;
-  margin-bottom: 2rem;
-  color: ${p => p.theme.color.white};
-  text-align: center;
-`;
-
-const ModalButtons = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const ModalButton = styled(Button)`
-  flex: 1;
-  @media screen and (max-width: 400px) {
-    margin: 0 0.5rem;
-  }
 `;
 
 class Panel extends Component {
