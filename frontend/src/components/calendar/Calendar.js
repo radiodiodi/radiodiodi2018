@@ -33,19 +33,18 @@ const CalendarLink = styled.div`
 `;
 
 class Calendar extends React.Component {
+  static contextTypes = {
+    trans: PropTypes.any
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       ready: false,
-      weekdays: ['Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai', 'Sunnuntai'],
     }
     this.incrementDay = this.incrementDay.bind(this)
     this.decrementDay = this.decrementDay.bind(this)
   }
-
-  static contextTypes = {
-    trans: PropTypes.any
-  };
 
   incrementDay() {
     this.setState(({ today }) => ({ today: Math.min(30, today + 1) }))
@@ -69,18 +68,22 @@ class Calendar extends React.Component {
       }).catch(e => console.log(e));
   }
   render() {
-    const { ready, all, today, weekdays } = this.state;
+    const { ready, all, today} = this.state;
     const { trans } = this.context;
+    const weekdays = [
+      trans.mon, trans.tue, trans.wed, trans.thu,
+      trans.fri, trans.sat, trans.sun
+    ];
     const dayOfTheWeek = weekdays[(today - 16) % 7];
     const calendarControls = <Controls>
-      <Button onClick={this.decrementDay}>Edellinen</Button>
+      <Button onClick={this.decrementDay}>{trans.previous}</Button>
       <span>{dayOfTheWeek} {today}.4.2018</span>
-      <Button onClick={this.incrementDay}>Seuraava</Button>
+      <Button onClick={this.incrementDay}>{trans.next}</Button>
     </Controls>
     if (!ready) return null
     return (
       <div>
-        <h2 id="calendar">Ohjelmakalenteri</h2>
+        <h2 id="calendar">{trans.calendar}</h2>
         {calendarControls}
         {all[today] && all[today].map(p => <Program p={p} key={String(p.start) + String(today)} />)}
         {calendarControls}
