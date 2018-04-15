@@ -258,6 +258,13 @@ router.post('/api/update_current_song', async ctx => {
     return;
   }
 
+  if (artist.toLowerCase().startsWith('radiodiodi')) {
+    ctx.body = JSON.stringify({
+      status: 'skipped',
+    });
+    return;
+  }
+
   try {
     await models.nowPlaying.insert({
       timestamp: new Date(),
