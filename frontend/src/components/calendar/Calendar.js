@@ -36,7 +36,8 @@ class Calendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ready: false
+      ready: false,
+      weekdays: ['Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai', 'Sunnuntai'],
     }
     this.incrementDay = this.incrementDay.bind(this)
     this.decrementDay = this.decrementDay.bind(this)
@@ -62,7 +63,6 @@ class Calendar extends React.Component {
         const grouped = groupBy(r, (x) => x.start.substr(8, 2));
         this.setState({
           today: Math.max((new Date()).getDate(), 16),
-          weekdays: ['Maanantai', 'Tiistai', 'Keskiviikko', 'Torstai', 'Perjantai', 'Lauantai', 'Sunnuntai'],
           all: grouped,
           ready: true,
         });
@@ -71,12 +71,13 @@ class Calendar extends React.Component {
 
   render() {
     const { oneDayPreview } = this.props;
-    const { ready, all, today } = this.state;
+    const { ready, all, today, weekdays } = this.state;
     const { trans } = this.context;
 
+    const dayOfTheWeek = weekdays[(today - 16) % 7];
     const calendarControls = <Controls>
       <Button onClick={this.decrementDay}>Edellinen</Button>
-      <span>{today}.4.2018</span>
+      <span>{dayOfTheWeek} {today}.4.2018</span>
       <Button onClick={this.incrementDay}>Seuraava</Button>
     </Controls>
     if (!ready) return null;
