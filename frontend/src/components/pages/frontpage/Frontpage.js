@@ -33,17 +33,17 @@ const Paragraph2 = Paragraph.extend`
 
 const ColumnContainer = styled.div`
   @media screen and (min-width: 800px) {
-    margin: 0 ${p => p.margin ? '2rem' : 0}; 1rem 1rem;
+    margin: 0 ${p => p.margin ? '2rem' : 0} 1rem 0;
+    max-width: 50%;
   }
 
   @media screen and (max-width: 800px) {
-    order: -1;
+    order: ${p => p.ontop ? '-1' : null};
   }
 
   ${p => p.margin && 'margin-right: 2rem'};
 
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
 `;
 
@@ -84,12 +84,13 @@ class Frontpage extends Component {
         <Container>
           <ColumnContainer margin>
             <Paragraph>
+              <Calendar oneDayPreview />
               <Title>{trans.whatisheading}</Title>
               {trans.whatis}
             </Paragraph>
             <SponsorReel interval={sponsorInterval} />
           </ColumnContainer>
-          <ColumnContainer>
+          <ColumnContainer ontop>
             <Player />
             <ShoutboxTitle>{trans.shoutbox}</ShoutboxTitle>
             <Shoutbox />

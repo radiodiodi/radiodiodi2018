@@ -2,17 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { shortenText } from '../../utils'
 import placeholderImg from '../../images/placeholder_dark.svg'
+import PropTypes from 'prop-types';
 
 const ProgramBlock = styled.div`
   background-color: ${p => p.theme.color.blue};
   color: ${p => p.theme.color.white};
   padding: 1rem;
-  margin: 0.5rem;
   min-height: ${p => p.maintainance ? 'none' : '180px'};
   &::after {
     content: "";
     clear: both;
     display: table;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: ${p => p.oneDayPreview ? 'none' : 'inherit'};
   }
 `
 
@@ -73,7 +77,7 @@ const ShowMore = styled.span`
   font-size: 12px;
   color: ${p => p.theme.color.yellow};
   padding: 0 0.5rem;
-`
+`;
 
 class Program extends React.Component {
 
@@ -85,16 +89,20 @@ class Program extends React.Component {
     this.toggleExpand = this.toggleExpand.bind(this);
   }
 
+  static contextTypes = {
+    trans: PropTypes.any
+  };
+
   toggleExpand() {
     this.setState({ expanded: !this.state.expanded });
   }
 
   render() {
-    const p = this.props.p
+    const { p, oneDayPreview } = this.props;
     const maintainance = p.title === 'HUOLTOTAUKO'
     const image = p.image
       ? <Img src={`${process.env.REACT_APP_STATIC_URL}/img/${p.image}`} />
-      : !maintainance ? <ImagePlaceholder placeholder /> : null
+      : !maintainance ? <ImagePlaceholder /> : null
     const head = isMobile => (
       <Wrapper mobile={isMobile}>
         <Title>{p.title}</Title>
@@ -102,7 +110,7 @@ class Program extends React.Component {
       </Wrapper>
     )
     return (
-      <ProgramBlock maintainance={maintainance}>
+      <ProgramBlock oneDayPreview={oneDayPreview} maintainance={maintainance}>
         {head(true)}
         {image}
         <Genre>{p.genre}</Genre>

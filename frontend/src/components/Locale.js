@@ -66,6 +66,9 @@ const common = {
     shoutboxerror: 'Huutislaatikko ei saa yhteyttä! :(',
     shoutbox: 'Huutislaatikko',
     gcalvisiblehere: 'Kalenteri on luettavissa kokonaisuudessaan täällä',
+    nowplaying: 'Nyt soi',
+    listentoradio: 'Kuuntele radiota!',
+    youarelisteningto: 'Nyt studiossa:',
   },
   en: {
     frontpage: 'Front page',
@@ -130,6 +133,9 @@ const common = {
     shoutboxerror: 'Shoutbox failed to connect! :(',
     shoutbox: 'Shoutbox',
     gcalvisiblehere: 'The complete calendar can be seen here',
+    nowplaying: 'Now playing',
+    listentoradio: 'Listen to the radio!',
+    youarelisteningto: 'You are listening to:',
   }
 };
 

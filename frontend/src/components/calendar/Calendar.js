@@ -23,7 +23,7 @@ const Button = styled.button`
 `
 
 const Controls = styled.div`
-  margin: 1.5rem 0.5rem;
+  margin: 1.5rem 0;
   text-align: center;
 `
 
@@ -68,15 +68,39 @@ class Calendar extends React.Component {
         });
       }).catch(e => console.log(e));
   }
+
   render() {
+    const { oneDayPreview } = this.props;
     const { ready, all, today } = this.state;
     const { trans } = this.context;
+
     const calendarControls = <Controls>
       <Button onClick={this.decrementDay}>Edellinen</Button>
       <span>{today}.4.2018</span>
       <Button onClick={this.incrementDay}>Seuraava</Button>
     </Controls>
-    if (!ready) return null
+    if (!ready) return null;
+
+    if (oneDayPreview) {
+      if (all[today]) {
+        const currentProgram = all[today].find(program => {
+          const now = new Date();
+          const start = new Date(Date.parse(program.start));
+          const end = new Date(Date.parse(program.end));
+          const hasNotEnded = end > now;
+          const hasStarted = start < now;
+          return hasStarted && hasNotEnded;
+        });
+
+        if (!currentProgram) {
+          return null;
+        }
+        return <Program oneDayPreview p={currentProgram} />;
+      } else {
+        return null;
+      }
+    }
+
     return (
       <div>
         <h2 id="calendar">Ohjelmakalenteri</h2>

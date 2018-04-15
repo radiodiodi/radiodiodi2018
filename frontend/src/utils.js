@@ -277,6 +277,68 @@ const fetchSongs = async () => {
   }
 }
 
+const fetchNowPlayingProgramme = async () => {
+  const req = composeRequest(`${BACKEND_URL}/now_playing`, null, 'GET');
+
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 401) {
+      throw new AuthError();
+    }
+
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    return data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
+const fetchCurrentSong = async () => {
+  const req = composeRequest(`${BACKEND_URL}/api/current_song`, null, 'GET');
+
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 401) {
+      throw new AuthError();
+    }
+
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    if (new Date() - new Date(Date.parse(data.timestamp)) > 10 * 60 * 1000) { // if over 10 minutes ago
+      return null;
+    }
+
+    return data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 const registerProgramme = async data => {
   const body = JSON.stringify(data);
   const req = composeRequest(`${BACKEND_URL}/api/register`, null, 'POST', body);
@@ -308,4 +370,6 @@ export {
   fetchSongs,
   registerProgramme,
   shortenText,
+  fetchNowPlayingProgramme,
+  fetchCurrentSong,
 }

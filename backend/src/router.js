@@ -260,6 +260,7 @@ router.post('/api/update_current_song', async ctx => {
   ctx.body = JSON.stringify({
     status: 'ok',
   });
+  ctx.type = 'application/json';
 });
 
 router.get('/api/current_song', async ctx => {
@@ -282,6 +283,7 @@ router.get('/api/current_song', async ctx => {
     artist: current.artist,
     timestamp: current.timestamp,
   });
+  ctx.type = 'application/json';
 });
 
 module.exports = router;
