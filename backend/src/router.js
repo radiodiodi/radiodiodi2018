@@ -47,14 +47,19 @@ const checkAuthorization = async (ctx, next) => {
 };
 
 admin.get('/messages', async ctx => {
-  const messages = await models.messages.find({}, {
-    limit: 300, sort: { timestamp: 1 },
-  });
+  try {
+    const messages = await models.messages.find({}, {
+      limit: 300, sort: { timestamp: 1 },
+    });
 
-  ctx.body = JSON.stringify({
-    messages,
-  });
-  ctx.type = 'application/json';
+    ctx.body = JSON.stringify({
+      messages,
+    });
+    ctx.type = 'application/json';
+  } catch (error) {
+    console.log(error);
+    ctx.throw(500, 'Internal Server Error');
+  }
 });
 
 admin.delete('/messages/remove/:id', async ctx => {
@@ -124,6 +129,15 @@ admin.get('/users/banned', async ctx => {
 
   ctx.body = JSON.stringify({
     bans,
+  });
+  ctx.type = 'application/json';
+});
+
+admin.get('/users/reserved', async ctx => {
+  const reserved = await models.reserved.find({});
+
+  ctx.body = JSON.stringify({
+    reserved,
   });
   ctx.type = 'application/json';
 });
@@ -279,13 +293,6 @@ router.get('/api/current_song', async ctx => {
 
   const current = results[0];
 
-<<<<<<< HEAD
-  ctx.body = JSON.stringify({
-    title: current.title,
-    artist: current.artist,
-    timestamp: current.timestamp,
-  });
-=======
   if (new Date() - new Date(Date.parse(current.timestamp)) <= current.duration * 1000) {
     ctx.body = JSON.stringify({
       title: current.title,
@@ -297,7 +304,6 @@ router.get('/api/current_song', async ctx => {
     ctx.body = JSON.stringify({});
   }
 
->>>>>>> master
   ctx.type = 'application/json';
 });
 

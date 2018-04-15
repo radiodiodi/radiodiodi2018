@@ -23,11 +23,14 @@ const start = () => {
       const forwardedIP = req.headers['x-forwarded-for'];
       const ip = forwardedIP && forwardedIP !== '127.0.0.1' ? forwardedIP : req.connection.remoteAddress;
 
+      
+      const reserved = (await models.reserved.count({ ip })) !== 0;
       const message = {
         timestamp: new Date(Date.now()),
         name,
         text,
         ip,
+        reserved,
       };
 
       const banned = await models.bans.findOne({ ip: message.ip });
@@ -37,6 +40,20 @@ const start = () => {
           message: {
             name: 'SERVER',
             text: 'You are banned.',
+            timestamp: new Date(Date.now()),
+            error: true,
+          },
+        }));
+        return;
+      }
+
+      const MAX_MESSAGE_LENGTH = 500;
+      const tooLong = message.text.length > MAX_MESSAGE_LENGTH;
+      if (tooLong) {
+        ws.send(JSON.stringify({
+          message: {
+            name: 'SERVER',
+            text: `Message too long. Max length: ${MAX_MESSAGE_LENGTH} characters.`,
             timestamp: new Date(Date.now()),
             error: true,
           },
@@ -54,6 +71,7 @@ const start = () => {
               text: message.text,
               timestamp: message.timestamp,
               _id: dbMessage._id,
+              reserved: message.reserved,
             },
           }));
         }
@@ -70,6 +88,7 @@ const start = () => {
         text: message.text,
         timestamp: message.timestamp,
         _id: message._id,
+        reserved: message.reserved,
       })),
     }));
 

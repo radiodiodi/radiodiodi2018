@@ -2,9 +2,20 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Cookie from 'universal-cookie';
 import PropTypes from 'prop-types';
+import verified from '../../svg/check-mark.svg';
 
 const WS_URL = process.env.REACT_APP_BACKEND_WS_URL;
 const MAX_MESSAGES = 100;
+
+const leftPad = str => {
+    if (str.length === 0) {
+      return '00';
+    } else if (str.length === 1) {
+      return `0${str}`;
+    } else {
+      return str;
+    }
+}
 
 const Container = styled.div`
   background-color: ${p => p.theme.color.contrast};
@@ -23,11 +34,15 @@ const Log = styled.div`
   width: 100%;
   flex: 1;
   overflow: auto;
+  font-size: 0.8rem;
 `;
 
 const Row = styled.div`
   padding: 0.2rem;
   ${ p => p.error && 'color: red'};
+
+  display: flex;
+  align-items: flex-start;
 `;
 
 const InputContainer = styled.div`
@@ -59,6 +74,20 @@ const Prompt = styled.input`
   flex: 2;
 
   min-width: 300px;
+`;
+
+const Verified = styled.img`
+  width: 16px;
+  margin: 0 0.3rem 0 0;
+`;
+
+const Timestamp = styled.div`
+  white-space: nowrap;
+  margin-right: 0.3rem;
+`;
+
+const RowText = styled.div`
+  word-break: break-word;
 `;
 
 class Shoutbox extends Component {
@@ -129,9 +158,13 @@ class Shoutbox extends Component {
 
   renderRows = rows => {
     const c = new Date(Date.now());
-    const stamp = `${c.getDate()}.${c.getMonth()} ${c.getHours()}:${c.getMinutes()}`;
+    const stamp = `${c.getDate()}.${c.getMonth()} ${leftPad(String(c.getHours()))}:${leftPad(String(c.getMinutes()))}`;
     return rows.map((row, index) => 
-      <Row error={row.error} key={index}>{`${stamp} ${row.name}: ${row.text}`}</Row>,
+      <Row error={row.error} key={index}>
+        <Timestamp>{`${stamp}`}</Timestamp>
+        { row.reserved && <Verified src={ verified } />}
+        <RowText>{`${row.name}: ${row.text}`}</RowText>
+      </Row>
     );
   }
 
