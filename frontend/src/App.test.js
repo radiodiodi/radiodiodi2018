@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import fetch from 'isomorphic-fetch';
+import 'isomorphic-fetch';
 import fetchMock from 'fetch-mock';
 import App from './components/App';
 

@@ -3,19 +3,18 @@ const Router = require('koa-router');
 const models = require('./models');
 const utils = require('./utils');
 const websockets = require('./websockets');
-const RateLimit = require('koa2-ratelimit').RateLimit;
-const util = require('util')
+const { RateLimit } = require('koa2-ratelimit');
 
 const router = new Router();
-const email = require('./email')
-const getCalendar = require('./calendar')
+const email = require('./email');
+const getCalendar = require('./calendar');
 
 const admin = new Router();
 
 const allowAllCors = async (ctx, next) => {
   await next();
   ctx.set('Access-Control-Allow-Origin', '*');
-}
+};
 
 const verifyUrl = token => `https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=${token}`;
 const checkAuthorization = async (ctx, next) => {
@@ -45,7 +44,7 @@ const checkAuthorization = async (ctx, next) => {
   }
 
   await next();
-}
+};
 
 admin.get('/messages', async ctx => {
   const messages = await models.messages.find({}, {
@@ -60,7 +59,7 @@ admin.get('/messages', async ctx => {
 
 admin.delete('/messages/remove/:id', async ctx => {
   try {
-    const id = ctx.params.id;
+    const { id } = ctx.params;
     models.messages.remove({ _id: id });
     websockets.eraseMessage(id);
     ctx.status = 200;
@@ -72,14 +71,14 @@ admin.delete('/messages/remove/:id', async ctx => {
 
 admin.delete('/users/ban/:id', async ctx => {
   try {
-    const id = ctx.params.id;
+    const { id } = ctx.params;
     const message = await models.messages.findOne({ _id: id });
 
-    const ip = message.ip;
-    const existingBan = await models.bans.findOne({ ip, });
+    const { ip } = message;
+    const existingBan = await models.bans.findOne({ ip });
     if (existingBan) {
       ctx.throw(400, JSON.stringify({
-        error: 'User already banned.'
+        error: 'User already banned.',
       }));
       return;
     }
@@ -100,17 +99,17 @@ admin.delete('/users/ban/:id', async ctx => {
 
 admin.delete('/users/unban/:ip', async ctx => {
   try {
-    const ip = ctx.params.ip;
-    const existingBan = await models.bans.findOne({ ip, });
+    const { ip } = ctx.params;
+    const existingBan = await models.bans.findOne({ ip });
 
     if (!existingBan) {
       ctx.throw(400, JSON.stringify({
-        error: 'User not banned.'
+        error: 'User not banned.',
       }));
       return;
     }
 
-    models.bans.remove({ ip, });
+    models.bans.remove({ ip });
     ctx.status = 200;
   } catch (err) {
     utils.error(err);
@@ -131,19 +130,19 @@ admin.get('/users/banned', async ctx => {
 
 router.use('/admin', checkAuthorization, admin.routes(), admin.allowedMethods());
 
-router.get('/', (ctx, next) => {
+router.get('/', ctx => {
   ctx.body = 'Radiodiodi JSON API';
 });
 
 router.get('/auth', checkAuthorization, async ctx => {
   ctx.body = '';
   ctx.status = 200;
-  return;
 });
 
 router.get('/stats', async ctx => {
+  /*
   const options = {
-    'sort': [['time', 'desc']]
+    sort: [['time', 'desc']],
   };
 
   try {
@@ -154,11 +153,11 @@ router.get('/stats', async ctx => {
 
     Object.keys(mountpoints).forEach((m) => {
       const obj = {
-        'x': mountpoints[m].map((r) => r.time),
-        'y': mountpoints[m].map((r) => r.listeners),
-        'type': 'scatter',
-        'line': { 'shape': 'spline' },
-        'name': m
+        x: mountpoints[m].map((r) => r.time),
+        y: mountpoints[m].map((r) => r.listeners),
+        type: 'scatter',
+        line: { shape: 'spline' },
+        name: m,
       };
       arr.push(obj);
     });
@@ -169,13 +168,14 @@ router.get('/stats', async ctx => {
   } catch (err) {
     ctx.body = err;
     ctx.status = 500;
-    return;
   }
+  */
+  ctx.body = 'Not implemented';
 });
 
 router.get('/inspirational-quote', allowAllCors, ctx => {
   ctx.body = JSON.stringify({
-    quote: `Kukkakaalia - kakkakuulia: hauska munansaannos`,
+    quote: 'Kukkakaalia - kakkakuulia: hauska munansaannos',
   });
   ctx.type = 'application/json';
 });
@@ -195,9 +195,7 @@ router.get('/now_playing', allowAllCors, ctx => {
     return;
   }
 
-  const past = data.filter(d => {
-    return Date.parse(d['start']) < new Date
-  });
+  const past = data.filter(d => Date.parse(d.start) < new Date());
 
   const show = past[past.length - 1] || {};
   ctx.body = JSON.stringify(show);
@@ -227,10 +225,10 @@ router.post('/api/register', submitThrottle, async ctx => {
 router.post('/api/update_current_song', async ctx => {
   let auth, title, artist;
   try {
-    data = ctx.request.body;
+    const data = ctx.request.body;
     const key = Object.keys(data)[0];
     const splitted = key.split('||penis||');
-    [ auth, title, artist ] = splitted;
+    [auth, title, artist] = splitted;
 
     if (auth !== process.env.RADIODJ2_AUTH_SECRET) {
       utils.error(`Bad current song request: ${String(data)}`);
@@ -247,7 +245,7 @@ router.post('/api/update_current_song', async ctx => {
   }
 
   try {
-    await models.now_playing.insert({
+    await models.nowPlaying.insert({
       timestamp: new Date(),
       title: String(title),
       artist: String(artist),
@@ -265,11 +263,11 @@ router.post('/api/update_current_song', async ctx => {
 });
 
 router.get('/api/current_song', async ctx => {
-  const results = await models.now_playing.find({}, {
+  const results = await models.nowPlaying.find({}, {
     limit: 1,
     sort: {
       timestamp: -1,
-    }
+    },
   });
 
   if (results.length === 0) {
