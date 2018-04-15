@@ -69,6 +69,16 @@ const common = {
     nowplaying: 'Nyt soi',
     listentoradio: 'Kuuntele radiota!',
     youarelisteningto: 'Nyt studiossa:',
+    calendar: 'Ohjelmakalenteri',
+    previous: 'Edellinen',
+    next: 'Seuraava',
+    mon: 'Maanantai',
+    tue: 'Tiistai',
+    wed: 'Keskiviiko',
+    thu: 'Torstai',
+    fri: 'Perjantai',
+    sat: 'Lauantai',
+    sun: 'Sunnuntai',
   },
   en: {
     frontpage: 'Front page',
@@ -136,6 +146,16 @@ const common = {
     nowplaying: 'Now playing',
     listentoradio: 'Listen to the radio!',
     youarelisteningto: 'You are listening to:',
+    calendar: 'Programme Schedule',
+    previous: 'Previous',
+    next: 'Next',
+    mon: 'Monday',
+    tue: 'Tuesday',
+    wed: 'Wednesday',
+    thu: 'Thursday',
+    fri: 'Friday',
+    sat: 'Saturday',
+    sun: 'Sunday',
   }
 };
 
