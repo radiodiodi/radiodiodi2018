@@ -6,8 +6,8 @@ import ImageGallery from '../../common/ImageGallery';
 import Player from '../../common/Player';
 import Instagram from '../../common/Instagram';
 import SponsorReel from '../../common/SponsorReel';
-import CountdownSection from '../../common/CountdownSection';
 import Calendar from '../../calendar/Calendar';
+import Shoutbox from '../../common/Shoutbox';
 
 const Container = styled.div`
   display: flex;
@@ -18,7 +18,6 @@ const Container = styled.div`
 `;
 
 const Paragraph = styled.div`
-  max-width: 50%;
   margin: 0;
   color: ${p => p.theme.color.white};
   @media screen and (max-width: 800px) {
@@ -32,18 +31,19 @@ const Paragraph2 = Paragraph.extend`
   max-width: 800px;
 `;
 
-const PlayerWrapper = styled.div`
+const ColumnContainer = styled.div`
   @media screen and (min-width: 800px) {
-    margin: 0 0 1rem 1rem;
-    margin-top: 4rem;
+    margin: 0 ${p => p.margin ? '2rem' : 0} 1rem 0;
+    max-width: 50%;
   }
 
   @media screen and (max-width: 800px) {
-    order: -1;
+    order: ${p => p.ontop ? '-1' : null};
   }
 
+  ${p => p.margin && 'margin-right: 2rem'};
+
   display: flex;
-  justify-content: flex-start;
   flex-direction: column;
 `;
 
@@ -64,6 +64,12 @@ const ContentRow = styled.div`
   }
 `;
 
+const ShoutboxTitle = styled.h4`
+  margin: 2rem 0 1rem;
+  font-size: 1.5rem;
+  color: ${p => p.theme.color.white};
+`;
+
 class Frontpage extends Component {
   static contextTypes = {
     trans: PropTypes.any
@@ -75,16 +81,20 @@ class Frontpage extends Component {
 
     return (
       <Fragment>
-        <CountdownSection />
         <Container>
-          <Paragraph>
-            <Title>{trans.whatisheading}</Title>
-            {trans.whatis}
-          </Paragraph>
-          <PlayerWrapper>
-            <Player />
+          <ColumnContainer margin>
+            <Paragraph>
+              <Calendar oneDayPreview />
+              <Title>{trans.whatisheading}</Title>
+              {trans.whatis}
+            </Paragraph>
             <SponsorReel interval={sponsorInterval} />
-          </PlayerWrapper>
+          </ColumnContainer>
+          <ColumnContainer ontop>
+            <Player />
+            <ShoutboxTitle>{trans.shoutbox}</ShoutboxTitle>
+            <Shoutbox />
+          </ColumnContainer>
         </Container>
         <Calendar />
         <ContentRow>

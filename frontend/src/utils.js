@@ -209,6 +209,38 @@ const fetchBans = async () => {
   }
 }
 
+const fetchReservedNames = async () => {
+  const req = composeRequest(`${BACKEND_URL}/admin/users/reserved`, null, 'GET');
+
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 401) {
+      throw new AuthError();
+    }
+
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    console.log('Backend messages response:');
+    console.log(data);
+
+    return data.reserved;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 const wait = time => new Promise((resolve, reject) => {
   setTimeout(resolve, time);
 });
@@ -277,6 +309,64 @@ const fetchSongs = async () => {
   }
 }
 
+const fetchNowPlayingProgramme = async () => {
+  const req = composeRequest(`${BACKEND_URL}/now_playing`, null, 'GET');
+
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 401) {
+      throw new AuthError();
+    }
+
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    return data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
+const fetchCurrentSong = async () => {
+  const req = composeRequest(`${BACKEND_URL}/api/current_song`, null, 'GET');
+
+  try {
+    const resp = await fetch(req);
+
+    if (resp.status === 401) {
+      throw new AuthError();
+    }
+
+    const data = isJSON(resp)
+      ? await resp.json()
+      : await resp.text();
+
+    if (!resp.ok) {
+      if (data.error) {
+        throw new Error(data.error);
+      } else {
+        throw new Error(resp.statusText);
+      }
+    }
+
+    return data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
+
 const registerProgramme = async data => {
   const body = JSON.stringify(data);
   const req = composeRequest(`${BACKEND_URL}/api/register`, null, 'POST', body);
@@ -302,10 +392,13 @@ export {
   removeMessage,
   banUserForMessage,
   fetchBans,
+  fetchReservedNames,
   liftBan,
   AuthError,
   fetchSongsByField,
   fetchSongs,
   registerProgramme,
   shortenText,
+  fetchNowPlayingProgramme,
+  fetchCurrentSong,
 }

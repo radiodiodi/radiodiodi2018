@@ -57,7 +57,7 @@ class InstagramGallery extends PureComponent {
 
     const images = !error
       ? objs.map((obj, index) =>
-        <Card key={index} href={obj.link}>
+        <Card key={index} target="_blank" href={obj.link}>
           <Image alt={trans.instagramimage} src={obj.img} />
           <Caption>
             <Text>{shortenText(obj.text)}</Text>

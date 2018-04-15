@@ -10,6 +10,12 @@
 
       gtag('config', 'UA-114451422-1');
     </script>
+    <script>
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for (const registration of registrations) {
+      registration.unregister();
+    }});
+    </script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

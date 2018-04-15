@@ -12,6 +12,7 @@ utils.info(`Mongo shoutbox DB: ${shoutboxDatabaseURL}`);
 const shoutboxDB = monk(shoutboxDatabaseURL);
 const messages = shoutboxDB.get('messages');
 const bans = shoutboxDB.get('bans');
+const reserved = shoutboxDB.get('reserved');
 
 const registrationsDatabaseURL = `${process.env.MONGODB_HOST}/${process.env.MONGODB_REGISTRATION_DB}`;
 utils.info(`Mongo registration DB: ${registrationsDatabaseURL}`);
@@ -24,5 +25,6 @@ module.exports = {
   nowPlaying,
   messages,
   bans,
+  reserved,
   registrations,
 };
