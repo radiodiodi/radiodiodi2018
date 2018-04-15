@@ -223,12 +223,12 @@ router.post('/api/register', submitThrottle, async ctx => {
 });
 
 router.post('/api/update_current_song', async ctx => {
-  let auth, title, artist;
+  let auth, title, artist, duration;
   try {
     const data = ctx.request.body;
     const key = Object.keys(data)[0];
     const splitted = key.split('||penis||');
-    [auth, title, artist] = splitted;
+    [auth, title, artist, duration] = splitted;
 
     if (auth !== process.env.RADIODJ2_AUTH_SECRET) {
       utils.error(`Bad current song request: ${String(data)}`);
@@ -249,6 +249,7 @@ router.post('/api/update_current_song', async ctx => {
       timestamp: new Date(),
       title: String(title),
       artist: String(artist),
+      duration,
     });
     utils.info(`Updated current song: ${artist} - ${title}`);
   } catch (error) {
@@ -278,11 +279,25 @@ router.get('/api/current_song', async ctx => {
 
   const current = results[0];
 
+<<<<<<< HEAD
   ctx.body = JSON.stringify({
     title: current.title,
     artist: current.artist,
     timestamp: current.timestamp,
   });
+=======
+  if (new Date() - new Date(Date.parse(current.timestamp)) <= current.duration * 1000) {
+    ctx.body = JSON.stringify({
+      title: current.title,
+      artist: current.artist,
+      timestamp: current.timestamp,
+      duration: current.duration,
+    });
+  } else {
+    ctx.body = JSON.stringify({});
+  }
+
+>>>>>>> master
   ctx.type = 'application/json';
 });
 
