@@ -26,7 +26,7 @@ app.use(async (ctx, next) => {
   await next();
   const ms = Date.now() - start;
   if (ctx.status < 400) {
-    utils.info(`${ctx.status} ${ctx.method} ${ctx.url} - ${ms}ms`);
+    //utils.info(`${ctx.status} ${ctx.method} ${ctx.url} - ${ms}ms`);
   } else {
     utils.error(`${ctx.status} ${ctx.method} ${ctx.url} - ${ms}ms`);
   }
