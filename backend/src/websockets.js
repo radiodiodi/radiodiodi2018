@@ -48,12 +48,13 @@ const start = () => {
       }
 
       const MAX_MESSAGE_LENGTH = 500;
-      const tooLong = message.text.length > MAX_MESSAGE_LENGTH;
+      const MAX_USERNAME_LENGTH = 16;
+      const tooLong = message.text.length > MAX_MESSAGE_LENGTH || message.name.length > MAX_USERNAME_LENGTH;
       if (tooLong) {
         ws.send(JSON.stringify({
           message: {
             name: 'SERVER',
-            text: `Message too long. Max length: ${MAX_MESSAGE_LENGTH} characters.`,
+            text: 'Message or username too long.',
             timestamp: new Date(Date.now()),
             error: true,
           },
