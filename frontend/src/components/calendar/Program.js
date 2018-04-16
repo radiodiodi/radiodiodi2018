@@ -26,7 +26,7 @@ const ImagePlaceholder = styled.div`
   float: right;
   background-image: url(${placeholderImg});
   background-size: cover;
-  margin: 0 0 0.5rem 0.5rem;
+  margin: 0 0 0.5rem 0;
   @media (max-width: 600px) {
     height: 125px;
     width: 125px;
@@ -77,7 +77,7 @@ const ShowMore = styled.span`
   cursor: pointer;
   font-size: 12px;
   color: ${p => p.theme.color.yellow};
-  padding: 0 0.5rem;
+  padding: 0 0;
 `;
 
 class Program extends React.Component {
