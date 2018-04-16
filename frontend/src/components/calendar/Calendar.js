@@ -14,14 +14,25 @@ const Button = styled.button`
   font-size: 14px;
   border: none;
   min-width: 100px;
-`
+
+  @media screen and (max-width: 450px) {
+    margin: 0.5rem 0;
+  }
+`;
 
 const Controls = styled.div`
-  margin: 1.5rem 0;
+  margin: 1rem 0;
+  padding: 0.5rem;
   text-align: center;
   display: flex;
   justify-content: space-between;
-`
+  flex-wrap: wrap;
+
+  flex-direction: row;
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+  }
+`;
 
 const CalendarLink = styled.div`
   color: ${p => p.theme.color.white};

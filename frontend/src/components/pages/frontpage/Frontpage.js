@@ -23,6 +23,10 @@ const Paragraph = styled.div`
   @media screen and (max-width: 800px) {
     max-width: 100%;
   }
+
+  @media screen and (min-width: 600px) {
+    ${p => p.margin && 'margin-right: 2rem'};
+  }
 `;
 
 const Paragraph2 = Paragraph.extend`
@@ -40,8 +44,6 @@ const ColumnContainer = styled.div`
   @media screen and (max-width: 800px) {
     order: ${p => p.ontop ? '-1' : null};
   }
-
-  ${p => p.margin && 'margin-right: 2rem'};
 
   display: flex;
   flex-direction: column;
@@ -81,8 +83,8 @@ class Frontpage extends Component {
     return (
       <Fragment>
         <Container>
-          <ColumnContainer margin>
-            <Paragraph>
+          <ColumnContainer>
+            <Paragraph margin>
               <Calendar oneDayPreview />
               <Title>{trans.whatisheading}</Title>
               {trans.whatis}

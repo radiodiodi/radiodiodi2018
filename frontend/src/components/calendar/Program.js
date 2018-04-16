@@ -3,75 +3,81 @@ import styled from 'styled-components';
 import { shortenText } from '../../utils'
 import placeholderImg from '../../images/placeholder_dark.svg'
 import PropTypes from 'prop-types';
+import dateFormat from 'dateformat';
 
 const ProgramBlock = styled.div`
   background-color: ${p => p.theme.color.blue};
   color: ${p => p.theme.color.white};
   padding: 1rem;
-  min-height: ${p => p.maintainance ? 'none' : '180px'};
+  min-height: ${p => p.maintainance ? 'none' : '150px'};
   &::after {
     content: "";
     clear: both;
     display: table;
   }
 
-  @media screen and (max-width: 800px) {
-    display: ${p => p.oneDayPreview ? 'none' : 'inherit'};
+  margin-bottom: 0.5rem;
+
+  display: flex;
+  flex-direction: row;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
   }
-`
+
+  justify-content: space-between;
+  @media screen and (max-width: 800px) {
+    display: ${p => p.oneDayPreview ? 'none' : 'flex'};
+  }
+`;
+
+const Column = styled.div`
+  flex: ${p => p.flex};
+  display: flex;
+  flex-direction: column;
+`;
 
 const ImagePlaceholder = styled.div`
   height: 150px;
   width: 150px;
-  float: right;
+
   background-image: url(${placeholderImg});
   background-size: cover;
-  margin: 0 0 0.5rem 0;
-  @media (max-width: 600px) {
-    height: 125px;
-    width: 125px;
+  margin-left: 1rem;
+
+  @media screen and (max-width: 500px) {
+    margin-left: 0;
+    align-self: flex-end;
   }
-`
+`;
 
 const Img = ImagePlaceholder.withComponent('img')
 
-const Wrapper = styled.div`
-  display: ${p => p.mobile ? 'none' : 'block'};
-  @media (max-width: 600px) {
-    display: ${p => p.mobile ? 'block' : 'none'};
-  }
-`
-
 const Title = styled.h4`
   color: ${p => p.theme.color.pink};
-  margin: 0.5rem 160px 0.5rem 0;
+  margin: 0.5rem 0;
   font-size: 18px;
   border-bottom: 1px solid ${p => p.theme.color.pink};
   word-wrap: break-word;
   @media (max-width: 600px) {
     margin-right: 0;
   }
-`
+`;
 
 const Genre = styled.small`
-  float: right;
-  padding: 0 0.5rem;
   color: ${p => p.theme.color.yellow};
-
-  @media (max-width: 600px) {
-    float: none;
-    display: block;
-    padding: 0;
-  }
-`
+`;
 
 const Author = styled.p`
   margin: 0.5rem 0;
-`
+`;
 
-const P = styled.p`
+const Paragraph = styled.p`
   font-size: 12px;
-`
+
+  @media screen and (min-width: 500px) {
+    margin-bottom: 0;
+  }
+`;
 
 const ShowMore = styled.span`
   cursor: pointer;
@@ -101,25 +107,41 @@ class Program extends React.Component {
   render() {
     const { p, oneDayPreview } = this.props;
     const maintainance = p.title === 'HUOLTOTAUKO'
-    const image = p.image
+    const Image = () => p.image
       ? <Img src={`${process.env.REACT_APP_STATIC_URL}/img/${p.image}`} />
-      : !maintainance ? <ImagePlaceholder /> : null
-    const head = isMobile => (
-      <Wrapper mobile={isMobile}>
-        <Title>{p.title}</Title>
-        <Author>{p.team}</Author>
-      </Wrapper>
-    )
+      : !maintainance ? <ImagePlaceholder /> : null;
+
+    const startDate = dateFormat(p.start, 'HH:MM');
+    const endDate = dateFormat(p.end, 'HH:MM');
+
+    const ExpandedText = () => this.state.expanded ? ' Vähemmän' : ' Lisää';
+
+    const DESCRIPTION_MAX_LENGTH = 200;
+    const ExpandLink = () => p.description.length > DESCRIPTION_MAX_LENGTH ? (
+      <ShowMore onClick={this.toggleExpand}>
+        <ExpandedText />
+      </ShowMore>
+    ) : null;
+
+    const Description = () => p.description ? (
+      <Paragraph>
+        {this.state.expanded ? p.description : shortenText(p.description, DESCRIPTION_MAX_LENGTH)}
+        <ExpandLink />
+      </Paragraph>
+    ) : null;
+
     return (
       <ProgramBlock oneDayPreview={oneDayPreview} maintainance={maintainance}>
-        {head(true)}
-        {image}
-        <Genre>{p.genre}</Genre>
-        <small>{p.start.substr(11, 5) + ' - ' + p.end.substr(11, 5)}</small>
-        {head(false)}
-        {p.description && <P>
-          {this.state.expanded ? p.description : shortenText(p.description, 200)}
-          {p.description.length > 200 && <ShowMore onClick={this.toggleExpand}>{this.state.expanded ? 'Vähemmän' : 'Lisää'}</ShowMore>}</P>}
+        <Column flex={1}>
+          <Genre>{p.genre}</Genre>
+          <small>{`${startDate} - ${endDate}`}</small>
+          <Title>{p.title}</Title>
+          <Author>{p.team}</Author>
+          <Description />
+        </Column>
+        <Column>
+          <Image />
+        </Column>
       </ProgramBlock>
     )
   }
