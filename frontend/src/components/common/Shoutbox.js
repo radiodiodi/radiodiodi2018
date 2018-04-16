@@ -76,10 +76,19 @@ const Verified = styled.img`
 const Timestamp = styled.div`
   white-space: nowrap;
   margin-right: 0.3rem;
+  color: ${p => p.theme.color.pink};
 `;
 
 const RowText = styled.div`
   word-break: break-word;
+`;
+
+const RowUser = styled.div`
+  color: ${p => p.theme.color.yellow};
+  white-space: pre;
+  &:after {
+    content: ': ';
+  }
 `;
 
 class Shoutbox extends Component {
@@ -138,6 +147,18 @@ class Shoutbox extends Component {
       return;
     }
 
+    const MESSAGE_MAX_LENGTH = 500;
+    const USERNAME_MAX_LENGTH = 16;
+    if (text.length > MESSAGE_MAX_LENGTH) {
+      alert(`Message too long! Max: ${MESSAGE_MAX_LENGTH} characters.`);
+      return;
+    }
+
+    if (username.length > USERNAME_MAX_LENGTH) {
+      alert(`Username too long! Max: ${USERNAME_MAX_LENGTH} characters.`);
+      return;
+    }
+
     console.log(`Send message: ${text}, username: ${username}`);
     this.connection.send(JSON.stringify({
       name: username,
@@ -155,7 +176,8 @@ class Shoutbox extends Component {
       <Row error={row.error} key={index}>
         <Timestamp>{`${stamp}`}</Timestamp>
         { row.reserved && <Verified src={ verified } />}
-        <RowText>{`${row.name}: ${row.text}`}</RowText>
+        <RowUser>{row.name}</RowUser>
+        <RowText>{row.text}</RowText>
       </Row>
     );
   }
