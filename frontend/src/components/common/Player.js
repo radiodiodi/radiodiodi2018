@@ -18,7 +18,7 @@ const Container = styled.div`
 
 const PlayButton = styled.img`
   width: 3rem;
-  padding: 0.5rem 0.5rem 0.5rem 0;
+  padding: 0.5rem 0.5rem 0 0;
   cursor: pointer;
 `;
 
