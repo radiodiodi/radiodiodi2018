@@ -23,7 +23,6 @@ const start = () => {
       const forwardedIP = req.headers['x-forwarded-for'];
       const ip = forwardedIP && forwardedIP !== '127.0.0.1' ? forwardedIP : req.connection.remoteAddress;
 
-      
       const reserved = (await models.reserved.count({ ip })) !== 0;
       const message = {
         timestamp: new Date(Date.now()),
@@ -49,7 +48,9 @@ const start = () => {
 
       const MAX_MESSAGE_LENGTH = 500;
       const MAX_USERNAME_LENGTH = 16;
-      const tooLong = message.text.length > MAX_MESSAGE_LENGTH || message.name.length > MAX_USERNAME_LENGTH;
+      const tooLong = message.text.length > MAX_MESSAGE_LENGTH
+        || message.name.length > MAX_USERNAME_LENGTH;
+
       if (tooLong) {
         ws.send(JSON.stringify({
           message: {
