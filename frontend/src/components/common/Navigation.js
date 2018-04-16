@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 
 const LinkMixin = (p) => `
   text-decoration: none;
-  color: ${p.theme.color.pink};
+  color: ${p.theme.color.white};
 
   &:visited {
-    color: ${p.theme.color.pink};
+    color: ${p.theme.color.white};
   }
 
   margin: 0.5rem;
@@ -22,7 +22,7 @@ const LinkMixin = (p) => `
 `;
 
 const Rectangle = styled.div`
-  background-color: ${p => p.theme.color.contrast};
+  background-color: ${p => p.theme.color.blue};
   margin-bottom: 2rem;
   padding: 1rem 2rem 1rem;
 `;
@@ -38,7 +38,7 @@ const Language = styled.a`
     margin-right: 0;
   }
 
-  color: ${p => p.theme.color.white};
+  color: ${p => p.theme.color.pink};
   cursor: pointer;
 `;
 

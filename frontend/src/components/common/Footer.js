@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
   text-align: center;
-  background-color: ${p => p.theme.color.contrast};
+  background-color: ${p => p.theme.color.blue};
   padding: 1rem 2rem 1rem;
   height: 3rem;
 

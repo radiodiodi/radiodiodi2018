@@ -17,9 +17,8 @@ const Question = styled.i`
 `;
 
 const Answer = styled.div`
-  background-color: ${p => p.theme.color.contrast};
+  background-color: ${p => p.theme.color.blue};
   padding: 1rem;
-  
 `;
 
 const qas = trans => [

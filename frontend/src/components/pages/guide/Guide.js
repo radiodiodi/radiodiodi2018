@@ -34,7 +34,7 @@ const Link = styled(ReactLink)`
 `;
 
 const Rectangle = styled.div`
-  background-color: ${p => p.theme.color.contrast};
+  background-color: ${p => p.theme.color.blue};
   padding: 1rem 2rem 1rem;
 `;
 

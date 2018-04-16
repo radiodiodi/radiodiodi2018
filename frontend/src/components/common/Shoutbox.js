@@ -10,7 +10,7 @@ const WS_URL = process.env.REACT_APP_BACKEND_WS_URL;
 const MAX_MESSAGES = 100;
 
 const Container = styled.div`
-  background-color: ${p => p.theme.color.contrast};
+  background-color: ${p => p.theme.color.blue};
   color: ${p => p.theme.color.white};
 
   display: flex;

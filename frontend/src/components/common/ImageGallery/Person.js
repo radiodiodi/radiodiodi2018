@@ -25,7 +25,7 @@ const Img = styled(FadeImage)`
   border-radius: 50%;
   border-style: solid;
   border-width: 4px;
-  border-color: ${p => p.theme.color.contrast};
+  border-color: ${p => p.theme.color.blue};
   max-width: 100%;
   ${p => p.css};
 `;
