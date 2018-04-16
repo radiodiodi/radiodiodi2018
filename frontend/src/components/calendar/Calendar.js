@@ -41,9 +41,11 @@ class Calendar extends React.Component {
     super(props);
     this.state = {
       ready: false,
+      intervalHandle: null,
     }
-    this.incrementDay = this.incrementDay.bind(this)
-    this.decrementDay = this.decrementDay.bind(this)
+    this.incrementDay = this.incrementDay.bind(this);
+    this.decrementDay = this.decrementDay.bind(this);
+    this.fetchProgrammes = this.fetchProgrammes.bind(this);
   }
 
   incrementDay() {
@@ -52,20 +54,42 @@ class Calendar extends React.Component {
   decrementDay() {
     this.setState(({ today }) => ({ today: Math.max(16, today - 1) }))
   }
+
+  async fetchProgrammes() {
+    try {
+      const resp = await fetch(`${process.env.REACT_APP_BACKEND_HTTP_URL}/programmes`)
+      const data = await resp.json();
+      if (!data || !Array.isArray(data)) {
+        console.log('Programme data null. Data:');
+        console.log(data);
+        return;
+      }
+
+      const r = data.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
+      const grouped = groupBy(r, (x) => x.start.substr(8, 2));
+      this.setState({
+        today: Math.max((new Date()).getDate(), 16),
+        all: grouped,
+        ready: true,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   componentWillMount() {
-    fetch(`${process.env.REACT_APP_BACKEND_HTTP_URL}/programmes`)
-      .then(r => r.json()).then(r => {
-        if (!r || !Array.isArray(r)) {
-          return;
-        }
-        r = r.sort((x, y) => + Date.parse(x.start) - Date.parse(y.start));
-        const grouped = groupBy(r, (x) => x.start.substr(8, 2));
-        this.setState({
-          today: Math.max((new Date()).getDate(), 16),
-          all: grouped,
-          ready: true,
-        });
-      }).catch(e => console.log(e));
+    const POLL_INTERVAL = 10000;
+    const intervalHandle = window.setInterval(this.fetchProgrammes, POLL_INTERVAL);
+    this.fetchProgrammes();
+
+    this.setState({
+      intervalHandle,
+    });
+  }
+
+  componentWillUnmount() {
+    const { intervalHandle } = this.state;
+    window.clearInterval(intervalHandle);
   }
 
   render() {
