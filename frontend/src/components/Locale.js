@@ -17,7 +17,7 @@ const common = {
     Projektiin osallistuu joka vuosi satoja vapaaehtoisia taustatyön muodossa ja ohjelmaakin tulee vuosittain tekemään 
     kahden lähetysviikon aikana yli 100 vapaaehtoista. Radiota kuuntelee lähetyksen aikana koko pääkaupunkiseutu 
     ja lasketulla kuuluvuusalueella asuu noin 400 000 ihmistä!`,
-    whatisheading: 'Mikä Radiodiodi?',
+    whatisheading: 'Radiodiodi? 105,8 MHz!',
     instagramimage: 'Instagram-kuva',
     ancientromansquote: '“Suosittelen kokemuksena“',
     editorinchief: 'Päätoimittaja',
@@ -94,7 +94,7 @@ const common = {
     set up for the seventh time in 2018 and the broadcast will be live for a full two weeks right before the Wappu eve.
     Hundreds of volunteers take part in the project every year, mainly doing groundwork or hosting shows. The whole metropolitan
     area can listen to the broadcast; the signal covers more than 400 000 people!`,
-    whatisheading: 'What is Radiodiodi?',
+    whatisheading: 'Radiodiodi? 105,8 MHz!',
     instagramimage: 'Instagram image',
     ancientromansquote: '“Important quote here“',
     editorinchief: 'Editor in Chief',
