@@ -80,9 +80,9 @@ const start = () => {
       });
     });
 
-    const initial = await models.messages.find({}, {
-      limit: 100, sort: { timestamp: -1 },
-    });
+    const initial = (await models.messages.find({}, {
+      sort: { timestamp: -1 }, limit: 100,
+    })).reverse();
 
     ws.send(JSON.stringify({
       initial: initial.map(message => ({
