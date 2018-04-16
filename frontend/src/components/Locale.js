@@ -74,7 +74,7 @@ const common = {
     next: 'Seuraava',
     mon: 'Maanantai',
     tue: 'Tiistai',
-    wed: 'Keskiviiko',
+    wed: 'Keskiviikko',
     thu: 'Torstai',
     fri: 'Perjantai',
     sat: 'Lauantai',
