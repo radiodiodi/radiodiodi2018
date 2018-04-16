@@ -29,7 +29,8 @@
   },
   "devDependencies": {
     "eslint-config-react-app": "^2.1.0",
-    "fetch-mock": "^6.0.1"
+    "fetch-mock": "^6.0.1",
+    "mock-socket": "^7.1.0"
   },
   "peerDependencies": {
     "babel-eslint": "^7.2.3",
