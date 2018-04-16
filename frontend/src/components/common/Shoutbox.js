@@ -79,16 +79,20 @@ const Timestamp = styled.div`
   color: ${p => p.theme.color.pink};
 `;
 
-const RowText = styled.div`
+const RowText = styled.span`
   word-break: break-word;
 `;
 
-const RowUser = styled.div`
+const RowUser = styled.span`
   color: ${p => p.theme.color.yellow};
   white-space: pre;
   &:after {
     content: ': ';
   }
+`;
+
+const Block = styled.span`
+  display: block;
 `;
 
 class Shoutbox extends Component {
@@ -172,10 +176,14 @@ class Shoutbox extends Component {
   renderRows = rows => {
     return rows.map((row, index) => 
       <Row error={row.error} key={index}>
-        <Timestamp>{dateFormat(new Date(Date.parse(row.timestamp)), 'dd.mm hh:MM')}</Timestamp>
-        { row.reserved && <Verified src={ verified } />}
-        <RowUser>{row.name}</RowUser>
-        <RowText>{row.text}</RowText>
+        <Block>
+          <Timestamp>{dateFormat(new Date(Date.parse(row.timestamp)), 'dd.mm hh:MM')}</Timestamp>
+        </Block>
+        <Block>
+          { row.reserved && <Verified src={ verified } />}
+          <RowUser>{row.name}</RowUser>
+          <RowText>{row.text}</RowText>
+        </Block>
       </Row>
     );
   }
