@@ -34,7 +34,7 @@ const Paragraph2 = Paragraph.extend`
 const ColumnContainer = styled.div`
   @media screen and (min-width: 800px) {
     margin: 0 ${p => p.margin ? '2rem' : 0} 1rem 0;
-    max-width: 50%;
+    width: 50%;
   }
 
   @media screen and (max-width: 800px) {
@@ -49,7 +49,6 @@ const ColumnContainer = styled.div`
 
 const Title = styled.h3`
   margin: 0;
-  height: 4rem;
 `;
 
 const ContentRow = styled.div`

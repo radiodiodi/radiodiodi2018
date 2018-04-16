@@ -170,7 +170,6 @@ class Shoutbox extends Component {
   }
 
   renderRows = rows => {
-    const c = new Date(Date.now());
     return rows.map((row, index) => 
       <Row error={row.error} key={index}>
         <Timestamp>{dateFormat(new Date(Date.parse(row.timestamp)), 'dd.mm hh:MM')}</Timestamp>

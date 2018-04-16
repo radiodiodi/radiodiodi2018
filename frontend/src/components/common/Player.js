@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { fetchNowPlayingProgramme, fetchCurrentSong } from '../../utils';
@@ -52,6 +52,11 @@ const NowPlayingValue = styled.i`
   text-align: right;
 `;
 
+const OwnPlayer = styled.div`
+  margin-top: 1rem;
+  color: ${p => p.theme.color.white};
+`;
+
 class Player extends Component {
   constructor() {
     super();
@@ -67,6 +72,10 @@ class Player extends Component {
     window.setInterval(this.fetchCurrentSong, 10000); // 10 seconds interval
     this.fetchCurrentSong();
   }
+
+  static contextTypes = {
+    trans: PropTypes.any
+  };
 
   playPause = () => {
     const { playing } = this.state;
@@ -130,7 +139,9 @@ class Player extends Component {
   }
 
   renderCurrentSong = () => {
-    const { title, artist } = this.state;
+    //const { title, artist } = this.state;
+    const title = 'kakka'
+    const artist = 'pissa'
     const { trans } = this.context;
 
     if (title && artist) {
@@ -152,15 +163,19 @@ class Player extends Component {
     const icon = !playing ? playIcon : pauseIcon;
 
     return (
-      <Container>
-        <AudioElement innerRef={audio => { this.audio = audio } }>
-          <source src="https://virta.radiodiodi.fi/radiodiodi.ogg" type="audio/ogg" />
-          <source src="https://virta.radiodiodi.fi/radiodiodi-mp3" type="audio/mpeg" />
-        </AudioElement>
-        <Header>{ trans.listentoradio }</Header>
-        <Line><PlayButton onClick={this.playPause} src={ icon } /> <h4>{programme}</h4></Line>
-        { this.renderCurrentSong() }
-      </Container>
+      <Fragment>
+        <Container>
+          <AudioElement innerRef={audio => { this.audio = audio } }>
+            <source src="https://virta.radiodiodi.fi/radiodiodi.ogg" type="audio/ogg" />
+            <source src="https://virta.radiodiodi.fi/radiodiodi-mp3" type="audio/mpeg" />
+          </AudioElement>
+          <Header>{ trans.listentoradio }</Header>
+          <Line><PlayButton onClick={this.playPause} src={ icon } /> <h4>{programme}</h4></Line>
+          { this.renderCurrentSong() }
+        </Container>
+        <OwnPlayer>{trans.listeninownplayer}: <a href="https://static.radiodiodi.fi/radiodiodi.m3u">radiodiodi.m3u</a></OwnPlayer>
+      </Fragment>
+
     );
   }
 };

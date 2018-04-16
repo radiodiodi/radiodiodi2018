@@ -79,6 +79,7 @@ const common = {
     fri: 'Perjantai',
     sat: 'Lauantai',
     sun: 'Sunnuntai',
+    listeninownplayer: 'Kuuntele omassa soittimessa',
   },
   en: {
     frontpage: 'Front page',
@@ -156,6 +157,7 @@ const common = {
     fri: 'Friday',
     sat: 'Saturday',
     sun: 'Sunday',
+    listeninownplayer: 'Listen with your own player',
   }
 };
 

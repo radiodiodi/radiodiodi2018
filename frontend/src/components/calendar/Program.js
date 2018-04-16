@@ -47,6 +47,7 @@ const Title = styled.h4`
   margin: 0.5rem 160px 0.5rem 0;
   font-size: 18px;
   border-bottom: 1px solid ${p => p.theme.color.pink};
+  word-wrap: break-word;
   @media (max-width: 600px) {
     margin-right: 0;
   }
