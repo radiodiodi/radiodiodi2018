@@ -73,9 +73,14 @@ class Calendar extends React.Component {
     }
   }
 
+  forceRerender = () => {
+    this.forceUpdate();
+  }
+
   componentWillMount() {
     const POLL_INTERVAL = 10000;
-    const intervalHandle = window.setInterval(this.fetchProgrammes, POLL_INTERVAL);
+    const intervalHandle = window.setInterval(this.forceRerender, POLL_INTERVAL);
+
     this.fetchProgrammes();
 
     this.setState({
