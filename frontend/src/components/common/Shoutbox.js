@@ -171,10 +171,9 @@ class Shoutbox extends Component {
 
   renderRows = rows => {
     const c = new Date(Date.now());
-    const stamp = dateFormat(c, 'dd.mm hh:MM');
     return rows.map((row, index) => 
       <Row error={row.error} key={index}>
-        <Timestamp>{`${stamp}`}</Timestamp>
+        <Timestamp>{dateFormat(new Date(Date.parse(row.timestamp)), 'dd.mm hh:MM')}</Timestamp>
         { row.reserved && <Verified src={ verified } />}
         <RowUser>{row.name}</RowUser>
         <RowText>{row.text}</RowText>
