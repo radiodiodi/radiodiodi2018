@@ -15,6 +15,7 @@
     "chalk": "^2.3.1",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7",
+    "geoip-lite": "^1.2.1",
     "gmail-send": "^1.2.13",
     "google-auth-library": "^0.10.0",
     "googleapis": "^18.0.0",

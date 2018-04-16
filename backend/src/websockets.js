@@ -2,6 +2,7 @@ const WebSocket = require('ws');
 const models = require('./models');
 const utils = require('./utils');
 const rateLimiter = require('ws-rate-limit');
+const geoip = require('geoip-lite');
 
 let wss;
 
@@ -12,7 +13,7 @@ const start = () => {
     host: process.env.HOST,
     port: process.env.WS_PORT,
   });
-  const rateLimit = rateLimiter('5s', 3);
+  const rateLimit = rateLimiter('60s', 3);
   wss.on('connection', async (ws, req) => {
     rateLimit(ws);
 
@@ -60,6 +61,19 @@ const start = () => {
             error: true,
           },
         }));
+        return;
+      }
+
+      // Drop onion
+      if (message.text.includes('.onion')) {
+        return;
+      }
+
+      // IP outside Finland
+      const lookupResult = geoip.lookup(ip);
+      const inFinland = lookupResult && lookupResult.country === 'FI';
+      if (!inFinland && ip !== '127.0.0.1') {
+        utils.info(`Dropping message from IP ${ip} based on geoip lookup`);
         return;
       }
 
