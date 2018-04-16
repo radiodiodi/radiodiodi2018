@@ -81,7 +81,7 @@ const start = () => {
     });
 
     const initial = await models.messages.find({}, {
-      limit: 100, sort: { timestamp: 1 },
+      limit: 100, sort: { timestamp: -1 },
     });
 
     ws.send(JSON.stringify({
