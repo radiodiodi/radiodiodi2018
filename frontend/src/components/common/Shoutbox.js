@@ -184,7 +184,7 @@ class Shoutbox extends Component {
       <Row error={row.error} key={index}>
         <Block>
           <Timestamp>
-            {dateFormat(new Date(Date.parse(row.timestamp)), 'dd.mm hh:MM')}
+            {dateFormat(new Date(Date.parse(row.timestamp)), 'dd.mm HH:MM')}
           </Timestamp>
         </Block>
         <Block>
