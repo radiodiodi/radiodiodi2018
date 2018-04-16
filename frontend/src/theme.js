@@ -2,7 +2,7 @@ import { injectGlobal } from 'styled-components';
 
 const theme = {
   color: {
-    pink: '#ef67b3',
+    pink: '#c75294',
     blue: '#182657',
     dark: '#121F40',
 
