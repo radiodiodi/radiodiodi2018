@@ -1,41 +1,37 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
-<g>
-	<path d="M30,0C13.458,0,0,13.458,0,30s13.458,30,30,30s30-13.458,30-30S46.542,0,30,0z M30,58C14.561,58,2,45.439,2,30
-		S14.561,2,30,2s28,12.561,28,28S45.439,58,30,58z" fill="#eee" />
-	<path d="M33,46h8V14h-8V46z M35,16h4v28h-4V16z" fill="#eee" />
-	<path d="M19,46h8V14h-8V46z M21,16h4v28h-4V16z" fill="#eee" />
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-</svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xml:space="preserve"
+   style="enable-background:new 0 0 60 60;"
+   viewBox="0 0 60 60"
+   y="0px"
+   x="0px"
+   id="Capa_1"
+   version="1.1"><metadata
+     id="metadata3459"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs3457" /><g
+     id="g3417"><path
+       id="path3419"
+       d="M 30 0 C 13.458 0 0 13.458 0 30 C 0 46.542 13.458 60 30 60 C 46.542 60 60 46.542 60 30 C 60 13.458 46.542 0 30 0 z M 19 14 L 27 14 L 27 46 L 19 46 L 19 14 z M 33 14 L 41 14 L 41 46 L 33 46 L 33 14 z "
+       style="fill:#d5982d;fill-opacity:1" /></g><g
+     id="g3425" /><g
+     id="g3427" /><g
+     id="g3429" /><g
+     id="g3431" /><g
+     id="g3433" /><g
+     id="g3435" /><g
+     id="g3437" /><g
+     id="g3439" /><g
+     id="g3441" /><g
+     id="g3443" /><g
+     id="g3445" /><g
+     id="g3447" /><g
+     id="g3449" /><g
+     id="g3451" /><g
+     id="g3453" /></svg>
