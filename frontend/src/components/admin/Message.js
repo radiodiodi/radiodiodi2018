@@ -9,6 +9,14 @@ const Container = styled.div`
   &:hover {
     background-color: ${p => p.theme.color.shimmer};
   }
+
+  min-width: 0;
+`;
+
+const Text = styled.span`
+  text-overflow: ellipsis;
+  overflow: hidden;
+  min-width: 0;
 `;
 
 class Message extends Component {
@@ -22,7 +30,7 @@ class Message extends Component {
     return (
       <Container selected={selected} onClick={this.select} >
         <span>{ data.name }: </span>
-        <span>{ data.text }</span>
+        <Text>{ data.text }</Text>
       </Container>
     )
   }

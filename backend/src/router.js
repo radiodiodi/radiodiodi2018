@@ -48,9 +48,9 @@ const checkAuthorization = async (ctx, next) => {
 
 admin.get('/messages', async ctx => {
   try {
-    const messages = await models.messages.find({}, {
-      limit: 300, sort: { timestamp: 1 },
-    });
+    const messages = (await models.messages.find({}, {
+      limit: 300, sort: { timestamp: -1 },
+    })).reverse();
 
     ctx.body = JSON.stringify({
       messages,

@@ -24,6 +24,7 @@ const Column = styled.div`
     min-width: 400px;
   }
 
+  max-width: 100%;
   color: ${p => p.theme.color.white};
 `;
 

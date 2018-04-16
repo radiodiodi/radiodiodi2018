@@ -7,6 +7,7 @@ const Container = styled.div`
   background-color: ${p => p.theme.color.contrast};
   padding: 0.5rem;
   margin-bottom: 2rem;
+  min-width: 0;
 `;
 
 const Row = styled.div`
@@ -21,6 +22,7 @@ const Row = styled.div`
   }
   justify-content: space-between;
   padding: 0.5rem;
+  min-width: 0;
 `;
 
 const Buttons = styled.div`
@@ -82,6 +84,13 @@ const ModalButton = styled(Button)`
   @media screen and (max-width: 400px) {
     margin: 0 0.5rem;
   }
+`;
+
+const Text = styled.span`
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-left: 1rem;
+  min-width: 0;
 `;
 
 class Panel extends Component {
@@ -173,7 +182,7 @@ class Panel extends Component {
         </Row>
         <Row>
           <div>Message</div>
-          <div>{ data.text }</div>
+          <Text>{ data.text }</Text>
         </Row>
         <Row>
           <div>IP Address</div>
