@@ -10,7 +10,7 @@ const Results = styled.div`
 `;
 
 const Result = styled.div`
-  background-color: ${p => p.theme.color.contrast};
+  background-color: ${p => p.theme.color.blue};
   padding: 0.5rem;
   margin: 0.2rem 0;
 

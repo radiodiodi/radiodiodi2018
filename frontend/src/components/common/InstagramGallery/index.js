@@ -15,7 +15,7 @@ const Card = styled.a`
   margin-right: ${p => p.error ? 'auto' : ''};
 
   padding: 0.5rem;
-  background-color: ${p => p.theme.color.contrast};
+  background-color: ${p => p.theme.color.blue};
   width: calc(100% - 2rem);
 
   @media screen and (min-width: 600px) {

@@ -24,7 +24,7 @@ const Subtitle = styled.h4`
 `;
 
 const AmountContainer = styled.div`
-  background-color: ${p => p.theme.color.contrast};
+  background-color: ${p => p.theme.color.blue};
   padding: 1rem;
 `;
 
