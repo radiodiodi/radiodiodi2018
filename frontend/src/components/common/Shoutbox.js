@@ -31,8 +31,9 @@ const Log = styled.div`
 
 const Row = styled.div`
   padding: 0.2rem;
+  font-size: 1rem;
   ${ p => p.error && 'color: red'};
-
+  font-family: 'Jaldi', sans-serif;
   display: flex;
   align-items: flex-start;
 `;
@@ -65,7 +66,9 @@ const Prompt = styled.input`
   margin: 0.5rem;
   flex: 2;
 
-  min-width: 300px;
+  @media screen and (min-width: 400px) {
+    min-width: 300px;
+  }
 `;
 
 const Verified = styled.img`
@@ -77,6 +80,9 @@ const Timestamp = styled.div`
   white-space: nowrap;
   margin-right: 0.3rem;
   color: ${p => p.theme.color.pink};
+
+  display: flex;
+  justify-content: space-between;
 `;
 
 const RowText = styled.span`
@@ -177,7 +183,9 @@ class Shoutbox extends Component {
     return rows.map((row, index) => 
       <Row error={row.error} key={index}>
         <Block>
-          <Timestamp>{dateFormat(new Date(Date.parse(row.timestamp)), 'dd.mm hh:MM')}</Timestamp>
+          <Timestamp>
+            {dateFormat(new Date(Date.parse(row.timestamp)), 'dd.mm hh:MM')}
+          </Timestamp>
         </Block>
         <Block>
           { row.reserved && <Verified src={ verified } />}

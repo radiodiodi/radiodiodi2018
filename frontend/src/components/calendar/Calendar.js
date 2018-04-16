@@ -13,18 +13,14 @@ const Button = styled.button`
   padding: 0.5rem;
   font-size: 14px;
   border: none;
-  &:first-child {
-    float: left;
-  }
-  &:last-child {
-    float: right;
-  }
   min-width: 100px;
 `
 
 const Controls = styled.div`
   margin: 1.5rem 0;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
 `
 
 const CalendarLink = styled.div`
