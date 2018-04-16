@@ -36,7 +36,7 @@ const Header = styled.h4`
   font-size: 18px;
   color: ${p => p.theme.color.pink};
   border-bottom: 1px solid ${p => p.theme.color.pink};
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0 0 0.5rem 0;
 `;
 
 const AudioElement = styled.audio`
