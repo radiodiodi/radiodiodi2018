@@ -139,9 +139,7 @@ class Player extends Component {
   }
 
   renderCurrentSong = () => {
-    //const { title, artist } = this.state;
-    const title = 'kakka'
-    const artist = 'pissa'
+    const { title, artist } = this.state;
     const { trans } = this.context;
 
     if (title && artist) {
