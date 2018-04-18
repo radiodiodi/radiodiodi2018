@@ -19,7 +19,7 @@ const start = () => {
 
     ws.on('message', async data => {
       const { name, text } = JSON.parse(data);
-      utils.info(`Websocket: Received: "${text}" from "${name}"`);
+      // utils.info(`Websocket: Received: "${text}" from "${name}"`);
 
       const forwardedIP = req.headers['x-forwarded-for'];
       const ip = forwardedIP && forwardedIP !== '127.0.0.1' ? forwardedIP : req.connection.remoteAddress;
@@ -34,7 +34,6 @@ const start = () => {
       };
 
       const banned = await models.bans.findOne({ ip: message.ip });
-      console.log(banned);
       if (banned) {
         ws.send(JSON.stringify({
           message: {
