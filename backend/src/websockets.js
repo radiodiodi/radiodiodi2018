@@ -73,6 +73,14 @@ const start = () => {
       const inFinland = lookupResult && lookupResult.country === 'FI';
       if (!inFinland && ip !== '127.0.0.1') {
         utils.info(`Dropping message from IP ${ip} based on geoip lookup`);
+        ws.send(JSON.stringify({
+          message: {
+            name: 'SERVER',
+            text: 'Messages from outside of Finland not allowed to deter spamming.',
+            timestamp: new Date(Date.now()),
+            error: true,
+          },
+        }));
         return;
       }
 
