@@ -4,10 +4,6 @@ import PropTypes from 'prop-types';
 
 const SectionContainer = styled.div`
   text-align: center;
-  padding: 0 2rem 2rem;
-  margin-bottom: 2rem;
-  border-bottom: solid;
-  border-width: 2px;
   border-color: ${p => p.theme.color.pink};
 
   @media screen and (max-width: 800px) {
@@ -27,6 +23,10 @@ const Header = styled.h2`
   color: ${p => p.theme.color.white};
 `;
 
+const Subheader = styled.h4`
+  color: ${p => p.theme.color.white};
+`;
+
 class CountdownSection extends Component {
   static contextTypes = {
     trans: PropTypes.any,
@@ -42,7 +42,8 @@ class CountdownSection extends Component {
     const { trans } = this.context;
     return (
       <SectionContainer>
-        <Header dangerouslySetInnerHTML={{__html: trans.calendarreleased}}></Header>
+        <Header dangerouslySetInnerHTML={{__html: trans.radioended}}></Header>
+        <Subheader dangerouslySetInnerHTML={{__html: trans.surveyopen}}></Subheader>
       </SectionContainer>
     );
   }

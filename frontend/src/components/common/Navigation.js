@@ -96,7 +96,7 @@ class Navigation extends Component {
         </BurgerButton>
         <Menu expanded={expanded}>
           <Link to="/">{trans.frontpage}</Link>
-          <Link to="/ilmo">{trans.registration}</Link>
+          { false && <Link to="/ilmo">{trans.registration}</Link> }
           <Link to="/guide">{trans.oto}</Link>
           <Link to="/sponsors">{trans.forbusinesses}</Link>
           <Link to="/library">{trans.musiclibrary}</Link>
