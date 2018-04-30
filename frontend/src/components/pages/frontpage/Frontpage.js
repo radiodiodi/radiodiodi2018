@@ -8,6 +8,7 @@ import Instagram from '../../common/Instagram';
 import SponsorReel from '../../common/SponsorReel';
 import Calendar from '../../calendar/Calendar';
 import Shoutbox from '../../common/Shoutbox';
+import CountdownSection from '../../common/CountdownSection';
 
 const Container = styled.div`
   display: flex;
@@ -82,7 +83,8 @@ class Frontpage extends Component {
 
     return (
       <Fragment>
-        <Container>
+        <CountdownSection />
+        { false && <Container>
           <ColumnContainer>
             <Paragraph margin>
               <Calendar oneDayPreview />
@@ -96,12 +98,11 @@ class Frontpage extends Component {
             <ShoutboxTitle>{trans.shoutbox}</ShoutboxTitle>
             <Shoutbox />
           </ColumnContainer>
-        </Container>
-        <Calendar />
+        </Container> }
+        { false && <Calendar /> }
         <ContentRow>
-          <Title>{trans.radioprogramheading}</Title>
-          <Paragraph2>{trans.radioprogramparagraph1}</Paragraph2>
-          <Paragraph2>{trans.radioprogramparagraph2}</Paragraph2>
+          <Title>{trans.recruitheading}</Title>
+          <Paragraph2 dangerouslySetInnerHTML={{__html: trans.recruitparagraph1}} />
         </ContentRow>
         <ContentRow>
           <ImageGallery />

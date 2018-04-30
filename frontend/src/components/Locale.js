@@ -33,6 +33,9 @@ const common = {
       'Radiodiodi tarvitsee sinua! Oletko aina haaveillut oman radio-ohjelman tekemisestä? Ai et vai? Ei se haittaa!',
     radioprogramparagraph2:
       'Radiodiodin ohjelma on aina ollut yhteisönsä tekemää ja näköistä. Lähetyskautemme aikana radiossa kuullaan satoja eri ääniä, joista yksi voit olla sinä. Ohjelmantekijäilmoittautuminen aukeaa 5.3. Lisätietoja ohjelman tekemisestä saa päätoimittajalta.',
+    recruitheading: 'Radiodiodin taustatiimin rekry on auki!',
+    recruitparagraph1:
+      'Radiodiodi on paljon muutakin kuin tekniikkaa. Radion toimitukseen tarvitaan kovia tekijöitä kaikilta aloilta, olkoon taitosi sitten yrityssuhteissa, grafiikassa, somettamisessa tai jossain muussa. Ota yhteyttä: <a href="mailto:rekry@radiodiodi.fi">rekry@radiodiodi.fi</a>',
     registration: 'Ilmoittaudu',
     librarybrowser: 'Musiikkikirjasto',
     title: 'Kappale',
@@ -43,6 +46,8 @@ const common = {
     registrationopensat: 'Ilmoittautuminen aukeaa klo 9:00 maanantaina 5.3.!',
     registrationopen: 'Ohjelmantekijäilmo on auki! Käy ilmoittautumassa osoitteessa ',
     calendarreleased: 'Ohjelmakalenteri on julkaistu! Katso aikataulu <a href="/#calendar">alta</a>!',
+    radioended: 'Radiolähetys on päättynyt.',
+    surveyopen: 'Kuuntelitko radiota? Vastaa kuuntelijakyselyyn <a href="https://docs.google.com/forms/d/e/1FAIpQLSd847LvrPwA8hA5xaOuaiyd2dihgJRvii3dvyH6d7-jgE4QWQ/viewform">täältä</a>!',
     oto: 'Ohjelmantekijän opas',
     faq: 'UKK',
     programme: 'Ohjelma',
@@ -111,6 +116,8 @@ const common = {
       'Radiodiodi needs you! Have you always wanted to host your own radio show? No? Not a problem!',
     radioprogramparagraph2:
       'Radiodiodi looks and sounds like its community. During the broadcast period there are over a hundred different voices heard – and you can be one of them. The registration begins on March 5th. Contact the editor-in-chief for more info.',
+    recruitheading: 'Radiodiodi will return next year!',
+    recruitparagraph1: ' ',
     registration: 'Sign up',
     librarybrowser: 'Music library browser',
     title: 'Title',
@@ -121,6 +128,8 @@ const common = {
     registrationopensat: 'The registration opens at 9:00 on the 5th of March!',
     registrationopen: 'Programme registration is open! Register your programme at ',
     calendarreleased: 'The programme schedule has been released! See the schedule <a href="/#calendar">here</a>!',
+    radioended: 'The broadcast has ended! Radiodiodi will return next spring.',
+    surveyopen: ' ',
     oto: 'Programme maker\'s guide',
     faq: 'FAQ',
     programme: 'Programme',
