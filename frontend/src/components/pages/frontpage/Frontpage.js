@@ -83,8 +83,8 @@ class Frontpage extends Component {
 
     return (
       <Fragment>
-        <CountdownSection />
-        { false && <Container>
+        {/* <CountdownSection /> */}
+        {/* <Container>
           <ColumnContainer>
             <Paragraph margin>
               <Calendar oneDayPreview />
@@ -98,15 +98,15 @@ class Frontpage extends Component {
             <ShoutboxTitle>{trans.shoutbox}</ShoutboxTitle>
             <Shoutbox />
           </ColumnContainer>
-        </Container> }
-        { false && <Calendar /> }
+        </Container> */}
+        {/* <Calendar /> */}
         <ContentRow>
-          <Title>{trans.recruitheading}</Title>
-          <Paragraph2 dangerouslySetInnerHTML={{__html: trans.recruitparagraph1}} />
+          <Title>{trans.otasuunnistusheading}</Title>
+          <Paragraph2 dangerouslySetInnerHTML={{__html: trans.otasuunnistuspromo}} />
         </ContentRow>
-        <ContentRow>
+        {/* <ContentRow>
           <ImageGallery />
-        </ContentRow>
+        </ContentRow> */}
         <Instagram />
       </Fragment>
     );

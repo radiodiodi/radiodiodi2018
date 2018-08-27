@@ -85,6 +85,11 @@ const common = {
     sat: 'Lauantai',
     sun: 'Sunnuntai',
     listeninownplayer: 'Kuuntele omassa soittimessa',
+    otasuunnistusheading: 'Mitä? Radiodiodi pitää yllätysradion Otasuunnistuksessa? 🔊',
+    otasuunnistuspromo: `Radiodiodi pitää tiistaina 4.9. ja torstaina 6.9. Otasuunnistuksen pituisen radiolähetyksen suoraan toiminnan keskiöstä,
+                         eli keskeltä Otaniemeä!<br><br>Tule studioomme tutustumaan otaniemeläisen wappuradion toimintaan
+                         ja tekemään itse omannäköistäsi ohjelmaa! Radiolähetys on kuultavissa verkossa osoitteessa
+                         <a href="https://radiodiodi.fi">radiodiodi.fi</a>.&nbsp;📻`,
   },
   en: {
     frontpage: 'Front page',
@@ -147,7 +152,7 @@ const common = {
     preliminarycalendar: 'Preliminary programme schedule',
     musiclibrary: 'Music library',
     libraryoutoforder: 'The music library is being upgraded, and the search is therefore disabled. Sorry for the inconvenience.',
-    gcalvisiblehere: 'The complete calendar can be seen here', 
+    gcalvisiblehere: 'The complete calendar can be seen here',
     username: 'Username',
     messageplaceholder: 'Message...',
     send: 'Send',
@@ -167,6 +172,10 @@ const common = {
     sat: 'Saturday',
     sun: 'Sunday',
     listeninownplayer: 'Listen with your own player',
+    otasuunnistusheading: 'What? Radiodiodi has a pop-up radio during Otasuunnistus? 🔊',
+    otasuunnistuspromo: `Radiodiodi will broadcast a radio show from the center of Otaniemi during Otasuunnistus on 4.9. and 6.9.
+                         <br><br>Come meet the team and make a programme of your own! The broadcast can be heard online at
+                         <a href="https://radiodiodi.fi">radiodiodi.fi</a>. 📻`,
   }
 };
 
