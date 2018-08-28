@@ -26,18 +26,20 @@ const qas = trans => [
     question: 'Mikä on Radiodiodi?',
     answer: 'Radiodiodi on Otaniemestä ponnistava joka vuosi täysin opiskelijavetoisesti toteutettu kaupallinen wappuradio. Radio toteutetaan vuonna 2018 jo seitsemättä kertaa ja lähetys on käynnissä täydet kaksi viikkoa ennen Wappuaattoa. Projektiin osallistuu joka vuosi satoja vapaaehtoisia taustatyön muodossa ja ohjelmaakin tulee vuosittain tekemään kahden lähetysviikon aikana yli 100 vapaaehtoista. Radiota kuuntelee lähetyksen aikana koko pääkaupunkiseutu ja verkossa koko Suomi!'
   },
+  // {
+  //   question: 'Missä Radiodiodi kuuluu?',
+  //   answer: 'Radiotaajuudella 105.8 MHz pääkaupunkiseudulla ja Suomen sisällä verkossa osoitteessa <a href="https://radiodiodi.fi">radiodiodi.fi</a>. Audiostriimin suora osoite on <a href="https://virta.radiodiodi.fi/radiodiodi-mp3.m3u">https://virta.radiodiodi.fi/radiodiodi-mp3.m3u</a>'
+  // },
+  // {
+  //   question: 'Missä radion kontit sijaitsevat?',
+  //   answer: 'Kontit sijaitsevat Otaniemessä Alvarin aukiolla. Lähin osoite on Otakaari 11, Espoo. Tarkka sijainti on näkyvissä <a href="https://bit.ly/2HCEcGc">täältä</a>.'
+  // },
   {
-    question: 'Missä Radiodiodi kuuluu?',
-    answer: 'Radiotaajuudella 105.8 MHz pääkaupunkiseudulla ja Suomen sisällä verkossa osoitteessa <a href="https://radiodiodi.fi">radiodiodi.fi</a>. Audiostriimin suora osoite on <a href="https://virta.radiodiodi.fi/radiodiodi-mp3.m3u">https://virta.radiodiodi.fi/radiodiodi-mp3.m3u</a>'
-  }, {
-    question: 'Missä radion kontit sijaitsevat?',
-    answer: 'Kontit sijaitsevat Otaniemessä Alvarin aukiolla. Lähin osoite on Otakaari 11, Espoo. Tarkka sijainti on näkyvissä <a href="https://bit.ly/2HCEcGc">täältä</a>.'
-  }, {
     question: 'Kuka voi tulla tekemään ohjelmaa?',
     answer: 'Kuka tahansa, joka ajan kerkeää varaamaan. :) Aikataulukonflikteissa priorisoimme opiskelijoita.'
   },
   {
-    question: 'I want to do a program in English.Is that possible?',
+    question: 'I want to do a program in English. Is that possible?',
     answer: 'Naturally! Shoot us a mail to toimitus@radiodiodi.fi and we\'ll be happy to explain how everything works.'
   },
   {
