@@ -165,13 +165,13 @@ class Player extends Component {
         <Container>
           <AudioElement innerRef={audio => { this.audio = audio } }>
             <source src="https://virta.radiodiodi.fi/radiodiodi.ogg" type="audio/ogg" />
-            <source src="https://virta.radiodiodi.fi/radiodiodi-mp3" type="audio/mpeg" />
+            {/* <source src="https://virta.radiodiodi.fi/radiodiodi-mp3" type="audio/mpeg" /> */}
           </AudioElement>
           <Header>{ trans.listentoradio }</Header>
-          <Line><PlayButton onClick={this.playPause} src={ icon } /> <h4>{programme}</h4></Line>
-          { this.renderCurrentSong() }
+          <Line><PlayButton onClick={this.playPause} src={icon} /> <h4>Otasuunnistusradio!</h4></Line>
+          {/* { this.renderCurrentSong() } */}
         </Container>
-        <OwnPlayer>{trans.listeninownplayer}: <a href="https://static.radiodiodi.fi/radiodiodi.m3u">radiodiodi.m3u</a></OwnPlayer>
+        {/* <OwnPlayer>{trans.listeninownplayer}: <a href="https://static.radiodiodi.fi/radiodiodi.m3u">radiodiodi.m3u</a></OwnPlayer> */}
       </Fragment>
 
     );
