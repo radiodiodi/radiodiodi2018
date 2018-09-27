@@ -1,14 +1,14 @@
 language: node_js
 node_js:
-  - '8'
+  - '10'
 install:
   - pushd frontend
-  - yarn install
+  - npm ci
   - popd
 script:
   - pushd frontend
   - cp .env.sample .env
-  - yarn test
+  - npm run test
   - popd
 before_deploy:
   - openssl aes-256-cbc -K $encrypted_18d0203649e0_key -iv $encrypted_18d0203649e0_iv
