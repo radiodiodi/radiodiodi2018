@@ -18,3 +18,5 @@ deploy:
   script: bash .travis_deploy.sh
   on:
     branch: production
+notifications:
+  slack: radiodiodi:bKmg9JXX91Ijut1X6dy5zcK1
